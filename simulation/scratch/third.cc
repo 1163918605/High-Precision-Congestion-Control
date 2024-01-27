@@ -1019,6 +1019,11 @@ int main(int argc, char *argv[])
 	NS_LOG_INFO("Done.");
 	fclose(trace_output);
 
+	// link trace
+	PointToPointHelper pointToPoint;
+  	AsciiTraceHelper ascii;
+  	pointToPoint.EnableAsciiAll(ascii.CreateFileStream("link_trace.tr"));
+
 	endt = clock();
 	std::cout << (double)(endt - begint) / CLOCKS_PER_SEC << "\n";
 
