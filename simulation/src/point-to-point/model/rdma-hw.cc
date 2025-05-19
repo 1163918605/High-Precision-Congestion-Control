@@ -174,6 +174,21 @@ TypeId RdmaHw::GetTypeId (void)
 				UintegerValue(65536),
 				MakeUintegerAccessor(&RdmaHw::pint_smpl_thresh),
 				MakeUintegerChecker<uint32_t>())
+		.AddAttribute("LRFCEnabled",
+				"Enable loss-tolerant flow control",
+				BooleanValue(false),
+				MakeBooleanAccessor(&RdmaHw::m_lrfcEnabled),
+				MakeBooleanChecker())
+		.AddAttribute("NumLossPkg",
+				"The number of lossed package",
+				BooleanValue(false),
+				MakeUintegerAccessor(&RdmaHw::num_loss_pkg),
+				MakeUintegerChecker<uint32_t>())
+		.AddAttribute("NodeId",
+				"The node id of this rdma driver",
+				UintegerValue(1000),
+				MakeUintegerAccessor(&RdmaHw::node_id),
+				MakeUintegerChecker<uint32_t>())
 		;
 	return tid;
 }
@@ -297,6 +312,7 @@ void RdmaHw::DeleteRxQp(uint32_t dip, uint16_t pg, uint16_t dport){
 }
 
 int RdmaHw::ReceiveUdp(Ptr<Packet> p, CustomHeader &ch){
+	//get ecn bits
 	uint8_t ecnbits = ch.GetIpv4EcnBits();
 
 	uint32_t payload_size = p->GetSize() - ch.GetSerializedSize();
@@ -310,36 +326,117 @@ int RdmaHw::ReceiveUdp(Ptr<Packet> p, CustomHeader &ch){
 	rxQp->m_ecn_source.total++;
 	rxQp->m_milestone_rx = m_ack_interval;
 
-	int x = ReceiverCheckSeq(ch.udp.seq, rxQp, payload_size);
-	if (x == 1 || x == 2){ //generate ACK or NACK
-		qbbHeader seqh;
-		seqh.SetSeq(rxQp->ReceiverNextExpectedSeq);
-		seqh.SetPG(ch.udp.pg);
-		seqh.SetSport(ch.udp.dport);
-		seqh.SetDport(ch.udp.sport);
-		seqh.SetIntHeader(ch.udp.ih);
-		if (ecnbits)
-			seqh.SetCnp();
+	if(!m_lrfcEnabled){
+		int x = ReceiverCheckSeq(ch.udp.seq, rxQp, payload_size);
+		
+		if (x == 1 || x == 2){ //generate ACK or NACK
+			qbbHeader seqh;
+			seqh.SetSeq(rxQp->ReceiverNextExpectedSeq);
+			seqh.SetPG(ch.udp.pg);
+			seqh.SetSport(ch.udp.dport);
+			seqh.SetDport(ch.udp.sport);
+			seqh.SetIntHeader(ch.udp.ih);
+			//run in ecn != 0 
+			if (ecnbits)
+				seqh.SetCnp();
 
-		Ptr<Packet> newp = Create<Packet>(std::max(60-14-20-(int)seqh.GetSerializedSize(), 0));
-		newp->AddHeader(seqh);
+			Ptr<Packet> newp = Create<Packet>(std::max(60-14-20-(int)seqh.GetSerializedSize(), 0));
+			newp->AddHeader(seqh);
 
-		Ipv4Header head;	// Prepare IPv4 header
-		head.SetDestination(Ipv4Address(ch.sip));
-		head.SetSource(Ipv4Address(ch.dip));
-		head.SetProtocol(x == 1 ? 0xFC : 0xFD); //ack=0xFC nack=0xFD
-		head.SetTtl(64);
-		head.SetPayloadSize(newp->GetSize());
-		head.SetIdentification(rxQp->m_ipid++);
+			Ipv4Header head;	// Prepare IPv4 header
+			head.SetDestination(Ipv4Address(ch.sip));
+			head.SetSource(Ipv4Address(ch.dip));
+			head.SetProtocol(x == 1 ? 0xFC : 0xFD); //ack=0xFC nack=0xFD
+			head.SetTtl(64);
+			head.SetPayloadSize(newp->GetSize());
+			head.SetIdentification(rxQp->m_ipid++);
 
-		newp->AddHeader(head);
-		AddHeader(newp, 0x800);	// Attach PPP header
-		// send
-		uint32_t nic_idx = GetNicIdxOfRxQp(rxQp);
-		m_nic[nic_idx].dev->RdmaEnqueueHighPrioQ(newp);
-		m_nic[nic_idx].dev->TriggerTransmit();
+			newp->AddHeader(head);
+			AddHeader(newp, 0x800);	// Attach PPP header
+			// send
+			uint32_t nic_idx = GetNicIdxOfRxQp(rxQp);
+			m_nic[nic_idx].dev->RdmaEnqueueHighPrioQ(newp);
+			m_nic[nic_idx].dev->TriggerTransmit();
+	    }
+	}else{
+		int x = ReceiverCheckLossSeq(ch.udp.seq, rxQp, payload_size);
+
+		// if (ch.sip == 184551169)
+		// 	std::cout << "node_id = " << Ipv4Address(ch.sip) << "|| x :" << x << "|| receive udps seq = " << ch.udp.seq << "\n";
+
+		// if(node_id == 87){
+		// 	std::cout << "Sender: " << node_id << " { Time : " << Simulator::Now() <<  "|| receive udps seq = " << ch.udp.seq  <<  "\n";
+		// }
+
+		if (x == 1 || x == 2 || x == 3){ 
+		//generate a ack, then generate a NACK
+			qbbHeader seqh;
+			seqh.SetSeq(ch.udp.seq + payload_size);
+			seqh.SetPG(ch.udp.pg);
+			seqh.SetSport(ch.udp.dport);
+			seqh.SetDport(ch.udp.sport);
+			seqh.SetIntHeader(ch.udp.ih); 
+
+			//run in ecn != 0 
+			if (ecnbits)
+				seqh.SetCnp();
+
+			Ptr<Packet> newp = Create<Packet>(std::max(60-14-20-(int)seqh.GetSerializedSize(), 0));
+			newp->AddHeader(seqh);
+
+			Ipv4Header head;	// Prepare IPv4 header
+			head.SetDestination(Ipv4Address(ch.sip));
+			head.SetSource(Ipv4Address(ch.dip));
+			head.SetProtocol(0xFC); //ack=0xFC nack=0xFD
+			head.SetTtl(64);
+			head.SetPayloadSize(newp->GetSize());
+			head.SetIdentification(rxQp->m_ipid++);
+
+			newp->AddHeader(head);
+			AddHeader(newp, 0x800);	// Attach PPP header
+			// send
+			uint32_t nic_idx = GetNicIdxOfRxQp(rxQp);
+			m_nic[nic_idx].dev->RdmaEnqueueHighPrioQ(newp);
+			m_nic[nic_idx].dev->TriggerTransmit();
+
+			if (x == 2) {
+				// SACK
+				qbbHeader seqh1;
+				seqh1.SetSeq(num_loss_pkg); // sacked pkg
+				seqh1.SetPG(ch.udp.pg);
+				seqh1.SetSport(ch.udp.dport);
+				seqh1.SetDport(ch.udp.sport);
+				seqh1.SetIntHeader(ch.udp.ih);
+				if (ecnbits)
+					seqh1.SetCnp();
+
+				Ptr<Packet> newp1 = Create<Packet>(std::max(60-14-20-(int)seqh1.GetSerializedSize(), 0));
+				newp1->AddHeader(seqh1);
+
+				Ipv4Header head1;	// Prepare IPv4 header
+				head1.SetDestination(Ipv4Address(ch.sip));
+				head1.SetSource(Ipv4Address(ch.dip));
+				head1.SetProtocol(0xFD); //ack=0xFC Nack=0xFD
+				head1.SetTtl(64);
+				head1.SetPayloadSize(newp1->GetSize());
+				head1.SetIdentification(rxQp->m_ipid++);
+
+				newp1->AddHeader(head1);
+				AddHeader(newp1, 0x800);	// Attach PPP header
+
+				// send
+				uint32_t nic_idx = GetNicIdxOfRxQp(rxQp);
+				m_nic[nic_idx].dev->RdmaEnqueueHighPrioQ(newp1);
+				m_nic[nic_idx].dev->TriggerTransmit();
+			}
+
+		}
 	}
 	return 0;
+}
+
+uint32_t ip_to_node_id(Ipv4Address ip){
+	return (ip.Get() >> 8) & 0xffff;
 }
 
 int RdmaHw::ReceiveCnp(Ptr<Packet> p, CustomHeader &ch){
@@ -400,40 +497,107 @@ int RdmaHw::ReceiveAck(Ptr<Packet> p, CustomHeader &ch){
 
 	uint32_t nic_idx = GetNicIdxOfQp(qp);
 	Ptr<QbbNetDevice> dev = m_nic[nic_idx].dev;
-	if (m_ack_interval == 0)
-		std::cout << "ERROR: shouldn't receive ack\n";
-	else {
-		if (!m_backto0){
-			qp->Acknowledge(seq);
-		}else {
-			uint32_t goback_seq = seq / m_chunk * m_chunk;
-			qp->Acknowledge(goback_seq);
-		}
-		if (qp->IsFinished()){
-			QpComplete(qp);
-		}
-	}
-	if (ch.l3Prot == 0xFD) // NACK
-		RecoverQueue(qp);
+	if(!m_lrfcEnabled){
 
-	// handle cnp
-	if (cnp){
-		if (m_cc_mode == 1){ // mlx version
-			cnp_received_mlx(qp);
-		} 
-	}
+		if (m_ack_interval == 0)
+			std::cout << "ERROR: shouldn't receive ack\n";
+		else {
+			// log for Receiver receive ack 
+			if(node_id == 33){
+				std::cout << "Sender: " << node_id  << "-from:"<< ch.sip << " { Time : " << Simulator::Now() <<  "ack seq : " <<ch.ack.seq <<  "||rate " << qp->m_rate <<  "\n";
+			}
+			if (!m_backto0){
+				//update the seq of qp
+				qp->Acknowledge(seq);
+			}else {
+				uint32_t goback_seq = seq / m_chunk * m_chunk;
+				qp->Acknowledge(goback_seq);
+			}
+			if (qp->IsFinished()){
+				std::cout << "node:" << node_id << " || the num of generate pkg:" << num_send_pkg << "\n";
+				QpComplete(qp);
+			}
+		}
+		if (ch.l3Prot == 0xFD) // NACK
+				RecoverQueue(qp);
 
-	if (m_cc_mode == 3){
-		HandleAckHp(qp, p, ch);
-	}else if (m_cc_mode == 7){
-		HandleAckTimely(qp, p, ch);
-	}else if (m_cc_mode == 8){
-		HandleAckDctcp(qp, p, ch);
-	}else if (m_cc_mode == 10){
-		HandleAckHpPint(qp, p, ch);
+		// handle cnp
+		if (cnp){
+			if (m_cc_mode == 1){ // mlx version
+				// std::cout << "handle CNP--------" ;
+				cnp_received_mlx(qp);
+			} 
+		}
+		
+		if (m_cc_mode == 3){
+			HandleAckHp(qp, p, ch);
+		}else if (m_cc_mode == 7){
+			HandleAckTimely(qp, p, ch);
+		}else if (m_cc_mode == 8){
+			HandleAckDctcp(qp, p, ch);
+		}else if (m_cc_mode == 10){
+			HandleAckHpPint(qp, p, ch);
+		}
+		// ACK may advance the on-the-fly window, allowing more packets to send
+		dev->TriggerTransmit();
+	}else{
+		if(m_ack_interval == 0){
+			std::cout << "ERROR: shouldn't receive ack\n";
+		}else{
+			// std::cout << "node_id ::" << node_id << "\n";
+			if(node_id == 33){
+				std::cout << "Sender: " << node_id  << "-from:"<< ch.sip << " { Time : " << Simulator::Now() <<  "ack seq : " <<ch.ack.seq <<  "||rate " << qp->m_rate <<  "\n";
+			}
+			if(ch.l3Prot == 0xFC){ //ACK
+				if (seq > qp->snd_una){
+					qp->Acknowledge(seq);
+				}else{
+					num_total_loss = num_total_loss - 1;
+					ratio_drop =  static_cast<double>(num_total_loss) / (qp -> m_size) * 100000 ;
+				}
+
+
+				if(qp->IsFinished()){
+					std::cout << "Node_id-" << node_id << "|| the num of loss packages: " << num_total_loss << " ||the ratio of dropping package:" << ratio_drop << "% || the num of generate pkg:" << num_send_pkg << "\n";
+					QpComplete(qp);
+				}
+			}
+			if(ch.l3Prot == 0xFD){ //NACK
+				// if(seq == 1){
+				// 	num_total_loss = num_total_loss - 1;
+				// 	ratio_drop =  static_cast<double>(num_total_loss) / (qp -> m_size) * 100000 ;
+				// }
+				num_total_loss = num_total_loss + seq;
+				ratio_drop =  static_cast<double>(num_total_loss) / (qp -> m_size) * 100000 ;
+				// std::cout << "Node_id: " << node_id << " || num_total_loss : " << num_total_loss <<  " || the ratio of dropping package: " << ratio_drop << "%\n";
+			}
+
+			// handle cnp
+			if(ch.l3Prot == 0xFE){ // handle feedback from switch
+				std::cout << "receive ack from switch " << "\n";
+				if(node_id == 4)
+					std::cout << "Receive ack from switch:{ " << "Time: " << Simulator::Now() << " | ack seq : " << seq << "\n";
+			}
+			if (cnp){
+				if (m_cc_mode == 1){ // mlx version
+					// std::cout << "handle CNP--------" ;
+					cnp_received_mlx(qp);
+				} 
+			}
+			
+			if (m_cc_mode == 3){
+				HandleAckHp(qp, p, ch);
+			}else if (m_cc_mode == 7){
+				HandleAckTimely(qp, p, ch);
+			}else if (m_cc_mode == 8){
+				HandleAckDctcp(qp, p, ch);
+			}else if (m_cc_mode == 10){
+				HandleAckHpPint(qp, p, ch);
+			}
+			// ACK may advance the on-the-fly window, allowing more packets to send
+			dev->TriggerTransmit();
+		}
 	}
-	// ACK may advance the on-the-fly window, allowing more packets to send
-	dev->TriggerTransmit();
 	return 0;
 }
 
@@ -441,6 +605,7 @@ int RdmaHw::Receive(Ptr<Packet> p, CustomHeader &ch){
 	if (ch.l3Prot == 0x11){ // UDP
 		ReceiveUdp(p, ch);
 	}else if (ch.l3Prot == 0xFF){ // CNP
+		std::cout << "receive CNP";
 		ReceiveCnp(p, ch);
 	}else if (ch.l3Prot == 0xFD){ // NACK
 		ReceiveAck(p, ch);
@@ -452,6 +617,7 @@ int RdmaHw::Receive(Ptr<Packet> p, CustomHeader &ch){
 
 int RdmaHw::ReceiverCheckSeq(uint32_t seq, Ptr<RdmaRxQueuePair> q, uint32_t size){
 	uint32_t expected = q->ReceiverNextExpectedSeq;
+
 	if (seq == expected){
 		q->ReceiverNextExpectedSeq = expected + size;
 		if (q->ReceiverNextExpectedSeq >= q->m_milestone_rx){
@@ -467,6 +633,7 @@ int RdmaHw::ReceiverCheckSeq(uint32_t seq, Ptr<RdmaRxQueuePair> q, uint32_t size
 		if (Simulator::Now() >= q->m_nackTimer || q->m_lastNACK != expected){
 			q->m_nackTimer = Simulator::Now() + MicroSeconds(m_nack_interval);
 			q->m_lastNACK = expected;
+
 			if (m_backto0){
 				q->ReceiverNextExpectedSeq = q->ReceiverNextExpectedSeq / m_chunk*m_chunk;
 			}
@@ -478,6 +645,28 @@ int RdmaHw::ReceiverCheckSeq(uint32_t seq, Ptr<RdmaRxQueuePair> q, uint32_t size
 		return 3;
 	}
 }
+int RdmaHw::ReceiverCheckLossSeq(uint32_t seq, Ptr<RdmaRxQueuePair> q, uint32_t size){
+	uint32_t expected = q->ReceiverNextExpectedSeq;
+
+	if (seq == expected){
+		q->ReceiverNextExpectedSeq = expected + size;
+		if (q->ReceiverNextExpectedSeq >= q->m_milestone_rx){
+			q->m_milestone_rx += m_ack_interval;
+			return 1; //Generate ACK
+		}else if (q->ReceiverNextExpectedSeq % m_chunk == 0){
+			return 1;
+		}else {
+			return 5;
+		}
+	} else if (seq > expected) {
+		num_loss_pkg = (seq - expected) /1000;
+		q->ReceiverNextExpectedSeq = seq + size;
+		return 2;
+	}else if(seq < expected){
+		return 3;
+	}
+}
+
 void RdmaHw::AddHeader (Ptr<Packet> p, uint16_t protocolNumber){
 	PppHeader ppp;
 	ppp.SetProtocol (EtherToPpp (protocolNumber));
@@ -492,6 +681,7 @@ uint16_t RdmaHw::EtherToPpp (uint16_t proto){
 	return 0;
 }
 
+//GO back-N
 void RdmaHw::RecoverQueue(Ptr<RdmaQueuePair> qp){
 	qp->snd_nxt = qp->snd_una;
 }
@@ -549,12 +739,15 @@ Ptr<Packet> RdmaHw::GetNxtPacket(Ptr<RdmaQueuePair> qp){
 	uint32_t payload_size = qp->GetBytesLeft();
 	if (m_mtu < payload_size)
 		payload_size = m_mtu;
+
+	//create a new package	
 	Ptr<Packet> p = Create<Packet> (payload_size);
 	// add SeqTsHeader
 	SeqTsHeader seqTs;
 	seqTs.SetSeq (qp->snd_nxt);
 	seqTs.SetPG (qp->m_pg);
 	p->AddHeader (seqTs);
+
 	// add udp header
 	UdpHeader udpHeader;
 	udpHeader.SetDestinationPort (qp->dport);
@@ -579,6 +772,8 @@ Ptr<Packet> RdmaHw::GetNxtPacket(Ptr<RdmaQueuePair> qp){
 	qp->snd_nxt += payload_size;
 	qp->m_ipid++;
 
+	//record the num pkg
+	num_send_pkg ++ ; 
 	// return
 	return p;
 }
@@ -929,9 +1124,12 @@ void RdmaHw::HandleAckTimely(Ptr<RdmaQueuePair> qp, Ptr<Packet> p, CustomHeader 
 		FastReactTimely(qp, p, ch);
 	}
 }
+
 void RdmaHw::UpdateRateTimely(Ptr<RdmaQueuePair> qp, Ptr<Packet> p, CustomHeader &ch, bool us){
 	uint32_t next_seq = qp->snd_nxt;
 	uint64_t rtt = Simulator::Now().GetTimeStep() - ch.ack.ih.ts;
+	if(node_id == 4)
+		std::cout << "ack seq : " <<ch.ack.seq <<  " || RTT latency : " << rtt << "\n";
 	bool print = !us;
 	if (qp->tmly.m_lastUpdateSeq != 0){ // not first RTT
 		int64_t new_rtt_diff = (int64_t)rtt - (int64_t)qp->tmly.lastRtt;

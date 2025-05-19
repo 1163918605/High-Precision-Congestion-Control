@@ -158,7 +158,7 @@ Simulator::Run (void)
 {
   NS_LOG_FUNCTION_NOARGS ();
   Time::ClearMarkedTimes ();
-  GetImpl ()->Run ();
+  GetImpl ()->Run (); //调用返回指针的Run()函数
 }
 
 void 

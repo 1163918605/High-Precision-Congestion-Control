@@ -1,0 +1,16 @@
+Node_id-11 ||the ratio of dropping package:11.5273%
+Node_id-5 ||the ratio of dropping package:12.8727%
+Node_id-15 ||the ratio of dropping package:12.5818%
+Node_id-13 ||the ratio of dropping package:11.2818%
+Node_id-14 ||the ratio of dropping package:13.2364%
+Node_id-9 ||the ratio of dropping package:11.4727%
+Node_id-7 ||the ratio of dropping package:11.4818%
+Node_id-4 ||the ratio of dropping package:11.2727%
+Node_id-1 ||the ratio of dropping package:11.3273%
+Node_id-3 ||the ratio of dropping package:11.4727%
+Node_id-2 ||the ratio of dropping package:12.9636%
+Node_id-8 ||the ratio of dropping package:10.2364%
+Node_id-12 ||the ratio of dropping package:0%
+Node_id-6 ||the ratio of dropping package:9.97273%
+Node_id-10 ||the ratio of dropping package:10.3636%
+Node_id-16 ||the ratio of dropping package:7.27273%

@@ -44,8 +44,9 @@ NS_LOG_COMPONENT_DEFINE("GENERIC_SIMULATION");
 
 uint32_t cc_mode = 1;
 bool enable_qcn = true, use_dynamic_pfc_threshold = true;
+bool enable_pfc = true, enable_lrfc = true , enable_bfc = false;
 uint32_t packet_payload_size = 1000, l2_chunk_size = 0, l2_ack_interval = 0;
-double pause_time = 5, simulator_stop_time = 3.01;
+double pause_time = 5, simulator_stop_time = 8;
 std::string data_rate, link_delay, topology_file, flow_file, trace_file, trace_output_file;
 std::string fct_output_file = "fct.txt";
 std::string pfc_output_file = "pfc.txt";
@@ -78,8 +79,8 @@ uint32_t enable_trace = 1;
 
 uint32_t buffer_size = 16;
 
-uint32_t qlen_dump_interval = 100000000, qlen_mon_interval = 100;
-uint64_t qlen_mon_start = 2000000000, qlen_mon_end = 2100000000;
+uint32_t qlen_dump_interval = 100000, qlen_mon_interval = 100;
+uint64_t qlen_mon_start = 2000000000, qlen_mon_end = 10000000000;
 string qlen_mon_file;
 
 unordered_map<uint64_t, uint32_t> rate2kmax, rate2kmin;
@@ -135,7 +136,9 @@ void ReadFlowInput(){
 void ScheduleFlowInputs(){
 	while (flow_input.idx < flow_num && Seconds(flow_input.start_time) == Simulator::Now()){
 		uint32_t port = portNumder[flow_input.src][flow_input.dst]++; // get a new port number 
+		//flow qindex, sip, dip, sport, dport, size, maxBdp or 0(depends on), RTT
 		RdmaClientHelper clientHelper(flow_input.pg, serverAddress[flow_input.src], serverAddress[flow_input.dst], port, flow_input.dport, flow_input.maxPacketCount, has_win?(global_t==1?maxBdp:pairBdp[n.Get(flow_input.src)][n.Get(flow_input.dst)]):0, global_t==1?maxRtt:pairRtt[flow_input.src][flow_input.dst]);
+		//install application and start right now
 		ApplicationContainer appCon = clientHelper.Install(n.Get(flow_input.src));
 		appCon.Start(Time(0));
 
@@ -160,10 +163,14 @@ uint32_t ip_to_node_id(Ipv4Address ip){
 	return (ip.Get() >> 8) & 0xffff;
 }
 
+//处理队列完成事件
 void qp_finish(FILE* fout, Ptr<RdmaQueuePair> q){
+	std::cout << " qp finish =========" << "\n";
 	uint32_t sid = ip_to_node_id(q->sip), did = ip_to_node_id(q->dip);
 	uint64_t base_rtt = pairRtt[sid][did], b = pairBw[sid][did];
-	uint32_t total_bytes = q->m_size + ((q->m_size-1) / packet_payload_size + 1) * (CustomHeader::GetStaticWholeHeaderSize() - IntHeader::GetStaticSize()); // translate to the minimum bytes required (with header but no INT)
+	// translate to the minimum bytes required (with header but no INT)
+	uint32_t total_bytes = q->m_size + ((q->m_size-1) / packet_payload_size + 1) * (CustomHeader::GetStaticWholeHeaderSize() - IntHeader::GetStaticSize()); 
+	//8000000000lu(B is translated to bit,s is translated to ns)
 	uint64_t standalone_fct = base_rtt + total_bytes * 8000000000lu / b;
 	// sip, dip, sport, dport, size (B), start_time, fct (ns), standalone_fct (ns)
 	fprintf(fout, "%08x %08x %u %u %lu %lu %lu %lu\n", q->sip.Get(), q->dip.Get(), q->sport, q->dport, q->m_size, q->startTime.GetTimeStep(), (Simulator::Now() - q->startTime).GetTimeStep(), standalone_fct);
@@ -200,22 +207,27 @@ void monitor_buffer(FILE* qlen_output, NodeContainer *n){
 				uint32_t size = 0;
 				for (uint32_t k = 0; k < SwitchMmu::qCnt; k++)
 					size += sw->m_mmu->egress_bytes[j][k];
+				if(j == 2)
+				{
+					fprintf(qlen_output, "time: %lu", Simulator::Now().GetTimeStep());
+					fprintf(qlen_output, "	lenth: %u\n", size);
+				}
 				queue_result[i][j].add(size);
 			}
 		}
 	}
-	if (Simulator::Now().GetTimeStep() % qlen_dump_interval == 0){
-		fprintf(qlen_output, "time: %lu\n", Simulator::Now().GetTimeStep());
-		for (auto &it0 : queue_result)
-			for (auto &it1 : it0.second){
-				fprintf(qlen_output, "%u %u", it0.first, it1.first);
-				auto &dist = it1.second.cnt;
-				for (uint32_t i = 0; i < dist.size(); i++)
-					fprintf(qlen_output, " %u", dist[i]);
-				fprintf(qlen_output, "\n");
-			}
-		fflush(qlen_output);
-	}
+	// if (Simulator::Now().GetTimeStep() % qlen_dump_interval == 0){
+	// 	fprintf(qlen_output, "time: %lu\n", Simulator::Now().GetTimeStep());
+	// 	for (auto &it0 : queue_result)
+	// 		for (auto &it1 : it0.second){
+	// 			fprintf(qlen_output, "%u %u", it0.first, it1.first);
+	// 			auto &dist = it1.second.cnt;
+	// 			for (uint32_t i = 0; i < dist.size(); i++)
+	// 				fprintf(qlen_output, " %u", dist[i]);
+	// 			fprintf(qlen_output, "\n");
+	// 		}
+	// 	fflush(qlen_output);
+	// }
 	if (Simulator::Now().GetTimeStep() < qlen_mon_end)
 		Simulator::Schedule(NanoSeconds(qlen_mon_interval), &monitor_buffer, qlen_output, n);
 }
@@ -334,7 +346,8 @@ uint64_t get_nic_rate(NodeContainer &n){
 }
 
 int main(int argc, char *argv[])
-{
+{	
+	LogComponentEnable("GENERIC_SIMULATION", LogLevel( LOG_LEVEL_ALL|LOG_PREFIX_LEVEL|LOG_PREFIX_FUNC));
 	clock_t begint, endt;
 	begint = clock();
 #ifndef PGO_TRAINING
@@ -356,8 +369,36 @@ int main(int argc, char *argv[])
 			conf >> key;
 
 			//std::cout << conf.cur << "\n";
-
-			if (key.compare("ENABLE_QCN") == 0)
+			if(key.compare("ENABLE_PFC") == 0){
+				uint32_t v;
+				conf >> v;
+				enable_pfc = v;
+				if (enable_pfc)
+					std::cout << "ENABLE_PFC\t\t\t" << "Yes" << "\n";
+				else
+					std::cout << "ENABLE_PFC\t\t\t" << "No" << "\n";
+			}
+			else if (key.compare("ENABLE_LRFC") == 0)
+			{
+				uint32_t v;
+				conf >> v;
+				enable_lrfc = v;
+				if (enable_lrfc)
+					std::cout << "ENABLE_LRFC\t\t\t" << "Yes" << "\n";
+				else
+					std::cout << "ENABLE_LRFC\t\t\t" << "No" << "\n";
+			}
+			else if (key.compare("ENABLE_BFC") == 0)
+			{
+				uint32_t v;
+				conf >> v;
+				enable_bfc = v;
+				if (enable_bfc)
+					std::cout << "ENABLE_BFC\t\t\t" << "Yes" << "\n";
+				else
+					std::cout << "ENABLE_BFC\t\t\t" << "No" << "\n";
+			}
+			else if (key.compare("ENABLE_QCN") == 0)
 			{
 				uint32_t v;
 				conf >> v;
@@ -678,6 +719,8 @@ int main(int argc, char *argv[])
 		IntHeader::mode = IntHeader::NORMAL;
 	else if (cc_mode == 10) // hpcc-pint
 		IntHeader::mode = IntHeader::PINT;
+	// else if (enable_lrfc) // use loss-tolerant flow control
+	// 	IntHeader::mode = IntHeader::TS;
 	else // others, no extra header
 		IntHeader::mode = IntHeader::NONE;
 
@@ -693,11 +736,19 @@ int main(int argc, char *argv[])
 	topof.open(topology_file.c_str());
 	flowf.open(flow_file.c_str());
 	tracef.open(trace_file.c_str());
+	if (!topof.is_open()) {
+    std::cerr << "Failed to open topology file" << std::endl;
+    return 1;
+	}
+	
 	uint32_t node_num, switch_num, link_num, trace_num;
 	topof >> node_num >> switch_num >> link_num;
 	flowf >> flow_num;
 	tracef >> trace_num;
 
+	std::cout << "node_num: " << node_num << ", switch_num: " << switch_num << ", link_num: " << link_num << std::endl;
+	std::cout << "flow_num: " << flow_num << std::endl;
+	std::cout << "trace_num: " << trace_num << std::endl;
 
 	//n.Create(node_num);
 	std::vector<uint32_t> node_type(node_num, 0);
@@ -714,6 +765,7 @@ int main(int argc, char *argv[])
 			Ptr<SwitchNode> sw = CreateObject<SwitchNode>();
 			n.Add(sw);
 			sw->SetAttribute("EcnEnabled", BooleanValue(enable_qcn));
+			sw->SetAttribute("PFCEnabled", BooleanValue(enable_pfc));
 		}
 	}
 
@@ -757,7 +809,7 @@ int main(int argc, char *argv[])
 		double error_rate;
 		topof >> src >> dst >> data_rate >> link_delay >> error_rate;
 
-		Ptr<Node> snode = n.Get(src), dnode = n.Get(dst);
+		Ptr<Node> snode = n.Get(src), dnode = n.Get(dst);//
 
 		qbb.SetDeviceAttribute("DataRate", StringValue(data_rate));
 		qbb.SetChannelAttribute("Delay", StringValue(link_delay));
@@ -843,9 +895,10 @@ int main(int argc, char *argv[])
 					rate /= 2;
 				}
 			}
+			sw->SetAttribute("NodeId", UintegerValue(i));
 			sw->m_mmu->ConfigNPort(sw->GetNDevices()-1);
 			sw->m_mmu->ConfigBufferSize(buffer_size* 1024 * 1024);
-			sw->m_mmu->node_id = sw->GetId();
+			sw->m_mmu->node_id = i;
 		}
 	}
 
@@ -858,6 +911,7 @@ int main(int argc, char *argv[])
 		if (n.Get(i)->GetNodeType() == 0){ // is server
 			// create RdmaHw
 			Ptr<RdmaHw> rdmaHw = CreateObject<RdmaHw>();
+			rdmaHw->SetAttribute("NodeId", UintegerValue(i));
 			rdmaHw->SetAttribute("ClampTargetRate", BooleanValue(clamp_target_rate));
 			rdmaHw->SetAttribute("AlphaResumInterval", DoubleValue(alpha_resume_interval));
 			rdmaHw->SetAttribute("RPTimer", DoubleValue(rp_timer));
@@ -880,6 +934,7 @@ int main(int argc, char *argv[])
 			rdmaHw->SetAttribute("TargetUtil", DoubleValue(u_target));
 			rdmaHw->SetAttribute("RateBound", BooleanValue(rate_bound));
 			rdmaHw->SetAttribute("DctcpRateAI", DataRateValue(DataRate(dctcp_rate_ai)));
+			rdmaHw->SetAttribute("LRFCEnabled", BooleanValue(enable_lrfc));
 			rdmaHw->SetPintSmplThresh(pint_prob);
 			// create and install RdmaDriver
 			Ptr<RdmaDriver> rdma = CreateObject<RdmaDriver>();
@@ -890,6 +945,7 @@ int main(int argc, char *argv[])
 			node->AggregateObject (rdma);
 			rdma->Init();
 			rdma->TraceConnectWithoutContext("QpComplete", MakeBoundCallback (qp_finish, fct_output));
+			//发生qp传输完成调用 qp_finish函数
 		}
 	}
 	#endif
@@ -937,6 +993,9 @@ int main(int argc, char *argv[])
 			Ptr<SwitchNode> sw = DynamicCast<SwitchNode>(n.Get(i));
 			sw->SetAttribute("CcMode", UintegerValue(cc_mode));
 			sw->SetAttribute("MaxRtt", UintegerValue(maxRtt));
+			sw->SetAttribute("LRFCEnabled", BooleanValue(enable_lrfc));
+
+			sw->m_mmu->SetAttribute("LRFCEnabled", BooleanValue(enable_lrfc));
 		}
 	}
 
@@ -957,9 +1016,12 @@ int main(int argc, char *argv[])
 
 	FILE *trace_output = fopen(trace_output_file.c_str(), "w");
 	if (enable_trace)
-		qbb.EnableTracing(trace_output, trace_nodes);
+		qbb.EnableTracing(trace_output, trace_nodes); //trace关联设备状态
 
 	// dump link speed to trace file
+
+	//nbr2if表示节点的邻接关系，记录每个节点相邻节点以及相应的接口信息（带宽、时延、启用状态）
+	//模仿实现发送速率的变化
 	{
 		SimSetting sim_setting;
 		for (auto i: nbr2if){
@@ -971,7 +1033,7 @@ int main(int argc, char *argv[])
 			}
 		}
 		sim_setting.win = maxBdp;
-		sim_setting.Serialize(trace_output);
+		sim_setting.Serialize(trace_output); //将 port_speed 和 win 存储到指定的文件中
 	}
 
 	Ipv4GlobalRoutingHelper::PopulateRoutingTables();
@@ -998,14 +1060,20 @@ int main(int argc, char *argv[])
 	topof.close();
 	tracef.close();
 
+	// link trace
+	PointToPointHelper pointToPoint;
+  	AsciiTraceHelper ascii;
+  	pointToPoint.EnableAsciiAll(ascii.CreateFileStream("link_trace.tr"));
+
 	// schedule link down
-	if (link_down_time > 0){
-		Simulator::Schedule(Seconds(2) + MicroSeconds(link_down_time), &TakeDownLink, n, n.Get(link_down_A), n.Get(link_down_B));
-	}
+	// if (link_down_time > 0){
+	// 	Simulator::Schedule(Seconds(2) + MicroSeconds(link_down_time), &TakeDownLink, n, n.Get(link_down_A), n.Get(link_down_B));
+	// }
 
 	// schedule buffer monitor
 	FILE* qlen_output = fopen(qlen_mon_file.c_str(), "w");
 	Simulator::Schedule(NanoSeconds(qlen_mon_start), &monitor_buffer, qlen_output, &n);
+	//&:get function address
 
 	//
 	// Now, do the actual simulation.
@@ -1015,14 +1083,11 @@ int main(int argc, char *argv[])
 	NS_LOG_INFO("Run Simulation.");
 	Simulator::Stop(Seconds(simulator_stop_time));
 	Simulator::Run();
+	std::cout << "[third] Simulation ended at: " << Simulator::Now() << std::endl; // 添加此行
 	Simulator::Destroy();
 	NS_LOG_INFO("Done.");
 	fclose(trace_output);
 
-	// link trace
-	PointToPointHelper pointToPoint;
-  	AsciiTraceHelper ascii;
-  	pointToPoint.EnableAsciiAll(ascii.CreateFileStream("link_trace.tr"));
 
 	endt = clock();
 	std::cout << (double)(endt - begint) / CLOCKS_PER_SEC << "\n";

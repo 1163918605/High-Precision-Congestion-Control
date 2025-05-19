@@ -44,6 +44,7 @@ namespace ns3 {
 		NS_ASSERT_MSG(IntHeader::mode == 1, "qbbHeader cannot SetTs when IntHeader::mode != 1");
 		ih.ts = ts;
 	}
+	//在flags中设置CNP标志
 	void qbbHeader::SetCnp(){
 		flags |= 1 << FLAG_CNP;
 	}

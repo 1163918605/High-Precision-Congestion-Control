@@ -281,6 +281,7 @@ namespace ns3 {
 				// update for the next avail time
 				m_rdmaPktSent(lastQp, p, m_tInterframeGap);
 			}else { // no packet to send
+				// std::cout << "node = " << m_node->GetId() << "is paused" << "\n" ;
 				NS_LOG_INFO("PAUSE prohibits send at node " << m_node->GetId());
 				Time t = Simulator::GetMaximumSimulationTime();
 				for (uint32_t i = 0; i < m_rdmaEQ->GetFlowCount(); i++){
@@ -295,6 +296,7 @@ namespace ns3 {
 			}
 			return;
 		}else{   //switch, doesn't care about qcn, just send
+
 			p = m_queue->DequeueRR(m_paused);		//this is round-robin
 			if (p != 0){
 				m_snifferTrace(p);
@@ -350,6 +352,7 @@ namespace ns3 {
 		QbbNetDevice::Receive(Ptr<Packet> packet)
 	{
 		NS_LOG_FUNCTION(this << packet);
+		//is link up?
 		if (!m_linkUp){
 			m_traceDrop(packet, 0);
 			return;
@@ -365,10 +368,13 @@ namespace ns3 {
 			return;
 		}
 
+		//parse customheader
 		m_macRxTrace(packet);
 		CustomHeader ch(CustomHeader::L2_Header | CustomHeader::L3_Header | CustomHeader::L4_Header);
 		ch.getInt = 1; // parse INT header
 		packet->PeekHeader(ch);
+
+		//deal with PFC package
 		if (ch.l3Prot == 0xFE){ // PFC
 			if (!m_qbbEnabled) return;
 			unsigned qIndex = ch.pfc.qIndex;
@@ -409,6 +415,9 @@ namespace ns3 {
 	void QbbNetDevice::SendPfc(uint32_t qIndex, uint32_t type){
 		Ptr<Packet> p = Create<Packet>(0);
 		PauseHeader pauseh((type == 0 ? m_pausetime : 0), m_queue->GetNBytes(qIndex), qIndex);
+
+		// std::cout << "node = "<< m_node->GetId() << "|| send the m_pausetime == " << m_pausetime << "\n";
+		
 		p->AddHeader(pauseh);
 		Ipv4Header ipv4h;  // Prepare IPv4 header
 		ipv4h.SetProtocol(0xFE);
@@ -423,6 +432,35 @@ namespace ns3 {
 		p->PeekHeader(ch);
 		SwitchSend(0, p, ch);
 	}
+
+	// void QbbNetDevice::SendDropNotification(CustomHeader &ch){
+	// 	qbbHeader seqh;
+	// 	seqh.SetSeq(ch.udp.seq);
+	// 	seqh.SetPG(ch.udp.pg);
+	// 	seqh.SetSport(ch.udp.dport);
+	// 	seqh.SetDport(ch.udp.sport);
+	// 	seqh.SetIntHeader(ch.udp.ih);
+		
+	// 	Ptr<Packet> p = Create<Packet>(0);
+	// 	p->AddHeader(seqh);
+
+	// 	Ipv4Header head;
+	// 	head.SetDestination(Ipv4Address(ch.sip));
+	// 	head.SetSource(Ipv4Address(ch.dip));
+	// 	head.SetProtocol(0xFE); //==PFC
+	// 	head.SetTtl(64);
+	// 	head.SetPayloadSize(p->GetSize());
+	// 	uint16_t number = UniformVariable(0, 65536).GetValue();
+	// 	head.SetIdentification(number);
+	// 	p->AddHeader(head);
+	// 	AddHeader(p, 0x800);
+	// 	CustomHeader chh(CustomHeader::L2_Header | CustomHeader::L3_Header | CustomHeader::L4_Header);
+	// 	p->PeekHeader(chh);
+	// 	std::cout << "senddropnotification is ok : " << number <<  "\n";
+	// 	RdmaEnqueueHighPrioQ(p);
+	// 	SwitchSend(0, p, ch);
+
+	// }
 
 	bool
 		QbbNetDevice::Attach(Ptr<QbbChannel> ch)

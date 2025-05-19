@@ -1,4 +1,5 @@
 #include "ns3/ipv4.h"
+#include <ns3/simulator.h>
 #include "ns3/packet.h"
 #include "ns3/ipv4-header.h"
 #include "ns3/pause-header.h"
@@ -10,8 +11,10 @@
 #include "qbb-net-device.h"
 #include "ppp-header.h"
 #include "ns3/int-header.h"
+#include "ns3/log.h"
 #include <cmath>
 
+NS_LOG_COMPONENT_DEFINE("SwitchNode");
 namespace ns3 {
 
 TypeId SwitchNode::GetTypeId (void)
@@ -31,13 +34,28 @@ TypeId SwitchNode::GetTypeId (void)
 			MakeUintegerChecker<uint32_t>())
 	.AddAttribute("AckHighPrio",
 			"Set high priority for ACK/NACK or not",
-			UintegerValue(0),
+			UintegerValue(1),
 			MakeUintegerAccessor(&SwitchNode::m_ackHighPrio),
 			MakeUintegerChecker<uint32_t>())
 	.AddAttribute("MaxRtt",
 			"Max Rtt of the network",
 			UintegerValue(9000),
 			MakeUintegerAccessor(&SwitchNode::m_maxRtt),
+			MakeUintegerChecker<uint32_t>())
+	.AddAttribute("PFCEnabled",
+			"Enable PFC pause",
+			BooleanValue(false),
+			MakeBooleanAccessor(&SwitchNode::m_pfcEnabled),
+			MakeBooleanChecker())
+	.AddAttribute("LRFCEnabled",
+			"Enable loss-tolerant flow control",
+			BooleanValue(false),
+			MakeBooleanAccessor(&SwitchNode::m_lrfcEnabled),
+			MakeBooleanChecker())
+	.AddAttribute("NodeId",
+			"The node id of this rdma driver",
+			UintegerValue(1000),
+			MakeUintegerAccessor(&SwitchNode::node_id),
 			MakeUintegerChecker<uint32_t>())
   ;
   return tid;
@@ -57,8 +75,13 @@ SwitchNode::SwitchNode(){
 		m_lastPktSize[i] = m_lastPktTs[i] = 0;
 	for (uint32_t i = 0; i < pCnt; i++)
 		m_u[i] = 0;
+
+	// Simulator::Schedule(NanoSeconds(5e3),&SwitchNode::CleanupFlowTable, this);
+	// Simulator::Schedule(NanoSeconds(5e3),&SwitchNode::PeriodicBufferUpdate, this);
+
 }
 
+//get the index of device,,ECMP routing selection
 int SwitchNode::GetOutDev(Ptr<const Packet> p, CustomHeader &ch){
 	// look up entries
 	auto entry = m_rtTable.find(ch.dip);
@@ -88,10 +111,13 @@ int SwitchNode::GetOutDev(Ptr<const Packet> p, CustomHeader &ch){
 	return nexthops[idx];
 }
 
+//PFC logic
 void SwitchNode::CheckAndSendPfc(uint32_t inDev, uint32_t qIndex){
 	Ptr<QbbNetDevice> device = DynamicCast<QbbNetDevice>(m_devices[inDev]);
 	if (m_mmu->CheckShouldPause(inDev, qIndex)){
 		device->SendPfc(qIndex, 0);
+		std::cout <<"Send PFC num:"<< Pfc_num <<"||switch node id - " << node_id <<"\n";
+		Pfc_num ++;
 		m_mmu->SetPause(inDev, qIndex);
 	}
 }
@@ -99,10 +125,78 @@ void SwitchNode::CheckAndSendResume(uint32_t inDev, uint32_t qIndex){
 	Ptr<QbbNetDevice> device = DynamicCast<QbbNetDevice>(m_devices[inDev]);
 	if (m_mmu->CheckShouldResume(inDev, qIndex)){
 		device->SendPfc(qIndex, 1);
+		std::cout <<"Send PFC num:"<< Pfc_num <<"||switch node id - " << node_id <<"\n";
+		Pfc_num ++;
 		m_mmu->SetResume(inDev, qIndex);
 	}
 }
 
+void SwitchNode::PeriodicBufferUpdate(){
+
+	if (!m_flowTable.empty()) {
+        UpdateQueueBuffers();  // 流表非空时执行更新
+    } else {
+        std::cout << "node id :" << node_id << " || Flow table is empty, so need not buffer update: " << Simulator::Now() << "\n";
+    }
+}
+
+void SwitchNode::UpdateQueueBuffers(){
+	uint32_t total_flows = m_flowTable.size();
+	uint32_t exceed_flows = 0;
+
+	for (auto &it : m_flowTable){
+		auto &flow = it.second;
+		if(flow.loss_ratio >= flow.loss_threshold){
+			exceed_flows++;
+		}
+	}
+	double exceed_ratio = (double)exceed_flows / total_flows;
+	// std::cout << "exceed flow:" << exceed_flows << "||total size: " << total_flows <<  "||exceed ratio:" << exceed_ratio << "\n";
+	m_mmu->UpdateBuffers(exceed_ratio);
+}
+
+void SwitchNode::CleanupFlowTable(){
+	if (!m_lrfcEnabled){
+		return;
+	}
+
+	if(!m_flowTable.empty()){
+		// std::cout << "flow table size:" << m_flowTable.size() << "\n";
+		uint64_t now = Simulator::Now().GetTimeStep();
+		const uint64_t timeout = 10e9;
+		auto it = m_flowTable.begin();
+		while (it != m_flowTable.end())
+		{	
+			if(now - it->second.last_update > timeout){
+				it = m_flowTable.erase(it);
+				std::cout << "node id :" << node_id << "|| flow table decline one "<< "\n";
+			} else{
+				++it;
+			}
+		}
+	}else{
+		std::cout << "node id :" << node_id << " ||flow table is empty\n";
+	}
+
+	static int flow_emptyCount = 0;
+    if (m_flowTable.empty()) {
+        if (++flow_emptyCount > 3) {  // 连续10次空流表
+            std::cout << "node id :" << node_id << "|| Persistent empty flow table, stopping updates \n";
+            return;  // 不再调度
+        }
+    } else {
+        flow_emptyCount = 0;  // 重置计数器
+    }
+
+	Simulator::Schedule(NanoSeconds(5e3), &SwitchNode::PeriodicBufferUpdate, this);
+	Simulator::Schedule(NanoSeconds(5e3),&SwitchNode::CleanupFlowTable, this);
+}
+
+uint32_t SwitchNode::GetFlowHash(const CustomHeader &ch){
+	return EcmpHash(reinterpret_cast<const uint8_t*>(&ch.sip), 12, m_ecmpSeed);
+}
+
+//send package to destination
 void SwitchNode::SendToDev(Ptr<Packet>p, CustomHeader &ch){
 	int idx = GetOutDev(p, ch);
 	if (idx >= 0){
@@ -113,14 +207,72 @@ void SwitchNode::SendToDev(Ptr<Packet>p, CustomHeader &ch){
 		if (ch.l3Prot == 0xFF || ch.l3Prot == 0xFE || (m_ackHighPrio && (ch.l3Prot == 0xFD || ch.l3Prot == 0xFC))){  //QCN or PFC or NACK, go highest priority
 			qIndex = 0;
 		}else{
-			qIndex = (ch.l3Prot == 0x06 ? 1 : ch.udp.pg); // if TCP, put to queue 1
-		}
+			// std :: cout << "m_ackHighPrio:" << m_ackHighPrio << "\n";
+			if (ch.l3Prot != 0x11)
+				std :: cout << "ch.l3Prot:" << ch.l3Prot << "\n";
 
+			if(m_lrfcEnabled && ch.l3Prot == 0x11){ //UDP
+				uint32_t flowHash = GetFlowHash(ch);
+				auto it = m_flowTable.find(flowHash);
+				if(it == m_flowTable.end()){
+					FlowEntry flow;
+					flow.loss_count = 0;
+					flow.total_size = 26500;
+					flow.loss_ratio = 0.0;
+					flow.loss_threshold = 0.09; // default
+					flow.last_update = Simulator::Now().GetTimeStep();
+					m_flowTable[flowHash] = flow;
+
+					std::cout << "node id :" << node_id << "============flow table size:" << m_flowTable.size() << "\n";
+					for (const auto& entry : m_flowTable) {
+						std::cout << "FlowHash: 0x" << std::hex << entry.first 
+									<< "|| LossCount: " << std::dec << entry.second.loss_count
+									<< "||  TotalSize: " << entry.second.total_size
+									<< "||  LossRatio: " << entry.second.loss_ratio
+									<< "||  Threshold: " << entry.second.loss_threshold
+									<< "||  LastUpdate: " << entry.second.last_update << "ns\n";
+;
+					}
+					std::cout << "=============over==============\n";
+
+				}
+				auto &flow = m_flowTable[flowHash];
+				flow.loss_ratio = flow.loss_count / (double)flow.total_size;
+				bool use_lossless = flow.loss_ratio >= flow.loss_threshold;
+				qIndex = use_lossless ? LOSSLESSS_QUEUE +  ch.udp.pg : LOSSY_QUEUE +  ch.udp.pg;
+				// std::cout << "flo:" << flowHash << "/n";
+				// if(flowHash == 3862379427)
+				// 	std::cout << "flowHash:" << flowHash <<"||seq:" << ch.udp.seq <<"|| qindex : " << qIndex << "||loss count:" << flow.loss_count << " ||loss ratio:" << flow.loss_ratio << "|| loss threshold:" << flow.loss_threshold << "\n";
+			}else{
+				qIndex = (ch.l3Prot == 0x06 ? 1 : ch.udp.pg); // if TCP, put to queue 1
+			}
+		}
 		// admission control
 		FlowIdTag t;
 		p->PeekPacketTag(t);
 		uint32_t inDev = t.GetFlowId();
-		if (qIndex != 0){ //not highest priority
+		if (m_lrfcEnabled && qIndex < 4){ //not highest priority
+			// std :: cout << " lossy queue status change|| qindex :" << qIndex << "\n"; 
+			if (m_mmu->CheckIngressAdmission(inDev, qIndex, p->GetSize()) && m_mmu->CheckEgressAdmission(idx, qIndex, p->GetSize())){			// Admission control
+				m_mmu->UpdateIngressAdmission(inDev, qIndex, p->GetSize());
+				m_mmu->UpdateEgressAdmission(idx, qIndex, p->GetSize());
+			}else{
+					//calculate five-multi group
+					uint32_t flowHash = GetFlowHash(ch);
+					auto &flow = m_flowTable[flowHash];
+					flow.loss_count ++;
+					flow.last_update = Simulator::Now().GetTimeStep();
+
+					// std::cout << "flo:" << flowHash << "\n";
+					if (flowHash == 3862379427){
+						drop_num++;
+						std::cout << "node 5 || drop num:" << drop_num << "\n";
+					}
+
+					return; // Drop
+				}
+		}else if(qIndex != 0){
+			// std :: cout << " lossless queue status change|| qindex :" << qIndex << "/n"; 
 			if (m_mmu->CheckIngressAdmission(inDev, qIndex, p->GetSize()) && m_mmu->CheckEgressAdmission(idx, qIndex, p->GetSize())){			// Admission control
 				m_mmu->UpdateIngressAdmission(inDev, qIndex, p->GetSize());
 				m_mmu->UpdateEgressAdmission(idx, qIndex, p->GetSize());
@@ -187,19 +339,24 @@ void SwitchNode::ClearTable(){
 }
 
 // This function can only be called in switch mode
+// process packets received from network devices
 bool SwitchNode::SwitchReceiveFromDevice(Ptr<NetDevice> device, Ptr<Packet> packet, CustomHeader &ch){
 	SendToDev(packet, ch);
 	return true;
 }
 
+//the logic of package dequeue from switch
 void SwitchNode::SwitchNotifyDequeue(uint32_t ifIndex, uint32_t qIndex, Ptr<Packet> p){
 	FlowIdTag t;
+	//flow id
 	p->PeekPacketTag(t);
 	if (qIndex != 0){
 		uint32_t inDev = t.GetFlowId();
 		m_mmu->RemoveFromIngressAdmission(inDev, qIndex, p->GetSize());
 		m_mmu->RemoveFromEgressAdmission(ifIndex, qIndex, p->GetSize());
 		m_bytes[inDev][ifIndex][qIndex] -= p->GetSize();
+
+		//set ecn config
 		if (m_ecnEnabled){
 			bool egressCongested = m_mmu->ShouldSendCN(ifIndex, qIndex);
 			if (egressCongested){

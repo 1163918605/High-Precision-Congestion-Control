@@ -18,7 +18,9 @@ Usage: please check `python fct_analysis.py -h` and read line 20-26 in `fct_anal
 Each line is like:
 
 `2000055540 n:338 4:3 100608 Enqu ecn:0 0b00d101 0b012301 10000 100 U 161000 0 3 1048(1000)`
+ 2000002332 n:1 1:0 0 Enqu ecn:0 0b000101 0b000401 100 10000 A 0x00 3 1000 0 60 :A
 
+ 
 It means: at time 2000055540ns, at node 338, port 4, queue #3, the queue length is 100608B, and a packet is enqueued; the packet does not have ECN marked, is from 11.0.209.1:10000 to 11.1.35.1:100, is a data packet (U), sequence number 161000, tx timestamp 0, priority group 3, packet size 1048B, payload 1000B.
 
 There are other types of packets. Please refer to print_trace() in utils.hpp for details.

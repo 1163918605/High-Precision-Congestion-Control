@@ -18,6 +18,8 @@ public:
 	SwitchMmu(void);
 
 	bool CheckIngressAdmission(uint32_t port, uint32_t qIndex, uint32_t psize);
+	bool CheckIngressAdmissionNormal(uint32_t port, uint32_t qIndex, uint32_t psize);
+	bool CheckIngressAdmissionNew(uint32_t port, uint32_t qIndex, uint32_t psize);
 	bool CheckEgressAdmission(uint32_t port, uint32_t qIndex, uint32_t psize);
 	void UpdateIngressAdmission(uint32_t port, uint32_t qIndex, uint32_t psize);
 	void UpdateEgressAdmission(uint32_t port, uint32_t qIndex, uint32_t psize);
@@ -31,7 +33,7 @@ public:
 	//void GetPauseClasses(uint32_t port, uint32_t qIndex);
 	//bool GetResumeClasses(uint32_t port, uint32_t qIndex);
 
-	uint32_t GetPfcThreshold(uint32_t port);
+	uint32_t GetPfcThreshold(uint32_t port, uint32_t qIndex);
 	uint32_t GetSharedUsed(uint32_t port, uint32_t qIndex);
 
 	bool ShouldSendCN(uint32_t ifindex, uint32_t qIndex);
@@ -40,6 +42,7 @@ public:
 	void ConfigHdrm(uint32_t port, uint32_t size);
 	void ConfigNPort(uint32_t n_port);
 	void ConfigBufferSize(uint32_t size);
+	void UpdateBuffers(double exceed_ratio);
 
 	// config
 	uint32_t node_id;
@@ -52,13 +55,16 @@ public:
 	double pmax[pCnt];
 	uint32_t total_hdrm;
 	uint32_t total_rsrv;
-
+	
+	uint32_t losslessBuffer_size;
+	uint32_t lossyBuffer_bytes;
 	// runtime
 	uint32_t shared_used_bytes;
 	uint32_t hdrm_bytes[pCnt][qCnt];
 	uint32_t ingress_bytes[pCnt][qCnt];
 	uint32_t paused[pCnt][qCnt];
 	uint32_t egress_bytes[pCnt][qCnt];
+	bool m_lrfcEnabled;
 };
 
 } /* namespace ns3 */

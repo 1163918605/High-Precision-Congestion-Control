@@ -65,6 +65,7 @@ void RdmaDriver::AddQueuePair(uint64_t size, uint16_t pg, Ipv4Address sip, Ipv4A
 }
 
 void RdmaDriver::QpComplete(Ptr<RdmaQueuePair> q){
+	std::cout << "RDMADRIVE::QPCOMPLETE" << "\n";
 	m_traceQpComplete(q);
 }
 

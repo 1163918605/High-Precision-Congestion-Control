@@ -33,6 +33,7 @@ NS_OBJECT_ENSURE_REGISTERED (SeqTsHeader);
 SeqTsHeader::SeqTsHeader ()
   : m_seq (0)
 {
+  // std::cout << "IntHeader::mode" << IntHeader::mode << std::endl;
 	if (IntHeader::mode == 1)
 		ih.ts = Simulator::Now().GetTimeStep();
 }

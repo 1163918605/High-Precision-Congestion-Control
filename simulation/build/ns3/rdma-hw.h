@@ -34,9 +34,17 @@ public:
 	double m_nack_interval;
 	uint32_t m_chunk;
 	uint32_t m_ack_interval;
+	uint32_t num_NACK = 0;
+	uint32_t num_loss_pkg = 0;
+	uint32_t num_total_loss = 0;
+	uint32_t num_send_pkg = 0;
+	uint32_t node_id;
+	double ratio_drop = 0.0; 
+	
 	bool m_backto0;
 	bool m_var_win, m_fast_react;
 	bool m_rateBound;
+	bool m_lrfcEnabled;
 	std::vector<RdmaInterfaceMgr> m_nic; // list of running nic controlled by this RdmaHw
 	std::unordered_map<uint64_t, Ptr<RdmaQueuePair> > m_qpMap; // mapping from uint64_t to qp
 	std::unordered_map<uint64_t, Ptr<RdmaRxQueuePair> > m_rxQpMap; // mapping from uint64_t to rx qp
@@ -46,6 +54,7 @@ public:
 	typedef Callback<void, Ptr<RdmaQueuePair> > QpCompleteCallback;
 	QpCompleteCallback m_qpCompleteCallback;
 
+	void SetRatioDrop(double ratio);
 	void SetNode(Ptr<Node> node);
 	void Setup(QpCompleteCallback cb); // setup shared data and callbacks with the QbbNetDevice
 	static uint64_t GetQpKey(uint32_t dip, uint16_t sport, uint16_t pg); // get the lookup key for m_qpMap
@@ -58,6 +67,8 @@ public:
 	uint32_t GetNicIdxOfRxQp(Ptr<RdmaRxQueuePair> q); // get the NIC index of the rxQp
 	void DeleteRxQp(uint32_t dip, uint16_t pg, uint16_t dport);
 
+	uint32_t ip_to_node_id(Ipv4Address ip);
+
 	int ReceiveUdp(Ptr<Packet> p, CustomHeader &ch);
 	int ReceiveCnp(Ptr<Packet> p, CustomHeader &ch);
 	int ReceiveAck(Ptr<Packet> p, CustomHeader &ch); // handle both ACK and NACK
@@ -65,6 +76,7 @@ public:
 
 	void CheckandSendQCN(Ptr<RdmaRxQueuePair> q);
 	int ReceiverCheckSeq(uint32_t seq, Ptr<RdmaRxQueuePair> q, uint32_t size);
+	int ReceiverCheckLossSeq(uint32_t seq, Ptr<RdmaRxQueuePair> q, uint32_t size);
 	void AddHeader (Ptr<Packet> p, uint16_t protocolNumber);
 	static uint16_t EtherToPpp (uint16_t protocol);
 

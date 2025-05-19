@@ -3,6 +3,7 @@
 
 #include "trace-format.h"
 
+//流的标识
 typedef uint64_t FlowInt;
 
 static uint32_t GetDevInt(uint16_t node, uint8_t intf){
@@ -89,19 +90,19 @@ static inline void print_trace(ns3::TraceFormat &tr){
 	switch (tr.l3Prot){
 		case 0x6:
 		case 0x11:
-			printf("%lu n:%u %u:%u %u %s ecn:%x %08x %08x %hu %hu %c %u %lu %u %hu(%hu)", tr.time, tr.node, tr.intf, tr.qidx, tr.qlen, EventToStr((ns3::Event)tr.event), tr.ecn, tr.sip, tr.dip, tr.data.sport, tr.data.dport, l3ProtToChar(tr.l3Prot), tr.data.seq, tr.data.ts, tr.data.pg, tr.size, tr.data.payload);
+			printf("(DATA)time:%lu node:%u port:%u queue:%u qlen:%u event:%s ecn:%x sip:%08x dip:%08x sport:%hu dport:%hu type:%c seq:%u tx time:%lu pg:%u size:%hu payload:%hu", tr.time, tr.node, tr.intf, tr.qidx, tr.qlen, EventToStr((ns3::Event)tr.event), tr.ecn, tr.sip, tr.dip, tr.data.sport, tr.data.dport, l3ProtToChar(tr.l3Prot), tr.data.seq, tr.data.ts, tr.data.pg, tr.size, tr.data.payload);
 			break;
 		case 0xFC: // ACK
-			printf("%lu n:%u %u:%u %u %s ecn:%x %08x %08x %u %u %c 0x%02X %u %u %lu %hu", tr.time, tr.node, tr.intf, tr.qidx, tr.qlen, EventToStr((ns3::Event)tr.event), tr.ecn, tr.sip, tr.dip, tr.ack.sport, tr.ack.dport, l3ProtToChar(tr.l3Prot), tr.ack.flags, tr.ack.pg, tr.ack.seq, tr.ack.ts, tr.size);
+			printf("(ACK)time:%lu node:%u port:%u queue:%u qlen:%u event:%s ecn:%x sip:%08x dip:%08x sport:%u dport:%u type:%c flags:0x%02X pg:%u seq:%u tx time:%lu size:%hu", tr.time, tr.node, tr.intf, tr.qidx, tr.qlen, EventToStr((ns3::Event)tr.event), tr.ecn, tr.sip, tr.dip, tr.ack.sport, tr.ack.dport, l3ProtToChar(tr.l3Prot), tr.ack.flags, tr.ack.pg, tr.ack.seq, tr.ack.ts, tr.size);
 			break;
 		case 0xFD: // NACK
-			printf("%lu n:%u %u:%u %u %s ecn:%x %08x %08x %u %u %c 0x%02X %u %u %lu %hu", tr.time, tr.node, tr.intf, tr.qidx, tr.qlen, EventToStr((ns3::Event)tr.event), tr.ecn, tr.sip, tr.dip, tr.ack.sport, tr.ack.dport, l3ProtToChar(tr.l3Prot), tr.ack.flags, tr.ack.pg, tr.ack.seq, tr.ack.ts, tr.size);
+			printf("time:%lu node:%u port:%u queue:%u qlen:%u event:%s ecn:%x sip:%08x dip:%08x sport:%u dport:%u type:%c flags:0x%02X pg:%u seq:%u tx time:%lu size:%hu", tr.time, tr.node, tr.intf, tr.qidx, tr.qlen, EventToStr((ns3::Event)tr.event), tr.ecn, tr.sip, tr.dip, tr.ack.sport, tr.ack.dport, l3ProtToChar(tr.l3Prot), tr.ack.flags, tr.ack.pg, tr.ack.seq, tr.ack.ts, tr.size);
 			break;
 		case 0xFE: // PFC
-			printf("%lu n:%u %u:%u %u %s ecn:%x %08x %08x %c %u %u %u %hu", tr.time, tr.node, tr.intf, tr.qidx, tr.qlen, EventToStr((ns3::Event)tr.event), tr.ecn, tr.sip, tr.dip, l3ProtToChar(tr.l3Prot), tr.pfc.time, tr.pfc.qlen, tr.pfc.qIndex, tr.size);
+			printf("(PFC)time:%lu node:%u port:%u queue:%u qlen:%u event:%s ecn:%x sip:%08x dip:%08x type:%c ptime:%u pqlen:%u pindex:%u size:%hu", tr.time, tr.node, tr.intf, tr.qidx, tr.qlen, EventToStr((ns3::Event)tr.event), tr.ecn, tr.sip, tr.dip, l3ProtToChar(tr.l3Prot), tr.pfc.time, tr.pfc.qlen, tr.pfc.qIndex, tr.size);
 			break;
 		case 0xFF: // CNP
-			printf("%lu n:%u %u:%u %u %s ecn:%x %08x %08x %c %u %u %u %u %u", tr.time, tr.node, tr.intf, tr.qidx, tr.qlen, EventToStr((ns3::Event)tr.event), tr.ecn, tr.sip, tr.dip, l3ProtToChar(tr.l3Prot), tr.cnp.fid, tr.cnp.qIndex, tr.cnp.ecnBits, tr.cnp.seq, tr.size);
+			printf("(CNP)time:%lu node:%u port:%u queue:%u qlen:%u event:%s ecn:%x sip:%08x dip:%08x type:%c fid:%u qindex:%u ecn:%u seq:%u size:%u", tr.time, tr.node, tr.intf, tr.qidx, tr.qlen, EventToStr((ns3::Event)tr.event), tr.ecn, tr.sip, tr.dip, l3ProtToChar(tr.l3Prot), tr.cnp.fid, tr.cnp.qIndex, tr.cnp.ecnBits, tr.cnp.seq, tr.size);
 			break;
 		case 0x0: // QpAv
 			printf("%lu n:%u %u:%u %s %08x %08x %u %u", tr.time, tr.node, tr.intf, tr.qidx, EventToStr((ns3::Event)tr.event), tr.sip, tr.dip, tr.qp.sport, tr.qp.dport);

@@ -23,5 +23,9 @@ using namespace ns3;
 int 
 main (int argc, char *argv[])
 {
+  LogComponentEnable("ScratchSimulator", LogLevel( LOG_PREFIX_FUNC));
   NS_LOG_UNCOND ("Scratch Simulator");
+  NS_LOG_DEBUG ("DEBUGGGG");
+  NS_LOG_INFO ("FINISHI SIMULATOR");
+
 }

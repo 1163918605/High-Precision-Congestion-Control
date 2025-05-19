@@ -151,6 +151,7 @@ uint64_t RdmaQueuePair::HpGetCurWin(){
 }
 
 bool RdmaQueuePair::IsFinished(){
+	// std :: cout << "[rdma-queue-pair] mm_size:" << m_size << " || snd_una: " << snd_una << std::endl;
 	return snd_una >= m_size;
 }
 
