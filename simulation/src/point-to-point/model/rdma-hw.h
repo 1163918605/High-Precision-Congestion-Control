@@ -34,13 +34,13 @@ public:
 	double m_nack_interval;
 	uint32_t m_chunk;
 	uint32_t m_ack_interval;
-	uint32_t num_NACK = 0;
+	uint32_t num_ACK = 0;
 	uint32_t num_loss_pkg = 0;
 	uint32_t num_total_loss = 0;
 	uint32_t num_send_pkg = 0;
 	uint32_t node_id;
 	double ratio_drop = 0.0; 
-	
+
 	bool m_backto0;
 	bool m_var_win, m_fast_react;
 	bool m_rateBound;
@@ -62,7 +62,7 @@ public:
 	uint32_t GetNicIdxOfQp(Ptr<RdmaQueuePair> qp); // get the NIC index of the qp
 	void AddQueuePair(uint64_t size, uint16_t pg, Ipv4Address _sip, Ipv4Address _dip, uint16_t _sport, uint16_t _dport, uint32_t win, uint64_t baseRtt, Callback<void> notifyAppFinish); // add a new qp (new send)
 	void DeleteQueuePair(Ptr<RdmaQueuePair> qp);
-
+	void CheckCompletion(Ptr<RdmaQueuePair> qp);
 	Ptr<RdmaRxQueuePair> GetRxQp(uint32_t sip, uint32_t dip, uint16_t sport, uint16_t dport, uint16_t pg, bool create); // get a rxQp
 	uint32_t GetNicIdxOfRxQp(Ptr<RdmaRxQueuePair> q); // get the NIC index of the rxQp
 	void DeleteRxQp(uint32_t dip, uint16_t pg, uint16_t dport);

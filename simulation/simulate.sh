@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # 定义路径变量和文件名
-NAME="new"
+NAME="new-DCQCN"
 ALL_PATH="/home/bo/High-Precision-Congestion-Control"
 
 # 执行 waf 命令

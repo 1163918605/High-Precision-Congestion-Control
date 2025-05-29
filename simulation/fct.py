@@ -31,6 +31,7 @@ if __name__ == "__main__":
     
     if average_value is not None:
         print(f"avg: {average_value} μs", end=" ")
+        print(f"avg: {average_slowdown} μs", end=" ")
         print(f"tail: {last_fct} μs")
     else:
         print("No valid data found.")

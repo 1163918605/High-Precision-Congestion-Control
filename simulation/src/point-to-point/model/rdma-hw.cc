@@ -361,10 +361,9 @@ int RdmaHw::ReceiveUdp(Ptr<Packet> p, CustomHeader &ch){
 	}else{
 		int x = ReceiverCheckLossSeq(ch.udp.seq, rxQp, payload_size);
 
-		// if (ch.sip == 184551169)
-		// 	std::cout << "node_id = " << Ipv4Address(ch.sip) << "|| x :" << x << "|| receive udps seq = " << ch.udp.seq << "\n";
-
-		// if(node_id == 87){
+		// if (ch.sip == 184550657)
+		// 	std::cout << "[ReceiveUdp] node_id = " << Ipv4Address(ch.sip) << "|| x :" << x << "|| receive udps seq = " << ch.udp.seq << "\n";
+		// if(node_id == 5){
 		// 	std::cout << "Sender: " << node_id << " { Time : " << Simulator::Now() <<  "|| receive udps seq = " << ch.udp.seq  <<  "\n";
 		// }
 
@@ -399,36 +398,36 @@ int RdmaHw::ReceiveUdp(Ptr<Packet> p, CustomHeader &ch){
 			m_nic[nic_idx].dev->RdmaEnqueueHighPrioQ(newp);
 			m_nic[nic_idx].dev->TriggerTransmit();
 
-			if (x == 2) {
-				// SACK
-				qbbHeader seqh1;
-				seqh1.SetSeq(num_loss_pkg); // sacked pkg
-				seqh1.SetPG(ch.udp.pg);
-				seqh1.SetSport(ch.udp.dport);
-				seqh1.SetDport(ch.udp.sport);
-				seqh1.SetIntHeader(ch.udp.ih);
-				if (ecnbits)
-					seqh1.SetCnp();
+			// if (x == 2) {
+			// 	// SACK
+			// 	qbbHeader seqh1;
+			// 	seqh1.SetSeq(num_loss_pkg); // sacked pkg
+			// 	seqh1.SetPG(ch.udp.pg);
+			// 	seqh1.SetSport(ch.udp.dport);
+			// 	seqh1.SetDport(ch.udp.sport);
+			// 	seqh1.SetIntHeader(ch.udp.ih);
+			// 	if (ecnbits)
+			// 		seqh1.SetCnp();
 
-				Ptr<Packet> newp1 = Create<Packet>(std::max(60-14-20-(int)seqh1.GetSerializedSize(), 0));
-				newp1->AddHeader(seqh1);
+			// 	Ptr<Packet> newp1 = Create<Packet>(std::max(60-14-20-(int)seqh1.GetSerializedSize(), 0));
+			// 	newp1->AddHeader(seqh1);
 
-				Ipv4Header head1;	// Prepare IPv4 header
-				head1.SetDestination(Ipv4Address(ch.sip));
-				head1.SetSource(Ipv4Address(ch.dip));
-				head1.SetProtocol(0xFD); //ack=0xFC Nack=0xFD
-				head1.SetTtl(64);
-				head1.SetPayloadSize(newp1->GetSize());
-				head1.SetIdentification(rxQp->m_ipid++);
+			// 	Ipv4Header head1;	// Prepare IPv4 header
+			// 	head1.SetDestination(Ipv4Address(ch.sip));
+			// 	head1.SetSource(Ipv4Address(ch.dip));
+			// 	head1.SetProtocol(0xFD); //ack=0xFC Nack=0xFD
+			// 	head1.SetTtl(64);
+			// 	head1.SetPayloadSize(newp1->GetSize());
+			// 	head1.SetIdentification(rxQp->m_ipid++);
 
-				newp1->AddHeader(head1);
-				AddHeader(newp1, 0x800);	// Attach PPP header
+			// 	newp1->AddHeader(head1);
+			// 	AddHeader(newp1, 0x800);	// Attach PPP header
 
-				// send
-				uint32_t nic_idx = GetNicIdxOfRxQp(rxQp);
-				m_nic[nic_idx].dev->RdmaEnqueueHighPrioQ(newp1);
-				m_nic[nic_idx].dev->TriggerTransmit();
-			}
+			// 	// send
+			// 	uint32_t nic_idx = GetNicIdxOfRxQp(rxQp);
+			// 	m_nic[nic_idx].dev->RdmaEnqueueHighPrioQ(newp1);
+			// 	m_nic[nic_idx].dev->TriggerTransmit();
+			// }
 
 		}
 	}
@@ -514,7 +513,7 @@ int RdmaHw::ReceiveAck(Ptr<Packet> p, CustomHeader &ch){
 				qp->Acknowledge(goback_seq);
 			}
 			if (qp->IsFinished()){
-				std::cout << "node:" << node_id << " || the num of generate pkg:" << num_send_pkg << "\n";
+				std::cout << "node:" << node_id << " || the num of generate pkg:" << qp->num_send_pkg << "\n";
 				QpComplete(qp);
 			}
 		}
@@ -545,20 +544,32 @@ int RdmaHw::ReceiveAck(Ptr<Packet> p, CustomHeader &ch){
 			std::cout << "ERROR: shouldn't receive ack\n";
 		}else{
 			// std::cout << "node_id ::" << node_id << "\n";
-			if(node_id == 33){
-				std::cout << "Sender: " << node_id  << "-from:"<< ch.sip << " { Time : " << Simulator::Now() <<  "ack seq : " <<ch.ack.seq <<  "||rate " << qp->m_rate <<  "\n";
+			if(node_id == 8){
+				std::cout << "[ReceiveAck] Sender: " << node_id  << "-from:"<< ch.sip << " { Time : " << Simulator::Now() <<  "ack seq : " <<ch.ack.seq <<  "||rate " << qp->m_rate <<  "\n";
 			}
+			
 			if(ch.l3Prot == 0xFC){ //ACK
+				qp-> num_ACK ++;
+				if (qp->m_allDataSent){
+					// std::cout << "==========Node_id: " << node_id << " || m_allDataSent:" << qp->m_allDataSent << "\n";
+					qp->m_lastAckTime = Simulator::Now();
+					qp->m_completionTimer.Cancel();
+					qp->m_completionTimeout = NanoSeconds(qp->m_baseRtt * 2);
+					qp->m_completionTimer = Simulator::Schedule(qp->m_completionTimeout,&RdmaHw::CheckCompletion,this, qp);
+				}
+
 				if (seq > qp->snd_una){
 					qp->Acknowledge(seq);
 				}else{
-					num_total_loss = num_total_loss - 1;
-					ratio_drop =  static_cast<double>(num_total_loss) / (qp -> m_size) * 100000 ;
+					// num_total_loss = num_total_loss - 1;
+					// ratio_drop =  static_cast<double>(num_total_loss) / (qp -> m_size) * 100000 ;
 				}
 
 
 				if(qp->IsFinished()){
-					std::cout << "Node_id-" << node_id << "|| the num of loss packages: " << num_total_loss << " ||the ratio of dropping package:" << ratio_drop << "% || the num of generate pkg:" << num_send_pkg << "\n";
+					num_total_loss = qp->num_send_pkg - qp->num_ACK;
+					ratio_drop =  static_cast<double>(num_total_loss) / (qp -> m_size) * 100000 ;
+					std::cout << "Node_id-" << node_id << "|| the num of loss packages: " << num_total_loss << " ||the ratio of dropping package:" << ratio_drop << "% || the num of generate pkg:" << qp->num_send_pkg << "\n";
 					QpComplete(qp);
 				}
 			}
@@ -773,9 +784,26 @@ Ptr<Packet> RdmaHw::GetNxtPacket(Ptr<RdmaQueuePair> qp){
 	qp->m_ipid++;
 
 	//record the num pkg
-	num_send_pkg ++ ; 
+	qp->num_send_pkg ++ ; 
 	// return
+	if(qp->GetBytesLeft() == 0){
+		std::cout<< "Nodeid:"<< node_id << "||finish send:" << qp->num_send_pkg << "||base rtt:" << qp->m_baseRtt <<"||time:" << Simulator::Now() << "\n";
+		qp-> m_allDataSent = true;
+	}
 	return p;
+}
+
+
+void RdmaHw::CheckCompletion(Ptr<RdmaQueuePair> qp){
+	// std::cout << "Node_id-" << node_id << "|| CheckCompletion: " << Simulator::Now() <<  "\n";
+	if(!qp->IsFinished()){
+		num_total_loss = qp->num_send_pkg - qp-> num_ACK;
+		ratio_drop =  static_cast<double>(num_total_loss) / (qp -> m_size) * 100000 ;
+		// std::cout<< "Nodeid:"<< node_id <<"time : " << Simulator::Now() << "||loss last packet\n";
+		std::cout << "Node_id-" << node_id << "|| the num of loss packages: " << num_total_loss << " ||the ratio of dropping package:" << ratio_drop << "% || the num of generate pkg:" << qp->num_send_pkg << "\n";
+		QpComplete(qp);
+	}
+
 }
 
 void RdmaHw::PktSent(Ptr<RdmaQueuePair> qp, Ptr<Packet> pkt, Time interframeGap){

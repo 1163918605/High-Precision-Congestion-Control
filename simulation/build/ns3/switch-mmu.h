@@ -43,6 +43,7 @@ public:
 	void ConfigNPort(uint32_t n_port);
 	void ConfigBufferSize(uint32_t size);
 	void UpdateBuffers(double exceed_ratio);
+	void PrintPortBuffer(uint32_t port);
 
 	// config
 	uint32_t node_id;

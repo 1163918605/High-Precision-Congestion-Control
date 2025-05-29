@@ -896,8 +896,8 @@ int main(int argc, char *argv[])
 				}
 			}
 			sw->SetAttribute("NodeId", UintegerValue(i));
-			sw->m_mmu->ConfigNPort(sw->GetNDevices()-1);
 			sw->m_mmu->ConfigBufferSize(buffer_size* 1024 * 1024);
+			sw->m_mmu->ConfigNPort(sw->GetNDevices()-1);
 			sw->m_mmu->node_id = i;
 		}
 	}
@@ -995,7 +995,7 @@ int main(int argc, char *argv[])
 			sw->SetAttribute("MaxRtt", UintegerValue(maxRtt));
 			sw->SetAttribute("LRFCEnabled", BooleanValue(enable_lrfc));
 
-			sw->m_mmu->SetAttribute("LRFCEnabled", BooleanValue(enable_lrfc));
+			// sw->m_mmu->SetAttribute("LRFCEnabled", BooleanValue(enable_lrfc));
 		}
 	}
 

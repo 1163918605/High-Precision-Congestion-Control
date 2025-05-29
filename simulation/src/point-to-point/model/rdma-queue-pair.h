@@ -29,6 +29,12 @@ public:
 	uint32_t wp; // current window of packets
 	uint32_t lastPktSize;
 	Callback<void> m_notifyAppFinish;
+	bool m_allDataSent = false;
+	Time m_lastAckTime; // last time an ACK was received
+	Time m_completionTimeout;
+	uint32_t num_send_pkg = 0;
+	EventId m_completionTimer;
+	uint32_t num_ACK = 0;
 
 	/******************************
 	 * runtime states
