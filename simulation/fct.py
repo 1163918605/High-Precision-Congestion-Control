@@ -1,4 +1,5 @@
 import sys
+import argparse
 
 def calculate_average(filename):
     total = 0
@@ -26,8 +27,18 @@ if __name__ == "__main__":
         print("Usage: python script.py <filename>")
         sys.exit(1)
         
-    filename = sys.argv[1]  # 替换为你的文件名
+    parser = argparse.ArgumentParser(description="Calculate and plot throughput from log file.")    
+    parser.add_argument('file_path', type=str, help="Path to the log file")
+    parser.add_argument('-i', type=int, default=2, help="Node to calculate throughput for (default: 2)")
+    parser.add_argument('-o', '--outfile', type=str, default="/home/bo/High-Precision-Congestion-Control/result/motivation/Drop_fct.txt",
+                       help="Path to the output file (default: /home/bo/High-Precision-Congestion-Control/result/motivation/Drop_fct.txt)")
+    args = parser.parse_args() 
+     
+    filename = args.file_path  # 使用解析的参数而不是直接访问sys.argv
     average_value, average_slowdown, last_fct = calculate_average(filename)
+    
+    with open(args.outfile, 'a') as out_file:
+        out_file.write(f"{args.i} {average_value}\n")
     
     if average_value is not None:
         print(f"avg: {average_value} μs", end=" ")

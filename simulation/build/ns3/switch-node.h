@@ -30,6 +30,7 @@ class SwitchNode : public Node{
 	uint64_t m_lastPktTs[pCnt]; // ns
 	double m_u[pCnt];
 	bool m_lrfcEnabled;
+	uint32_t total_flow_count; // node id
 
 	struct FlowEntry
 	{

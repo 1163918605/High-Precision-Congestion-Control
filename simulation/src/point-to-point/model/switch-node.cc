@@ -57,6 +57,11 @@ TypeId SwitchNode::GetTypeId (void)
 			UintegerValue(1000),
 			MakeUintegerAccessor(&SwitchNode::node_id),
 			MakeUintegerChecker<uint32_t>())
+	.AddAttribute("FLOWCOUNT",
+			"The packet count of flow",
+			UintegerValue(1000),
+			MakeUintegerAccessor(&SwitchNode::total_flow_count),
+			MakeUintegerChecker<uint32_t>())
   ;
   return tid;
 }
@@ -123,12 +128,16 @@ void SwitchNode::CheckAndSendPfc(uint32_t inDev, uint32_t qIndex){
 	}
 }
 void SwitchNode::CheckAndSendResume(uint32_t inDev, uint32_t qIndex){
+	if(m_lrfcEnabled && qIndex < 4){
+		return;
+	}
+	
 	Ptr<QbbNetDevice> device = DynamicCast<QbbNetDevice>(m_devices[inDev]);
 	if (m_mmu->CheckShouldResume(inDev, qIndex)){
+		std::cout <<"Send Resume PFC num to node id - " << inDev << "|| previous port status:" << m_mmu->paused[inDev][3] << "\n";
+		m_mmu->PrintPortBuffer(inDev);
 		device->SendPfc(3, 1);
 		m_mmu->SetResume(inDev, 3);
-		std::cout <<"Send Resume PFC num to node id - " << inDev -1 << "|| port status:" << m_mmu->paused[inDev][3] << "\n";
-		// m_mmu->PrintPortBuffer(inDev);
 	}
 }
 
@@ -218,9 +227,9 @@ void SwitchNode::SendToDev(Ptr<Packet>p, CustomHeader &ch){
 				if(it == m_flowTable.end()){
 					FlowEntry flow;
 					flow.loss_count = 0;
-					flow.total_size = 6625;
+					flow.total_size = total_flow_count;
 					flow.loss_ratio = 0.0;
-					flow.loss_threshold = 0.19; // default
+					flow.loss_threshold = 0.09; // default
 					flow.last_update = Simulator::Now().GetTimeStep();
 					m_flowTable[flowHash] = flow;
 
@@ -284,10 +293,14 @@ void SwitchNode::SendToDev(Ptr<Packet>p, CustomHeader &ch){
 				// 	drop_num++;
 				// 	std::cout << "node 4 || drop num:" << drop_num << "||Indev"<< inDev << "\n";
 				// }
-				std::cout << "fffffffffffffffff qindex drop \n";
+				std::cout << "device:" << node_id << "|| dev :" << inDev << "|| port status " << m_mmu->paused[inDev][3] << "||fffffffffffffffff qindex drop \n";
+				// m_mmu->PrintPortBuffer(inDev);
+
 				return; // Drop
 			}
-			CheckAndSendPfc(inDev, qIndex);
+			if(m_pfcEnabled){
+				CheckAndSendPfc(inDev, qIndex);
+			}
 		}
 		m_bytes[inDev][idx][qIndex] += p->GetSize();
 		m_devices[idx]->SwitchSend(qIndex, p, ch);

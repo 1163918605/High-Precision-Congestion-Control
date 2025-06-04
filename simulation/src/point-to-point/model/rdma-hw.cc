@@ -12,6 +12,7 @@
 #include "ppp-header.h"
 #include "qbb-header.h"
 #include "cn-header.h"
+#include <fstream>  // 添加文件流操作支持
 
 namespace ns3{
 
@@ -554,7 +555,7 @@ int RdmaHw::ReceiveAck(Ptr<Packet> p, CustomHeader &ch){
 					// std::cout << "==========Node_id: " << node_id << " || m_allDataSent:" << qp->m_allDataSent << "\n";
 					qp->m_lastAckTime = Simulator::Now();
 					qp->m_completionTimer.Cancel();
-					qp->m_completionTimeout = NanoSeconds(qp->m_baseRtt * 2);
+					qp->m_completionTimeout = NanoSeconds(qp->m_baseRtt * 10);
 					qp->m_completionTimer = Simulator::Schedule(qp->m_completionTimeout,&RdmaHw::CheckCompletion,this, qp);
 				}
 
@@ -570,6 +571,14 @@ int RdmaHw::ReceiveAck(Ptr<Packet> p, CustomHeader &ch){
 					num_total_loss = qp->num_send_pkg - qp->num_ACK;
 					ratio_drop =  static_cast<double>(num_total_loss) / (qp -> m_size) * 100000 ;
 					std::cout << "Node_id-" << node_id << "|| the num of loss packages: " << num_total_loss << " ||the ratio of dropping package:" << ratio_drop << "% || the num of generate pkg:" << qp->num_send_pkg << "\n";
+					
+					std::stringstream ss;
+					ss << node_id <<" " << ratio_drop << "\n";
+
+					std::ofstream outfile;
+					outfile.open("/home/bo/High-Precision-Congestion-Control/result/Basic/ratio.txt", std::ios_base::app); // 追加模式
+					outfile << ss.str();
+					outfile.close();
 					QpComplete(qp);
 				}
 			}

@@ -126,10 +126,13 @@ struct FlowInput{
 };
 FlowInput flow_input = {0};
 uint32_t flow_num;
+uint32_t flow_count = 0;
 
 void ReadFlowInput(){
 	if (flow_input.idx < flow_num){
 		flowf >> flow_input.src >> flow_input.dst >> flow_input.pg >> flow_input.dport >> flow_input.maxPacketCount >> flow_input.start_time;
+		flow_count = (flow_input.maxPacketCount + 999 )/1000;
+		// std::cout << "1111111111111111flow_count" << flow_count << "\n";
 		NS_ASSERT(n.Get(flow_input.src)->GetNodeType() == 0 && n.Get(flow_input.dst)->GetNodeType() == 0);
 	}
 }
@@ -141,7 +144,6 @@ void ScheduleFlowInputs(){
 		//install application and start right now
 		ApplicationContainer appCon = clientHelper.Install(n.Get(flow_input.src));
 		appCon.Start(Time(0));
-
 		// get the next flow input
 		flow_input.idx++;
 		ReadFlowInput();
@@ -1055,6 +1057,15 @@ int main(int argc, char *argv[])
 	if (flow_num > 0){
 		ReadFlowInput();
 		Simulator::Schedule(Seconds(flow_input.start_time)-Simulator::Now(), ScheduleFlowInputs);
+	}
+
+	for (uint32_t i = 0; i < node_num; i++){
+		if (n.Get(i)->GetNodeType() == 1){ // switch
+			Ptr<SwitchNode> sw = DynamicCast<SwitchNode>(n.Get(i));
+			sw->SetAttribute("FLOWCOUNT",UintegerValue(flow_count));
+
+			// sw->m_mmu->SetAttribute("LRFCEnabled", BooleanValue(enable_lrfc));
+		}
 	}
 
 	topof.close();

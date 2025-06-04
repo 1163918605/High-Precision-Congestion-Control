@@ -4,10 +4,22 @@
 NAME="new-DCQCN"
 ALL_PATH="/home/bo/High-Precision-Congestion-Control"
 
+degrees=(8 12 16 20 24)
 # 执行 waf 命令
-./waf --run 'scratch/third mix/demo/DCQCN.txt'
+for degree in "${degrees[@]}"; do
+    echo "正在处理 degree=${degree} ..."
 
-python3 fct.py "/home/bo/High-Precision-Congestion-Control/simulation/mix/demo/fct.txt"
+    python3 mix/demo/gen_flow.py -i ${degree}
+
+    nohup ./waf --run 'scratch/third mix/demo/DCQCN.txt'
+
+    python3 fct.py "/home/bo/High-Precision-Congestion-Control/simulation/mix/demo/fct.txt" -i ${degree} -o /home/bo/High-Precision-Congestion-Control/result/Basic/DCQCN_fct.txt
+
+    nohup ./waf --run 'scratch/third mix/demo/motivation/config_drop.txt'
+
+    python3 fct.py "/home/bo/High-Precision-Congestion-Control/simulation/mix/demo/fct.txt" -i ${degree} -o /home/bo/High-Precision-Congestion-Control/result/Basic/LTFC_fct.txt
+
+done
 
 # echo " PFC DCQCN simulation finish"
 

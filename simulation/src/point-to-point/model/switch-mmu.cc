@@ -78,11 +78,14 @@ namespace ns3 {
 
 	void SwitchMmu::PrintPortBuffer(uint32_t port){
 		std::cout<< "========================= \n";
-		for (int i = 3 ; i < 13 ; i++){
-			std::cout << "Port" << i-1 << "Status 3:" << paused[i][3] << "||Port Status 7:" << paused[i][7] << "\n";
-			std::cout << "[q-3]node_id:" << i -1 << "|| get shared  buffer:" << GetSharedUsed(i, 3)/1024 <<"KB||PFC threshold: " << GetPfcThreshold(i,3)/1024 << "KB|| total ingress_bytes:" << ingress_bytes[i][3]/1024 << "KB" << "|| hdrm_bytes:" << hdrm_bytes[i][3]/1024 << "kB\n";
-			std::cout << "[q-7]node_id:" << i -1 << "|| get shared  buffer:" << GetSharedUsed(i, 7)/1024 <<"KB||PFC threshold: " << GetPfcThreshold(i,7)/1024 << "KB|| total ingress_bytes:" << ingress_bytes[i][7]/1024 << "KB" << "|| hdrm_bytes:" << hdrm_bytes[i][7]/1024 << "kB\n";
-		}
+		// for (int i = 3 ; i < 20 ; i++){
+		// 	std::cout << "Port" << i-1 << "Status 3:" << paused[i][3] << "||Port Status 7:" << paused[i][7] << "\n";
+		// 	std::cout << "[q-3]node_id:" << i -1 << "|| get shared  buffer:" << GetSharedUsed(i, 3)/1024 <<"KB||PFC threshold: " << GetPfcThreshold(i,3)/1024 << "KB|| total ingress_bytes:" << ingress_bytes[i][3]/1024 << "KB" << "|| hdrm_bytes:" << hdrm_bytes[i][3]/1024 << "kB\n";
+		// 	std::cout << "[q-7]node_id:" << i -1 << "|| get shared  buffer:" << GetSharedUsed(i, 7)/1024 <<"KB||PFC threshold: " << GetPfcThreshold(i,7)/1024 << "KB|| total ingress_bytes:" << ingress_bytes[i][7]/1024 << "KB" << "|| hdrm_bytes:" << hdrm_bytes[i][7]/1024 << "kB\n";
+		// }
+			std::cout << "Port" << port << "Status 3:" << paused[port][3] << "||Port Status 7:" << paused[port][7] << "\n";
+			std::cout << "[q-3]node_id:" << port << "|| get shared  buffer:" << GetSharedUsed(port, 3)/1024 <<"KB||PFC threshold: " << GetPfcThreshold(port,3)/1024 << "KB|| total ingress_bytes:" << ingress_bytes[port][3]/1024 << "KB" << "|| hdrm_bytes:" << hdrm_bytes[port][3]/1024 << "kB\n";
+			std::cout << "[q-7]node_id:" << port << "|| get shared  buffer:" << GetSharedUsed(port, 7)/1024 <<"KB||PFC threshold: " << GetPfcThreshold(port,7)/1024 << "KB|| total ingress_bytes:" << ingress_bytes[port][7]/1024 << "KB" << "|| hdrm_bytes:" << hdrm_bytes[port][7]/1024 << "kB\n";
 		std::cout<< "========================= \n";
 	}
 
@@ -112,6 +115,7 @@ namespace ns3 {
 				return false;
 		}
 		uint32_t shared_used = GetSharedUsed(port, qIndex);
+		std::cout << qIndex << "||headroom" << hdrm_bytes[port][qIndex] << "||shared:" << shared_used/1024 << "||pfc: " << GetPfcThreshold(port,qIndex)/1024  <<"\n";
 		return hdrm_bytes[port][qIndex] == 0 && (shared_used == 0 || shared_used + resume_offset <= GetPfcThreshold(port,qIndex));
 	}
 
@@ -124,7 +128,11 @@ namespace ns3 {
 
 	uint32_t SwitchMmu::GetPfcThreshold(uint32_t port, uint32_t qIndex){
 		// std::cout << "buffrt" << ((buffer_size - total_hdrm - total_rsrv - shared_used_bytes) >> pfc_a_shift[port]) << "share" << shared_used_bytes << "shif" << pfc_a_shift[port] << "\n";
-		return (buffer_size - total_hdrm - total_rsrv - shared_used_bytes) >> pfc_a_shift[port];
+		if (qIndex == 7){
+			return (buffer_size - total_hdrm - total_rsrv - shared_used_bytes) >> 3;
+		}else{
+			return (buffer_size - total_hdrm - total_rsrv - shared_used_bytes) >> 3;
+		}
 	}
 	uint32_t SwitchMmu::GetSharedUsed(uint32_t port, uint32_t qIndex){
 			uint32_t used = ingress_bytes[port][qIndex];
