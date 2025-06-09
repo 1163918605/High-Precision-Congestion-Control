@@ -1,0 +1,2748 @@
+Waf: Entering directory `/home/bo/High-Precision-Congestion-Control/simulation/build'
+Waf: Leaving directory `/home/bo/High-Precision-Congestion-Control/simulation/build'
+'build' finished successfully (0.268s)
+ENABLE_PFC			Yes
+ENABLE_LRFC			No
+ENABLE_BFC			No
+ENABLE_QCN			Yes
+USE_DYNAMIC_PFC_THRESHOLD	Yes
+PACKET_PAYLOAD_SIZE		1000
+TOPOLOGY_FILE			/home/bo/High-Precision-Congestion-Control/simulation/mix/demo/3node_1switch.txt
+FLOW_FILE			/home/bo/High-Precision-Congestion-Control/simulation/mix/demo/demo_flow.txt
+TRACE_FILE			/home/bo/High-Precision-Congestion-Control/simulation/mix/demo/trace.txt
+TRACE_OUTPUT_FILE		/home/bo/High-Precision-Congestion-Control/simulation/mix/demo/mix.tr
+FCT_OUTPUT_FILE		/home/bo/High-Precision-Congestion-Control/simulation/mix/demo/fct.txt
+PFC_OUTPUT_FILE				/home/bo/High-Precision-Congestion-Control/simulation/mix/demo/pfc.txt
+SIMULATOR_STOP_TIME		1e+09
+CC_MODE		8
+ALPHA_RESUME_INTERVAL		1
+RATE_DECREASE_INTERVAL		4
+CLAMP_TARGET_RATE		No
+RP_TIMER			900
+EWMA_GAIN			0.00390625
+FAST_RECOVERY_TIMES		1
+RATE_AI				50Mb/s
+RATE_HAI			100Mb/s
+MIN_RATE		100Mb/s
+DCTCP_RATE_AI				1000Mb/s
+ERROR_RATE_PER_LINK		0
+L2_CHUNK_SIZE			4000
+L2_ACK_INTERVAL			1
+L2_BACK_TO_ZERO			No
+HAS_WIN		0
+GLOBAL_T		1
+VAR_WIN		1
+FAST_REACT		1
+U_TARGET		0.95
+MI_THRESH		0
+INT_MULTI				1
+MULTI_RATE				0
+SAMPLE_FEEDBACK				0
+PINT_LOG_BASE				1.05
+PINT_PROB				1
+RATE_BOUND		1
+ACK_HIGH_PRIO		1
+LINK_DOWN				0 0 0
+ENABLE_TRACE				0
+KMAX_MAP				 400000000000 6400 200000000000 3200 100000000000 1600
+KMIN_MAP				 400000000000 1600 200000000000 800 100000000000 400
+PMAX_MAP				 400000000000 0.2 200000000000 0.2 100000000000 0.2
+BUFFER_SIZE				16
+QLEN_MON_FILE				/home/bo/High-Precision-Congestion-Control/simulation/mix/demo/qlen.txt
+QLEN_MON_START				2000000000
+QLEN_MON_END				2000900000
+node_num: 157, switch_num: 13, link_num: 180
+flow_num: 4
+trace_num: 2
+GENERIC_SIMULATION:main(): [INFO ] Create nodes.
+GENERIC_SIMULATION:main(): [INFO ] Create channels.
+======buffer config=======
+total_buffer:16777216KB
+total_hdrm:732KB
+total_rsrv:80KB
+shared_buffer:15571KB
+n_port:20
+======buffer config=======
+total_buffer:16777216KB
+total_hdrm:732KB
+total_rsrv:80KB
+shared_buffer:15571KB
+n_port:20
+======buffer config=======
+total_buffer:16777216KB
+total_hdrm:732KB
+total_rsrv:80KB
+shared_buffer:15571KB
+n_port:20
+======buffer config=======
+total_buffer:16777216KB
+total_hdrm:732KB
+total_rsrv:80KB
+shared_buffer:15571KB
+n_port:20
+======buffer config=======
+total_buffer:16777216KB
+total_hdrm:732KB
+total_rsrv:80KB
+shared_buffer:15571KB
+n_port:20
+======buffer config=======
+total_buffer:16777216KB
+total_hdrm:732KB
+total_rsrv:80KB
+shared_buffer:15571KB
+n_port:20
+======buffer config=======
+total_buffer:16777216KB
+total_hdrm:732KB
+total_rsrv:80KB
+shared_buffer:15571KB
+n_port:20
+======buffer config=======
+total_buffer:16777216KB
+total_hdrm:732KB
+total_rsrv:80KB
+shared_buffer:15571KB
+n_port:20
+======buffer config=======
+total_buffer:16777216KB
+total_hdrm:732KB
+total_rsrv:80KB
+shared_buffer:15571KB
+n_port:20
+======buffer config=======
+total_buffer:16777216KB
+total_hdrm:329KB
+total_rsrv:36KB
+shared_buffer:16018KB
+n_port:9
+======buffer config=======
+total_buffer:16777216KB
+total_hdrm:329KB
+total_rsrv:36KB
+shared_buffer:16018KB
+n_port:9
+======buffer config=======
+total_buffer:16777216KB
+total_hdrm:329KB
+total_rsrv:36KB
+shared_buffer:16018KB
+n_port:9
+======buffer config=======
+total_buffer:16777216KB
+total_hdrm:329KB
+total_rsrv:36KB
+shared_buffer:16018KB
+n_port:9
+maxRtt=8320 maxBdp=104000
+GENERIC_SIMULATION:main(): [INFO ] Create Applications.
+Running Simulation.
+GENERIC_SIMULATION:main(): [INFO ] Run Simulation.
+Send PFC num:1||switch node id - 156||to node id - 3
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom0||shared:915||pfc: 915
+3||headroom0||shared:915||pfc: 915
+3||headroom1048||shared:915||pfc: 915
+3||headroom1048||shared:915||pfc: 915
+3||headroom2096||shared:915||pfc: 915
+3||headroom2096||shared:915||pfc: 915
+3||headroom3144||shared:915||pfc: 915
+3||headroom3144||shared:915||pfc: 915
+3||headroom4192||shared:915||pfc: 915
+3||headroom4192||shared:915||pfc: 915
+3||headroom5240||shared:915||pfc: 915
+3||headroom5240||shared:915||pfc: 915
+3||headroom6288||shared:915||pfc: 915
+3||headroom6288||shared:915||pfc: 915
+3||headroom7336||shared:915||pfc: 915
+3||headroom7336||shared:915||pfc: 915
+3||headroom8384||shared:915||pfc: 915
+3||headroom8384||shared:915||pfc: 915
+3||headroom7336||shared:915||pfc: 915
+3||headroom6288||shared:915||pfc: 915
+3||headroom5240||shared:915||pfc: 915
+3||headroom4192||shared:915||pfc: 915
+3||headroom3144||shared:915||pfc: 915
+3||headroom2096||shared:915||pfc: 915
+3||headroom1048||shared:915||pfc: 915
+3||headroom0||shared:915||pfc: 915
+3||headroom0||shared:914||pfc: 915
+3||headroom0||shared:913||pfc: 915
+3||headroom0||shared:911||pfc: 915
+Send Resume PFC num to node id - 3|| previous port status:1
+========================= 
+Port3Status 3:1||Port Status 7:0
+[q-3]node_id:3|| get shared  buffer:911KB||PFC threshold: 915KB|| total ingress_bytes:915KB|| hdrm_bytes:0kB
+[q-7]node_id:3|| get shared  buffer:0KB||PFC threshold: 3661KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+Send PFC num:2||switch node id - 156||to node id - 3
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom0||shared:914||pfc: 914
+3||headroom0||shared:914||pfc: 914
+3||headroom1048||shared:914||pfc: 914
+3||headroom1048||shared:914||pfc: 914
+3||headroom2096||shared:914||pfc: 914
+3||headroom2096||shared:914||pfc: 914
+3||headroom3144||shared:914||pfc: 914
+3||headroom3144||shared:914||pfc: 914
+3||headroom4192||shared:914||pfc: 914
+3||headroom4192||shared:914||pfc: 914
+3||headroom5240||shared:914||pfc: 914
+3||headroom5240||shared:914||pfc: 914
+3||headroom6288||shared:914||pfc: 914
+3||headroom6288||shared:914||pfc: 914
+3||headroom7336||shared:914||pfc: 914
+3||headroom7336||shared:914||pfc: 914
+3||headroom8384||shared:914||pfc: 914
+3||headroom8384||shared:914||pfc: 914
+3||headroom7336||shared:914||pfc: 914
+3||headroom6288||shared:914||pfc: 914
+3||headroom5240||shared:914||pfc: 914
+3||headroom4192||shared:914||pfc: 914
+3||headroom3144||shared:914||pfc: 914
+3||headroom2096||shared:914||pfc: 914
+3||headroom1048||shared:914||pfc: 914
+3||headroom0||shared:914||pfc: 914
+3||headroom0||shared:913||pfc: 914
+3||headroom0||shared:911||pfc: 914
+3||headroom0||shared:910||pfc: 914
+Send Resume PFC num to node id - 3|| previous port status:1
+========================= 
+Port3Status 3:1||Port Status 7:0
+[q-3]node_id:3|| get shared  buffer:910KB||PFC threshold: 914KB|| total ingress_bytes:914KB|| hdrm_bytes:0kB
+[q-7]node_id:3|| get shared  buffer:0KB||PFC threshold: 3656KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+Send PFC num:1||switch node id - 149||to node id - 20
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom0||shared:901||pfc: 901
+3||headroom0||shared:901||pfc: 901
+3||headroom1048||shared:901||pfc: 901
+3||headroom1048||shared:901||pfc: 901
+Send PFC num:3||switch node id - 156||to node id - 3
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom0||shared:913||pfc: 913
+3||headroom0||shared:913||pfc: 913
+3||headroom2096||shared:901||pfc: 901
+3||headroom2096||shared:901||pfc: 901
+3||headroom1048||shared:913||pfc: 913
+3||headroom1048||shared:913||pfc: 913
+3||headroom3144||shared:901||pfc: 901
+3||headroom3144||shared:901||pfc: 901
+3||headroom2096||shared:913||pfc: 913
+3||headroom2096||shared:913||pfc: 913
+3||headroom4192||shared:901||pfc: 901
+3||headroom4192||shared:901||pfc: 901
+3||headroom5240||shared:901||pfc: 901
+3||headroom5240||shared:901||pfc: 901
+3||headroom6288||shared:901||pfc: 901
+3||headroom6288||shared:901||pfc: 901
+3||headroom7336||shared:901||pfc: 901
+3||headroom7336||shared:901||pfc: 901
+3||headroom8384||shared:901||pfc: 901
+3||headroom8384||shared:901||pfc: 901
+3||headroom7336||shared:901||pfc: 901
+3||headroom6288||shared:901||pfc: 901
+3||headroom5240||shared:901||pfc: 901
+3||headroom4192||shared:901||pfc: 901
+3||headroom3144||shared:901||pfc: 901
+3||headroom2096||shared:901||pfc: 901
+3||headroom1048||shared:901||pfc: 902
+3||headroom0||shared:901||pfc: 901
+3||headroom0||shared:900||pfc: 902
+3||headroom0||shared:899||pfc: 902
+3||headroom0||shared:898||pfc: 902
+Send Resume PFC num to node id - 20|| previous port status:1
+========================= 
+Port20Status 3:1||Port Status 7:0
+[q-3]node_id:20|| get shared  buffer:898KB||PFC threshold: 902KB|| total ingress_bytes:902KB|| hdrm_bytes:0kB
+[q-7]node_id:20|| get shared  buffer:0KB||PFC threshold: 3608KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+3||headroom19912||shared:913||pfc: 911
+3||headroom18864||shared:913||pfc: 911
+3||headroom17816||shared:913||pfc: 911
+3||headroom16768||shared:913||pfc: 911
+3||headroom15720||shared:913||pfc: 911
+3||headroom14672||shared:913||pfc: 911
+3||headroom13624||shared:913||pfc: 911
+3||headroom12576||shared:913||pfc: 911
+3||headroom11528||shared:913||pfc: 911
+3||headroom10480||shared:913||pfc: 911
+3||headroom9432||shared:913||pfc: 911
+3||headroom8384||shared:913||pfc: 911
+3||headroom7336||shared:913||pfc: 911
+3||headroom6288||shared:913||pfc: 911
+3||headroom5240||shared:913||pfc: 911
+3||headroom4192||shared:913||pfc: 911
+3||headroom3144||shared:913||pfc: 911
+3||headroom2096||shared:913||pfc: 911
+3||headroom1048||shared:913||pfc: 911
+3||headroom0||shared:913||pfc: 911
+3||headroom0||shared:911||pfc: 911
+3||headroom0||shared:910||pfc: 911
+3||headroom0||shared:909||pfc: 911
+3||headroom0||shared:908||pfc: 911
+3||headroom0||shared:907||pfc: 911
+Send Resume PFC num to node id - 3|| previous port status:1
+========================= 
+Port3Status 3:1||Port Status 7:0
+[q-3]node_id:3|| get shared  buffer:907KB||PFC threshold: 911KB|| total ingress_bytes:911KB|| hdrm_bytes:0kB
+[q-7]node_id:3|| get shared  buffer:0KB||PFC threshold: 3646KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+Send PFC num:2||switch node id - 149||to node id - 20
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom0||shared:901||pfc: 902
+3||headroom0||shared:901||pfc: 902
+3||headroom0||shared:901||pfc: 902
+3||headroom0||shared:901||pfc: 902
+3||headroom1048||shared:901||pfc: 902
+3||headroom1048||shared:901||pfc: 902
+3||headroom1048||shared:901||pfc: 902
+3||headroom1048||shared:901||pfc: 902
+3||headroom2096||shared:901||pfc: 902
+3||headroom2096||shared:901||pfc: 902
+3||headroom2096||shared:901||pfc: 902
+3||headroom2096||shared:901||pfc: 902
+3||headroom3144||shared:901||pfc: 902
+3||headroom3144||shared:901||pfc: 902
+3||headroom3144||shared:901||pfc: 902
+3||headroom3144||shared:901||pfc: 902
+Send PFC num:4||switch node id - 156||to node id - 3
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom4192||shared:901||pfc: 902
+3||headroom4192||shared:901||pfc: 902
+3||headroom4192||shared:901||pfc: 902
+3||headroom4192||shared:901||pfc: 902
+3||headroom5240||shared:901||pfc: 902
+3||headroom4192||shared:901||pfc: 902
+3||headroom3144||shared:901||pfc: 902
+3||headroom2096||shared:901||pfc: 902
+3||headroom1048||shared:901||pfc: 902
+3||headroom0||shared:901||pfc: 902
+3||headroom0||shared:900||pfc: 902
+3||headroom0||shared:899||pfc: 902
+3||headroom0||shared:898||pfc: 902
+Send Resume PFC num to node id - 20|| previous port status:1
+========================= 
+Port20Status 3:1||Port Status 7:0
+[q-3]node_id:20|| get shared  buffer:898KB||PFC threshold: 902KB|| total ingress_bytes:902KB|| hdrm_bytes:0kB
+[q-7]node_id:20|| get shared  buffer:0KB||PFC threshold: 3609KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+3||headroom26200||shared:909||pfc: 909
+3||headroom25152||shared:909||pfc: 909
+3||headroom24104||shared:909||pfc: 909
+3||headroom23056||shared:909||pfc: 909
+3||headroom22008||shared:909||pfc: 909
+3||headroom20960||shared:909||pfc: 909
+3||headroom19912||shared:909||pfc: 909
+3||headroom18864||shared:909||pfc: 909
+3||headroom17816||shared:909||pfc: 909
+3||headroom16768||shared:909||pfc: 909
+3||headroom15720||shared:909||pfc: 909
+3||headroom14672||shared:909||pfc: 909
+3||headroom13624||shared:909||pfc: 909
+3||headroom12576||shared:909||pfc: 909
+3||headroom11528||shared:909||pfc: 909
+3||headroom10480||shared:909||pfc: 909
+3||headroom9432||shared:909||pfc: 909
+3||headroom8384||shared:909||pfc: 909
+3||headroom7336||shared:909||pfc: 909
+3||headroom6288||shared:909||pfc: 909
+3||headroom5240||shared:909||pfc: 909
+3||headroom4192||shared:909||pfc: 909
+3||headroom3144||shared:909||pfc: 909
+3||headroom2096||shared:909||pfc: 909
+3||headroom1048||shared:909||pfc: 909
+3||headroom0||shared:909||pfc: 909
+3||headroom0||shared:908||pfc: 909
+3||headroom0||shared:907||pfc: 909
+3||headroom0||shared:906||pfc: 909
+3||headroom0||shared:905||pfc: 909
+Send Resume PFC num to node id - 3|| previous port status:1
+========================= 
+Port3Status 3:1||Port Status 7:0
+[q-3]node_id:3|| get shared  buffer:905KB||PFC threshold: 909KB|| total ingress_bytes:909KB|| hdrm_bytes:0kB
+[q-7]node_id:3|| get shared  buffer:0KB||PFC threshold: 3638KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+Send PFC num:5||switch node id - 156||to node id - 3
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom0||shared:907||pfc: 908
+3||headroom0||shared:907||pfc: 908
+Send PFC num:3||switch node id - 149||to node id - 20
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom0||shared:901||pfc: 902
+3||headroom1048||shared:907||pfc: 908
+3||headroom0||shared:901||pfc: 902
+3||headroom1048||shared:907||pfc: 908
+3||headroom0||shared:901||pfc: 902
+3||headroom0||shared:901||pfc: 902
+3||headroom2096||shared:907||pfc: 908
+3||headroom2096||shared:907||pfc: 908
+3||headroom1048||shared:901||pfc: 902
+3||headroom1048||shared:901||pfc: 902
+3||headroom3144||shared:907||pfc: 908
+3||headroom1048||shared:901||pfc: 902
+3||headroom3144||shared:907||pfc: 908
+3||headroom1048||shared:901||pfc: 902
+3||headroom4192||shared:907||pfc: 908
+3||headroom2096||shared:901||pfc: 902
+3||headroom4192||shared:907||pfc: 908
+3||headroom2096||shared:901||pfc: 902
+3||headroom2096||shared:901||pfc: 902
+3||headroom2096||shared:901||pfc: 902
+3||headroom3144||shared:901||pfc: 902
+3||headroom3144||shared:901||pfc: 902
+3||headroom3144||shared:901||pfc: 902
+3||headroom3144||shared:901||pfc: 902
+3||headroom4192||shared:901||pfc: 902
+3||headroom4192||shared:901||pfc: 902
+3||headroom4192||shared:901||pfc: 902
+3||headroom4192||shared:901||pfc: 902
+3||headroom5240||shared:901||pfc: 902
+3||headroom4192||shared:901||pfc: 902
+3||headroom3144||shared:901||pfc: 902
+3||headroom2096||shared:901||pfc: 902
+3||headroom1048||shared:901||pfc: 902
+3||headroom0||shared:901||pfc: 902
+3||headroom0||shared:900||pfc: 902
+3||headroom0||shared:899||pfc: 902
+3||headroom0||shared:898||pfc: 902
+Send Resume PFC num to node id - 20|| previous port status:1
+========================= 
+Port20Status 3:1||Port Status 7:0
+[q-3]node_id:20|| get shared  buffer:898KB||PFC threshold: 902KB|| total ingress_bytes:902KB|| hdrm_bytes:0kB
+[q-7]node_id:20|| get shared  buffer:0KB||PFC threshold: 3609KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+3||headroom15720||shared:907||pfc: 907
+3||headroom14672||shared:907||pfc: 907
+3||headroom13624||shared:907||pfc: 907
+3||headroom12576||shared:907||pfc: 907
+3||headroom11528||shared:907||pfc: 907
+3||headroom10480||shared:907||pfc: 907
+3||headroom9432||shared:907||pfc: 907
+3||headroom8384||shared:907||pfc: 907
+3||headroom7336||shared:907||pfc: 907
+3||headroom6288||shared:907||pfc: 907
+3||headroom5240||shared:907||pfc: 907
+3||headroom4192||shared:907||pfc: 907
+3||headroom3144||shared:907||pfc: 907
+3||headroom2096||shared:907||pfc: 907
+3||headroom1048||shared:907||pfc: 907
+3||headroom0||shared:907||pfc: 907
+3||headroom0||shared:906||pfc: 907
+3||headroom0||shared:905||pfc: 907
+3||headroom0||shared:904||pfc: 907
+3||headroom0||shared:903||pfc: 907
+Send Resume PFC num to node id - 3|| previous port status:1
+========================= 
+Port3Status 3:1||Port Status 7:0
+[q-3]node_id:3|| get shared  buffer:903KB||PFC threshold: 907KB|| total ingress_bytes:907KB|| hdrm_bytes:0kB
+[q-7]node_id:3|| get shared  buffer:0KB||PFC threshold: 3629KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+Send PFC num:6||switch node id - 156||to node id - 3
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom0||shared:905||pfc: 906
+3||headroom0||shared:905||pfc: 906
+3||headroom1048||shared:905||pfc: 906
+3||headroom1048||shared:905||pfc: 906
+3||headroom2096||shared:905||pfc: 906
+3||headroom2096||shared:905||pfc: 906
+3||headroom3144||shared:905||pfc: 906
+3||headroom3144||shared:905||pfc: 906
+3||headroom4192||shared:905||pfc: 906
+3||headroom4192||shared:905||pfc: 906
+3||headroom5240||shared:905||pfc: 906
+3||headroom5240||shared:905||pfc: 906
+3||headroom6288||shared:905||pfc: 906
+3||headroom6288||shared:905||pfc: 906
+3||headroom7336||shared:905||pfc: 906
+3||headroom7336||shared:905||pfc: 906
+Send PFC num:4||switch node id - 149||to node id - 20
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom0||shared:902||pfc: 902
+3||headroom8384||shared:905||pfc: 906
+3||headroom0||shared:902||pfc: 902
+3||headroom8384||shared:905||pfc: 906
+3||headroom0||shared:902||pfc: 902
+3||headroom0||shared:902||pfc: 902
+3||headroom7336||shared:905||pfc: 906
+3||headroom6288||shared:905||pfc: 906
+3||headroom1048||shared:902||pfc: 902
+3||headroom1048||shared:902||pfc: 902
+3||headroom5240||shared:905||pfc: 906
+3||headroom1048||shared:902||pfc: 902
+3||headroom4192||shared:905||pfc: 906
+3||headroom1048||shared:902||pfc: 902
+3||headroom3144||shared:905||pfc: 906
+3||headroom2096||shared:902||pfc: 902
+3||headroom2096||shared:905||pfc: 906
+3||headroom2096||shared:902||pfc: 902
+3||headroom2096||shared:902||pfc: 902
+3||headroom2096||shared:902||pfc: 902
+3||headroom3144||shared:902||pfc: 902
+3||headroom3144||shared:902||pfc: 902
+3||headroom3144||shared:902||pfc: 902
+3||headroom3144||shared:902||pfc: 902
+3||headroom4192||shared:902||pfc: 902
+3||headroom4192||shared:902||pfc: 902
+3||headroom4192||shared:902||pfc: 902
+3||headroom4192||shared:902||pfc: 902
+3||headroom5240||shared:902||pfc: 902
+3||headroom4192||shared:902||pfc: 902
+3||headroom3144||shared:902||pfc: 902
+3||headroom2096||shared:902||pfc: 902
+3||headroom1048||shared:902||pfc: 902
+3||headroom0||shared:902||pfc: 902
+3||headroom0||shared:901||pfc: 902
+3||headroom0||shared:900||pfc: 903
+3||headroom0||shared:899||pfc: 903
+Send Resume PFC num to node id - 20|| previous port status:1
+========================= 
+Port20Status 3:1||Port Status 7:0
+[q-3]node_id:20|| get shared  buffer:899KB||PFC threshold: 903KB|| total ingress_bytes:903KB|| hdrm_bytes:0kB
+[q-7]node_id:20|| get shared  buffer:0KB||PFC threshold: 3612KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+3||headroom1048||shared:905||pfc: 904
+3||headroom0||shared:905||pfc: 904
+3||headroom0||shared:904||pfc: 904
+3||headroom0||shared:903||pfc: 904
+3||headroom0||shared:902||pfc: 905
+3||headroom0||shared:901||pfc: 905
+Send Resume PFC num to node id - 3|| previous port status:1
+========================= 
+Port3Status 3:1||Port Status 7:0
+[q-3]node_id:3|| get shared  buffer:901KB||PFC threshold: 905KB|| total ingress_bytes:905KB|| hdrm_bytes:0kB
+[q-7]node_id:3|| get shared  buffer:0KB||PFC threshold: 3620KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+Send PFC num:7||switch node id - 156||to node id - 3
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom0||shared:904||pfc: 904
+3||headroom0||shared:904||pfc: 904
+3||headroom1048||shared:904||pfc: 904
+3||headroom1048||shared:904||pfc: 904
+3||headroom2096||shared:904||pfc: 904
+3||headroom2096||shared:904||pfc: 904
+3||headroom3144||shared:904||pfc: 905
+3||headroom3144||shared:904||pfc: 904
+3||headroom4192||shared:904||pfc: 905
+3||headroom4192||shared:904||pfc: 905
+3||headroom5240||shared:904||pfc: 905
+3||headroom5240||shared:904||pfc: 905
+3||headroom6288||shared:904||pfc: 905
+3||headroom6288||shared:904||pfc: 905
+3||headroom7336||shared:904||pfc: 905
+3||headroom7336||shared:904||pfc: 905
+3||headroom8384||shared:904||pfc: 905
+3||headroom8384||shared:904||pfc: 905
+3||headroom7336||shared:904||pfc: 905
+3||headroom6288||shared:904||pfc: 905
+3||headroom5240||shared:904||pfc: 905
+3||headroom4192||shared:904||pfc: 905
+3||headroom3144||shared:904||pfc: 905
+3||headroom2096||shared:904||pfc: 905
+3||headroom1048||shared:904||pfc: 905
+Send PFC num:5||switch node id - 149||to node id - 20
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom0||shared:902||pfc: 903
+3||headroom0||shared:904||pfc: 905
+3||headroom0||shared:902||pfc: 903
+3||headroom0||shared:902||pfc: 903
+3||headroom0||shared:903||pfc: 905
+3||headroom0||shared:902||pfc: 903
+3||headroom0||shared:902||pfc: 905
+3||headroom1048||shared:902||pfc: 903
+3||headroom0||shared:901||pfc: 905
+Send Resume PFC num to node id - 3|| previous port status:1
+========================= 
+Port3Status 3:1||Port Status 7:0
+[q-3]node_id:3|| get shared  buffer:901KB||PFC threshold: 905KB|| total ingress_bytes:905KB|| hdrm_bytes:0kB
+[q-7]node_id:3|| get shared  buffer:0KB||PFC threshold: 3621KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+3||headroom1048||shared:902||pfc: 903
+3||headroom1048||shared:902||pfc: 903
+3||headroom1048||shared:902||pfc: 903
+3||headroom2096||shared:902||pfc: 903
+3||headroom2096||shared:902||pfc: 903
+3||headroom2096||shared:902||pfc: 903
+3||headroom2096||shared:902||pfc: 903
+3||headroom3144||shared:902||pfc: 903
+3||headroom3144||shared:902||pfc: 903
+3||headroom3144||shared:902||pfc: 903
+3||headroom3144||shared:902||pfc: 903
+3||headroom4192||shared:902||pfc: 903
+3||headroom4192||shared:902||pfc: 903
+3||headroom4192||shared:902||pfc: 903
+3||headroom4192||shared:902||pfc: 903
+3||headroom5240||shared:902||pfc: 903
+3||headroom4192||shared:902||pfc: 903
+3||headroom3144||shared:902||pfc: 903
+3||headroom2096||shared:902||pfc: 903
+3||headroom1048||shared:902||pfc: 903
+3||headroom0||shared:902||pfc: 903
+3||headroom0||shared:901||pfc: 903
+3||headroom0||shared:900||pfc: 903
+Send Resume PFC num to node id - 20|| previous port status:1
+========================= 
+Port20Status 3:1||Port Status 7:0
+[q-3]node_id:20|| get shared  buffer:900KB||PFC threshold: 903KB|| total ingress_bytes:904KB|| hdrm_bytes:0kB
+[q-7]node_id:20|| get shared  buffer:0KB||PFC threshold: 3615KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+Send PFC num:8||switch node id - 156||to node id - 3
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom7336||shared:904||pfc: 904
+3||headroom8384||shared:904||pfc: 904
+3||headroom8384||shared:904||pfc: 904
+3||headroom9432||shared:904||pfc: 904
+3||headroom9432||shared:904||pfc: 904
+3||headroom10480||shared:904||pfc: 904
+3||headroom10480||shared:904||pfc: 904
+3||headroom11528||shared:904||pfc: 904
+3||headroom11528||shared:904||pfc: 904
+3||headroom12576||shared:904||pfc: 904
+3||headroom12576||shared:904||pfc: 904
+3||headroom13624||shared:904||pfc: 904
+3||headroom12576||shared:904||pfc: 904
+3||headroom11528||shared:904||pfc: 904
+3||headroom10480||shared:904||pfc: 904
+3||headroom9432||shared:904||pfc: 904
+3||headroom8384||shared:904||pfc: 904
+3||headroom7336||shared:904||pfc: 904
+3||headroom6288||shared:904||pfc: 904
+3||headroom5240||shared:904||pfc: 904
+3||headroom4192||shared:904||pfc: 904
+3||headroom3144||shared:904||pfc: 904
+3||headroom2096||shared:904||pfc: 904
+3||headroom1048||shared:904||pfc: 904
+3||headroom0||shared:904||pfc: 904
+3||headroom0||shared:903||pfc: 904
+3||headroom0||shared:902||pfc: 904
+3||headroom0||shared:901||pfc: 905
+Send Resume PFC num to node id - 3|| previous port status:1
+========================= 
+Port3Status 3:1||Port Status 7:0
+[q-3]node_id:3|| get shared  buffer:901KB||PFC threshold: 905KB|| total ingress_bytes:905KB|| hdrm_bytes:0kB
+[q-7]node_id:3|| get shared  buffer:0KB||PFC threshold: 3620KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+Send PFC num:6||switch node id - 149||to node id - 20
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom0||shared:903||pfc: 904
+Send PFC num:9||switch node id - 156||to node id - 3
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom0||shared:903||pfc: 904
+3||headroom0||shared:904||pfc: 905
+3||headroom0||shared:903||pfc: 904
+3||headroom0||shared:904||pfc: 905
+3||headroom0||shared:903||pfc: 904
+3||headroom1048||shared:904||pfc: 905
+3||headroom1048||shared:903||pfc: 904
+3||headroom1048||shared:904||pfc: 905
+3||headroom1048||shared:903||pfc: 904
+3||headroom1048||shared:903||pfc: 904
+3||headroom2096||shared:904||pfc: 905
+3||headroom1048||shared:903||pfc: 904
+3||headroom2096||shared:904||pfc: 905
+3||headroom2096||shared:903||pfc: 904
+3||headroom3144||shared:904||pfc: 905
+3||headroom2096||shared:903||pfc: 904
+3||headroom3144||shared:904||pfc: 905
+3||headroom2096||shared:903||pfc: 904
+3||headroom2096||shared:903||pfc: 904
+3||headroom3144||shared:903||pfc: 904
+3||headroom3144||shared:903||pfc: 904
+3||headroom3144||shared:903||pfc: 904
+3||headroom3144||shared:903||pfc: 904
+3||headroom4192||shared:903||pfc: 904
+3||headroom4192||shared:903||pfc: 904
+3||headroom4192||shared:903||pfc: 904
+3||headroom4192||shared:903||pfc: 904
+3||headroom5240||shared:903||pfc: 904
+3||headroom4192||shared:903||pfc: 904
+3||headroom3144||shared:903||pfc: 904
+3||headroom2096||shared:903||pfc: 904
+3||headroom1048||shared:903||pfc: 904
+3||headroom0||shared:903||pfc: 904
+3||headroom0||shared:902||pfc: 904
+3||headroom0||shared:901||pfc: 904
+3||headroom0||shared:900||pfc: 904
+Send Resume PFC num to node id - 20|| previous port status:1
+========================= 
+Port20Status 3:1||Port Status 7:0
+[q-3]node_id:20|| get shared  buffer:900KB||PFC threshold: 904KB|| total ingress_bytes:904KB|| hdrm_bytes:0kB
+[q-7]node_id:20|| get shared  buffer:0KB||PFC threshold: 3619KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+3||headroom17816||shared:904||pfc: 904
+3||headroom16768||shared:904||pfc: 904
+3||headroom15720||shared:904||pfc: 904
+3||headroom14672||shared:904||pfc: 904
+3||headroom13624||shared:904||pfc: 904
+3||headroom12576||shared:904||pfc: 904
+3||headroom11528||shared:904||pfc: 904
+3||headroom10480||shared:904||pfc: 904
+3||headroom9432||shared:904||pfc: 904
+3||headroom8384||shared:904||pfc: 904
+3||headroom7336||shared:904||pfc: 904
+3||headroom6288||shared:904||pfc: 904
+3||headroom5240||shared:904||pfc: 904
+3||headroom4192||shared:904||pfc: 904
+3||headroom3144||shared:904||pfc: 904
+3||headroom2096||shared:904||pfc: 904
+3||headroom1048||shared:904||pfc: 904
+3||headroom0||shared:904||pfc: 904
+3||headroom0||shared:903||pfc: 905
+3||headroom0||shared:902||pfc: 905
+3||headroom0||shared:901||pfc: 905
+Send Resume PFC num to node id - 3|| previous port status:1
+========================= 
+Port3Status 3:1||Port Status 7:0
+[q-3]node_id:3|| get shared  buffer:901KB||PFC threshold: 905KB|| total ingress_bytes:905KB|| hdrm_bytes:0kB
+[q-7]node_id:3|| get shared  buffer:0KB||PFC threshold: 3621KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+Send PFC num:10||switch node id - 156||to node id - 3
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom0||shared:904||pfc: 905
+3||headroom0||shared:904||pfc: 905
+3||headroom1048||shared:904||pfc: 905
+3||headroom1048||shared:904||pfc: 905
+3||headroom2096||shared:904||pfc: 905
+3||headroom2096||shared:904||pfc: 905
+3||headroom3144||shared:904||pfc: 905
+3||headroom3144||shared:904||pfc: 905
+3||headroom4192||shared:904||pfc: 905
+3||headroom4192||shared:904||pfc: 905
+3||headroom5240||shared:904||pfc: 905
+3||headroom5240||shared:904||pfc: 905
+Send PFC num:7||switch node id - 149||to node id - 20
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom0||shared:904||pfc: 905
+3||headroom0||shared:904||pfc: 905
+3||headroom6288||shared:904||pfc: 905
+3||headroom0||shared:904||pfc: 905
+3||headroom6288||shared:904||pfc: 905
+3||headroom0||shared:904||pfc: 905
+3||headroom7336||shared:904||pfc: 905
+3||headroom1048||shared:904||pfc: 905
+3||headroom7336||shared:904||pfc: 905
+3||headroom1048||shared:904||pfc: 905
+3||headroom1048||shared:904||pfc: 905
+3||headroom8384||shared:904||pfc: 905
+3||headroom1048||shared:904||pfc: 905
+3||headroom8384||shared:904||pfc: 905
+3||headroom2096||shared:904||pfc: 905
+3||headroom7336||shared:904||pfc: 905
+3||headroom2096||shared:904||pfc: 905
+3||headroom6288||shared:904||pfc: 905
+3||headroom2096||shared:904||pfc: 905
+3||headroom2096||shared:904||pfc: 905
+3||headroom3144||shared:904||pfc: 905
+3||headroom3144||shared:904||pfc: 905
+3||headroom3144||shared:904||pfc: 905
+3||headroom3144||shared:904||pfc: 905
+3||headroom4192||shared:904||pfc: 905
+3||headroom4192||shared:904||pfc: 905
+3||headroom4192||shared:904||pfc: 905
+3||headroom4192||shared:904||pfc: 905
+3||headroom5240||shared:904||pfc: 905
+3||headroom4192||shared:904||pfc: 905
+3||headroom3144||shared:904||pfc: 905
+3||headroom2096||shared:904||pfc: 905
+3||headroom1048||shared:904||pfc: 905
+3||headroom0||shared:904||pfc: 905
+3||headroom0||shared:903||pfc: 905
+3||headroom0||shared:902||pfc: 905
+3||headroom0||shared:901||pfc: 905
+Send Resume PFC num to node id - 20|| previous port status:1
+========================= 
+Port20Status 3:1||Port Status 7:0
+[q-3]node_id:20|| get shared  buffer:901KB||PFC threshold: 905KB|| total ingress_bytes:905KB|| hdrm_bytes:0kB
+[q-7]node_id:20|| get shared  buffer:0KB||PFC threshold: 3622KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+3||headroom5240||shared:904||pfc: 905
+3||headroom4192||shared:904||pfc: 905
+3||headroom3144||shared:904||pfc: 905
+3||headroom2096||shared:904||pfc: 905
+3||headroom1048||shared:904||pfc: 905
+3||headroom0||shared:904||pfc: 905
+3||headroom0||shared:903||pfc: 905
+3||headroom0||shared:902||pfc: 905
+3||headroom0||shared:901||pfc: 905
+Send Resume PFC num to node id - 3|| previous port status:1
+========================= 
+Port3Status 3:1||Port Status 7:0
+[q-3]node_id:3|| get shared  buffer:901KB||PFC threshold: 905KB|| total ingress_bytes:905KB|| hdrm_bytes:0kB
+[q-7]node_id:3|| get shared  buffer:0KB||PFC threshold: 3621KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+Send PFC num:11||switch node id - 156||to node id - 3
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom0||shared:904||pfc: 905
+3||headroom0||shared:904||pfc: 905
+3||headroom1048||shared:904||pfc: 905
+3||headroom1048||shared:904||pfc: 905
+Send PFC num:8||switch node id - 149||to node id - 20
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom2096||shared:904||pfc: 905
+3||headroom2096||shared:905||pfc: 906
+3||headroom2096||shared:904||pfc: 905
+3||headroom3144||shared:905||pfc: 906
+3||headroom3144||shared:904||pfc: 905
+3||headroom3144||shared:905||pfc: 906
+3||headroom3144||shared:904||pfc: 905
+3||headroom3144||shared:905||pfc: 906
+3||headroom3144||shared:905||pfc: 906
+3||headroom4192||shared:904||pfc: 905
+3||headroom4192||shared:904||pfc: 905
+3||headroom4192||shared:905||pfc: 906
+3||headroom4192||shared:905||pfc: 906
+3||headroom5240||shared:904||pfc: 905
+3||headroom4192||shared:905||pfc: 906
+3||headroom5240||shared:904||pfc: 905
+3||headroom4192||shared:905||pfc: 906
+3||headroom5240||shared:905||pfc: 906
+3||headroom5240||shared:905||pfc: 906
+3||headroom5240||shared:905||pfc: 906
+3||headroom5240||shared:905||pfc: 906
+3||headroom6288||shared:905||pfc: 906
+3||headroom6288||shared:905||pfc: 906
+3||headroom6288||shared:905||pfc: 906
+3||headroom6288||shared:905||pfc: 906
+3||headroom7336||shared:905||pfc: 906
+3||headroom7336||shared:905||pfc: 906
+3||headroom6288||shared:905||pfc: 906
+3||headroom5240||shared:905||pfc: 906
+3||headroom4192||shared:905||pfc: 906
+3||headroom3144||shared:905||pfc: 906
+3||headroom2096||shared:905||pfc: 906
+3||headroom1048||shared:905||pfc: 906
+3||headroom0||shared:905||pfc: 906
+3||headroom0||shared:904||pfc: 906
+3||headroom0||shared:903||pfc: 906
+3||headroom0||shared:902||pfc: 906
+Send Resume PFC num to node id - 20|| previous port status:1
+========================= 
+Port20Status 3:1||Port Status 7:0
+[q-3]node_id:20|| get shared  buffer:902KB||PFC threshold: 906KB|| total ingress_bytes:906KB|| hdrm_bytes:0kB
+[q-7]node_id:20|| get shared  buffer:0KB||PFC threshold: 3626KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+3||headroom13624||shared:904||pfc: 905
+3||headroom12576||shared:904||pfc: 905
+3||headroom11528||shared:904||pfc: 905
+3||headroom10480||shared:904||pfc: 905
+3||headroom9432||shared:904||pfc: 905
+3||headroom8384||shared:904||pfc: 905
+3||headroom7336||shared:904||pfc: 905
+3||headroom6288||shared:904||pfc: 905
+3||headroom5240||shared:904||pfc: 905
+3||headroom4192||shared:904||pfc: 905
+3||headroom3144||shared:904||pfc: 905
+3||headroom2096||shared:904||pfc: 905
+3||headroom1048||shared:904||pfc: 905
+3||headroom0||shared:904||pfc: 905
+3||headroom0||shared:903||pfc: 905
+3||headroom0||shared:902||pfc: 905
+3||headroom0||shared:901||pfc: 905
+Send Resume PFC num to node id - 3|| previous port status:1
+========================= 
+Port3Status 3:1||Port Status 7:0
+[q-3]node_id:3|| get shared  buffer:901KB||PFC threshold: 905KB|| total ingress_bytes:905KB|| hdrm_bytes:0kB
+[q-7]node_id:3|| get shared  buffer:0KB||PFC threshold: 3621KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+Send PFC num:9||switch node id - 149||to node id - 20
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom0||shared:906||pfc: 907
+3||headroom0||shared:906||pfc: 907
+3||headroom0||shared:906||pfc: 907
+3||headroom0||shared:906||pfc: 907
+3||headroom1048||shared:906||pfc: 907
+3||headroom1048||shared:906||pfc: 907
+3||headroom1048||shared:906||pfc: 907
+3||headroom1048||shared:906||pfc: 907
+3||headroom2096||shared:906||pfc: 907
+3||headroom2096||shared:906||pfc: 907
+3||headroom2096||shared:906||pfc: 907
+Send PFC num:12||switch node id - 156||to node id - 3
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom2096||shared:906||pfc: 907
+3||headroom3144||shared:906||pfc: 907
+3||headroom3144||shared:906||pfc: 907
+3||headroom3144||shared:906||pfc: 907
+3||headroom3144||shared:906||pfc: 907
+3||headroom4192||shared:906||pfc: 907
+3||headroom4192||shared:906||pfc: 907
+3||headroom4192||shared:906||pfc: 907
+3||headroom4192||shared:906||pfc: 907
+3||headroom5240||shared:906||pfc: 907
+3||headroom4192||shared:906||pfc: 907
+3||headroom3144||shared:906||pfc: 907
+3||headroom2096||shared:906||pfc: 907
+3||headroom1048||shared:906||pfc: 907
+3||headroom0||shared:906||pfc: 907
+3||headroom0||shared:905||pfc: 907
+3||headroom0||shared:904||pfc: 907
+3||headroom0||shared:903||pfc: 907
+Send Resume PFC num to node id - 20|| previous port status:1
+========================= 
+Port20Status 3:1||Port Status 7:0
+[q-3]node_id:20|| get shared  buffer:903KB||PFC threshold: 907KB|| total ingress_bytes:907KB|| hdrm_bytes:0kB
+[q-7]node_id:20|| get shared  buffer:0KB||PFC threshold: 3631KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+3||headroom26200||shared:904||pfc: 905
+3||headroom25152||shared:904||pfc: 904
+3||headroom24104||shared:904||pfc: 905
+3||headroom23056||shared:904||pfc: 905
+3||headroom22008||shared:904||pfc: 905
+3||headroom20960||shared:904||pfc: 905
+3||headroom19912||shared:904||pfc: 905
+3||headroom18864||shared:904||pfc: 905
+3||headroom17816||shared:904||pfc: 905
+3||headroom16768||shared:904||pfc: 905
+3||headroom15720||shared:904||pfc: 905
+3||headroom14672||shared:904||pfc: 905
+3||headroom13624||shared:904||pfc: 905
+3||headroom12576||shared:904||pfc: 905
+3||headroom11528||shared:904||pfc: 905
+3||headroom10480||shared:904||pfc: 905
+3||headroom9432||shared:904||pfc: 905
+3||headroom8384||shared:904||pfc: 905
+3||headroom7336||shared:904||pfc: 905
+3||headroom6288||shared:904||pfc: 905
+3||headroom5240||shared:904||pfc: 905
+3||headroom4192||shared:904||pfc: 905
+3||headroom3144||shared:904||pfc: 905
+3||headroom2096||shared:904||pfc: 905
+3||headroom1048||shared:904||pfc: 905
+3||headroom0||shared:904||pfc: 905
+3||headroom0||shared:903||pfc: 905
+3||headroom0||shared:902||pfc: 905
+3||headroom0||shared:901||pfc: 905
+Send Resume PFC num to node id - 3|| previous port status:1
+========================= 
+Port3Status 3:1||Port Status 7:0
+[q-3]node_id:3|| get shared  buffer:901KB||PFC threshold: 905KB|| total ingress_bytes:905KB|| hdrm_bytes:0kB
+[q-7]node_id:3|| get shared  buffer:0KB||PFC threshold: 3621KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+Send PFC num:13||switch node id - 156||to node id - 3
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom13624||shared:905||pfc: 906
+3||headroom13624||shared:905||pfc: 906
+3||headroom14672||shared:905||pfc: 906
+3||headroom14672||shared:905||pfc: 906
+3||headroom15720||shared:905||pfc: 906
+3||headroom15720||shared:905||pfc: 906
+3||headroom16768||shared:905||pfc: 906
+3||headroom16768||shared:905||pfc: 906
+3||headroom17816||shared:905||pfc: 906
+3||headroom16768||shared:905||pfc: 906
+3||headroom15720||shared:905||pfc: 906
+3||headroom14672||shared:905||pfc: 906
+3||headroom13624||shared:905||pfc: 906
+3||headroom12576||shared:905||pfc: 906
+3||headroom11528||shared:905||pfc: 906
+3||headroom10480||shared:905||pfc: 906
+3||headroom9432||shared:905||pfc: 906
+3||headroom8384||shared:905||pfc: 906
+3||headroom7336||shared:905||pfc: 906
+3||headroom6288||shared:905||pfc: 906
+3||headroom5240||shared:905||pfc: 906
+3||headroom4192||shared:905||pfc: 906
+3||headroom3144||shared:905||pfc: 906
+3||headroom2096||shared:905||pfc: 906
+3||headroom1048||shared:905||pfc: 906
+3||headroom0||shared:905||pfc: 906
+3||headroom0||shared:904||pfc: 906
+Send PFC num:10||switch node id - 149||to node id - 20
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom0||shared:906||pfc: 907
+3||headroom0||shared:903||pfc: 906
+Send Resume PFC num to node id - 3|| previous port status:1
+========================= 
+Port3Status 3:1||Port Status 7:0
+[q-3]node_id:3|| get shared  buffer:903KB||PFC threshold: 906KB|| total ingress_bytes:907KB|| hdrm_bytes:0kB
+[q-7]node_id:3|| get shared  buffer:0KB||PFC threshold: 3627KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+3||headroom0||shared:906||pfc: 907
+3||headroom0||shared:906||pfc: 907
+3||headroom0||shared:906||pfc: 907
+3||headroom0||shared:906||pfc: 907
+3||headroom0||shared:906||pfc: 907
+3||headroom0||shared:906||pfc: 907
+3||headroom0||shared:906||pfc: 907
+3||headroom0||shared:907||pfc: 907
+3||headroom0||shared:907||pfc: 907
+3||headroom0||shared:907||pfc: 907
+3||headroom0||shared:907||pfc: 907
+3||headroom0||shared:907||pfc: 907
+3||headroom0||shared:907||pfc: 907
+3||headroom0||shared:907||pfc: 907
+3||headroom1048||shared:907||pfc: 907
+3||headroom1048||shared:907||pfc: 907
+3||headroom1048||shared:907||pfc: 907
+3||headroom1048||shared:907||pfc: 907
+3||headroom1048||shared:907||pfc: 907
+3||headroom1048||shared:907||pfc: 907
+3||headroom1048||shared:907||pfc: 907
+3||headroom1048||shared:907||pfc: 907
+3||headroom1048||shared:907||pfc: 907
+3||headroom0||shared:907||pfc: 907
+3||headroom0||shared:906||pfc: 907
+3||headroom0||shared:905||pfc: 907
+3||headroom0||shared:904||pfc: 907
+Send Resume PFC num to node id - 20|| previous port status:1
+========================= 
+Port20Status 3:1||Port Status 7:0
+[q-3]node_id:20|| get shared  buffer:904KB||PFC threshold: 907KB|| total ingress_bytes:908KB|| hdrm_bytes:0kB
+[q-7]node_id:20|| get shared  buffer:0KB||PFC threshold: 3631KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+Send PFC num:14||switch node id - 156||to node id - 3
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom7336||shared:905||pfc: 906
+3||headroom7336||shared:905||pfc: 906
+3||headroom8384||shared:905||pfc: 906
+3||headroom8384||shared:905||pfc: 906
+3||headroom9432||shared:905||pfc: 906
+3||headroom9432||shared:905||pfc: 906
+3||headroom10480||shared:905||pfc: 906
+3||headroom10480||shared:905||pfc: 906
+3||headroom11528||shared:905||pfc: 906
+3||headroom11528||shared:905||pfc: 906
+3||headroom12576||shared:905||pfc: 906
+3||headroom12576||shared:905||pfc: 906
+3||headroom13624||shared:905||pfc: 906
+3||headroom12576||shared:905||pfc: 906
+3||headroom11528||shared:905||pfc: 906
+3||headroom10480||shared:905||pfc: 906
+3||headroom9432||shared:905||pfc: 906
+3||headroom8384||shared:905||pfc: 906
+3||headroom7336||shared:905||pfc: 906
+3||headroom6288||shared:905||pfc: 906
+3||headroom5240||shared:905||pfc: 906
+3||headroom4192||shared:905||pfc: 906
+3||headroom3144||shared:905||pfc: 906
+3||headroom2096||shared:905||pfc: 906
+3||headroom1048||shared:905||pfc: 906
+3||headroom0||shared:905||pfc: 906
+3||headroom0||shared:904||pfc: 906
+3||headroom0||shared:903||pfc: 906
+3||headroom0||shared:902||pfc: 906
+Send Resume PFC num to node id - 3|| previous port status:1
+========================= 
+Port3Status 3:1||Port Status 7:0
+[q-3]node_id:3|| get shared  buffer:902KB||PFC threshold: 906KB|| total ingress_bytes:906KB|| hdrm_bytes:0kB
+[q-7]node_id:3|| get shared  buffer:0KB||PFC threshold: 3626KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+Send PFC num:15||switch node id - 156||to node id - 3
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom1048||shared:906||pfc: 907
+3||headroom1048||shared:906||pfc: 907
+3||headroom2096||shared:906||pfc: 907
+3||headroom2096||shared:906||pfc: 907
+3||headroom3144||shared:906||pfc: 907
+3||headroom3144||shared:906||pfc: 907
+3||headroom4192||shared:906||pfc: 907
+3||headroom4192||shared:906||pfc: 907
+3||headroom5240||shared:906||pfc: 907
+3||headroom5240||shared:906||pfc: 907
+3||headroom6288||shared:906||pfc: 907
+3||headroom6288||shared:906||pfc: 907
+3||headroom7336||shared:906||pfc: 907
+3||headroom7336||shared:906||pfc: 907
+3||headroom8384||shared:906||pfc: 907
+3||headroom8384||shared:906||pfc: 907
+3||headroom9432||shared:906||pfc: 907
+3||headroom8384||shared:906||pfc: 907
+3||headroom7336||shared:906||pfc: 907
+3||headroom6288||shared:906||pfc: 907
+3||headroom5240||shared:906||pfc: 907
+3||headroom4192||shared:906||pfc: 907
+3||headroom3144||shared:906||pfc: 907
+3||headroom2096||shared:906||pfc: 907
+3||headroom1048||shared:906||pfc: 907
+3||headroom0||shared:906||pfc: 907
+3||headroom0||shared:905||pfc: 907
+3||headroom0||shared:904||pfc: 907
+Send Resume PFC num to node id - 3|| previous port status:1
+========================= 
+Port3Status 3:1||Port Status 7:0
+[q-3]node_id:3|| get shared  buffer:904KB||PFC threshold: 907KB|| total ingress_bytes:908KB|| hdrm_bytes:0kB
+[q-7]node_id:3|| get shared  buffer:0KB||PFC threshold: 3631KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+Send PFC num:11||switch node id - 149||to node id - 20
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom0||shared:907||pfc: 908
+3||headroom0||shared:907||pfc: 908
+3||headroom0||shared:907||pfc: 908
+3||headroom0||shared:907||pfc: 908
+3||headroom0||shared:907||pfc: 908
+3||headroom0||shared:907||pfc: 908
+3||headroom0||shared:907||pfc: 908
+3||headroom0||shared:907||pfc: 908
+3||headroom1048||shared:907||pfc: 908
+3||headroom1048||shared:907||pfc: 908
+3||headroom1048||shared:907||pfc: 908
+3||headroom1048||shared:907||pfc: 908
+3||headroom1048||shared:907||pfc: 908
+Send PFC num:16||switch node id - 156||to node id - 3
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom1048||shared:907||pfc: 908
+3||headroom1048||shared:907||pfc: 908
+3||headroom1048||shared:907||pfc: 908
+3||headroom2096||shared:907||pfc: 908
+3||headroom2096||shared:907||pfc: 908
+3||headroom2096||shared:907||pfc: 908
+3||headroom2096||shared:907||pfc: 908
+3||headroom2096||shared:907||pfc: 908
+3||headroom2096||shared:907||pfc: 908
+3||headroom2096||shared:907||pfc: 908
+3||headroom2096||shared:907||pfc: 908
+3||headroom1048||shared:907||pfc: 908
+3||headroom0||shared:907||pfc: 908
+3||headroom0||shared:906||pfc: 909
+3||headroom0||shared:905||pfc: 909
+Send Resume PFC num to node id - 20|| previous port status:1
+========================= 
+Port20Status 3:1||Port Status 7:0
+[q-3]node_id:20|| get shared  buffer:905KB||PFC threshold: 909KB|| total ingress_bytes:909KB|| hdrm_bytes:0kB
+[q-7]node_id:20|| get shared  buffer:0KB||PFC threshold: 3636KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+3||headroom26200||shared:907||pfc: 907
+Send PFC num:1||switch node id - 146||to node id - 4
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom25152||shared:907||pfc: 909
+3||headroom24104||shared:907||pfc: 909
+3||headroom23056||shared:907||pfc: 909
+3||headroom22008||shared:907||pfc: 909
+3||headroom20960||shared:907||pfc: 909
+3||headroom19912||shared:907||pfc: 909
+3||headroom18864||shared:907||pfc: 909
+3||headroom17816||shared:907||pfc: 909
+3||headroom16768||shared:907||pfc: 909
+3||headroom15720||shared:907||pfc: 909
+3||headroom14672||shared:907||pfc: 909
+3||headroom13624||shared:907||pfc: 909
+3||headroom12576||shared:907||pfc: 909
+3||headroom11528||shared:907||pfc: 909
+3||headroom10480||shared:907||pfc: 909
+3||headroom9432||shared:907||pfc: 909
+3||headroom8384||shared:907||pfc: 909
+3||headroom7336||shared:907||pfc: 909
+3||headroom6288||shared:907||pfc: 909
+3||headroom5240||shared:907||pfc: 909
+3||headroom4192||shared:907||pfc: 909
+3||headroom3144||shared:907||pfc: 909
+3||headroom2096||shared:907||pfc: 909
+3||headroom1048||shared:907||pfc: 909
+3||headroom0||shared:907||pfc: 909
+3||headroom0||shared:906||pfc: 909
+Send Resume PFC num to node id - 3|| previous port status:1
+========================= 
+Port3Status 3:1||Port Status 7:0
+[q-3]node_id:3|| get shared  buffer:906KB||PFC threshold: 909KB|| total ingress_bytes:910KB|| hdrm_bytes:0kB
+[q-7]node_id:3|| get shared  buffer:0KB||PFC threshold: 3639KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+3||headroom12576||shared:872||pfc: 871
+3||headroom11528||shared:872||pfc: 872
+3||headroom10480||shared:872||pfc: 872
+3||headroom9432||shared:872||pfc: 872
+3||headroom8384||shared:872||pfc: 872
+3||headroom7336||shared:872||pfc: 872
+3||headroom6288||shared:872||pfc: 872
+3||headroom5240||shared:872||pfc: 872
+3||headroom4192||shared:872||pfc: 872
+3||headroom3144||shared:872||pfc: 872
+3||headroom2096||shared:872||pfc: 872
+3||headroom1048||shared:872||pfc: 872
+3||headroom0||shared:872||pfc: 872
+3||headroom0||shared:871||pfc: 872
+3||headroom0||shared:870||pfc: 872
+3||headroom0||shared:868||pfc: 872
+Send Resume PFC num to node id - 4|| previous port status:1
+========================= 
+Port4Status 3:1||Port Status 7:0
+[q-3]node_id:4|| get shared  buffer:868KB||PFC threshold: 872KB|| total ingress_bytes:872KB|| hdrm_bytes:0kB
+[q-7]node_id:4|| get shared  buffer:0KB||PFC threshold: 3490KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+Send PFC num:17||switch node id - 156||to node id - 3
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom25152||shared:910||pfc: 911
+3||headroom24104||shared:910||pfc: 911
+3||headroom23056||shared:910||pfc: 911
+3||headroom22008||shared:910||pfc: 911
+3||headroom20960||shared:910||pfc: 911
+3||headroom19912||shared:910||pfc: 911
+3||headroom18864||shared:910||pfc: 911
+3||headroom17816||shared:910||pfc: 911
+3||headroom16768||shared:910||pfc: 911
+3||headroom15720||shared:910||pfc: 911
+Send PFC num:2||switch node id - 146||to node id - 4
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom14672||shared:910||pfc: 911
+3||headroom13624||shared:910||pfc: 911
+Send PFC num:12||switch node id - 149||to node id - 20
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom0||shared:908||pfc: 909
+3||headroom0||shared:908||pfc: 909
+3||headroom12576||shared:910||pfc: 911
+3||headroom0||shared:908||pfc: 909
+3||headroom11528||shared:910||pfc: 911
+3||headroom0||shared:908||pfc: 909
+3||headroom0||shared:908||pfc: 909
+3||headroom10480||shared:910||pfc: 911
+3||headroom0||shared:908||pfc: 909
+3||headroom9432||shared:910||pfc: 911
+3||headroom0||shared:908||pfc: 909
+3||headroom8384||shared:910||pfc: 911
+3||headroom1048||shared:908||pfc: 909
+3||headroom7336||shared:910||pfc: 911
+3||headroom1048||shared:908||pfc: 909
+3||headroom1048||shared:908||pfc: 909
+3||headroom6288||shared:910||pfc: 911
+3||headroom1048||shared:908||pfc: 909
+3||headroom5240||shared:910||pfc: 911
+3||headroom1048||shared:908||pfc: 909
+3||headroom1048||shared:908||pfc: 909
+3||headroom1048||shared:908||pfc: 909
+3||headroom1048||shared:908||pfc: 909
+3||headroom1048||shared:909||pfc: 909
+3||headroom1048||shared:909||pfc: 909
+3||headroom1048||shared:909||pfc: 909
+3||headroom1048||shared:909||pfc: 909
+3||headroom1048||shared:909||pfc: 909
+3||headroom1048||shared:909||pfc: 909
+3||headroom1048||shared:909||pfc: 909
+3||headroom1048||shared:909||pfc: 909
+3||headroom1048||shared:909||pfc: 909
+3||headroom0||shared:909||pfc: 909
+3||headroom0||shared:908||pfc: 909
+3||headroom0||shared:907||pfc: 910
+3||headroom0||shared:906||pfc: 910
+Send Resume PFC num to node id - 20|| previous port status:1
+========================= 
+Port20Status 3:1||Port Status 7:0
+[q-3]node_id:20|| get shared  buffer:906KB||PFC threshold: 910KB|| total ingress_bytes:910KB|| hdrm_bytes:0kB
+[q-7]node_id:20|| get shared  buffer:0KB||PFC threshold: 3640KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+3||headroom4192||shared:910||pfc: 911
+3||headroom3144||shared:910||pfc: 911
+3||headroom2096||shared:910||pfc: 911
+3||headroom1048||shared:910||pfc: 911
+3||headroom0||shared:910||pfc: 911
+3||headroom0||shared:909||pfc: 911
+3||headroom0||shared:908||pfc: 911
+3||headroom0||shared:907||pfc: 911
+Send Resume PFC num to node id - 3|| previous port status:1
+========================= 
+Port3Status 3:1||Port Status 7:0
+[q-3]node_id:3|| get shared  buffer:907KB||PFC threshold: 911KB|| total ingress_bytes:911KB|| hdrm_bytes:0kB
+[q-7]node_id:3|| get shared  buffer:0KB||PFC threshold: 3646KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+3||headroom12576||shared:872||pfc: 871
+3||headroom11528||shared:872||pfc: 871
+3||headroom10480||shared:872||pfc: 871
+3||headroom9432||shared:872||pfc: 871
+3||headroom8384||shared:872||pfc: 871
+3||headroom7336||shared:872||pfc: 871
+3||headroom6288||shared:872||pfc: 871
+3||headroom5240||shared:872||pfc: 871
+3||headroom4192||shared:872||pfc: 871
+3||headroom3144||shared:872||pfc: 871
+3||headroom2096||shared:872||pfc: 871
+3||headroom1048||shared:872||pfc: 871
+3||headroom0||shared:872||pfc: 871
+3||headroom0||shared:871||pfc: 872
+3||headroom0||shared:870||pfc: 872
+3||headroom0||shared:868||pfc: 872
+Send Resume PFC num to node id - 4|| previous port status:1
+========================= 
+Port4Status 3:1||Port Status 7:0
+[q-3]node_id:4|| get shared  buffer:868KB||PFC threshold: 872KB|| total ingress_bytes:872KB|| hdrm_bytes:0kB
+[q-7]node_id:4|| get shared  buffer:0KB||PFC threshold: 3488KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+Send PFC num:18||switch node id - 156||to node id - 3
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom24104||shared:913||pfc: 913
+3||headroom23056||shared:913||pfc: 913
+3||headroom22008||shared:913||pfc: 913
+3||headroom20960||shared:913||pfc: 913
+3||headroom19912||shared:913||pfc: 913
+3||headroom18864||shared:913||pfc: 913
+3||headroom17816||shared:913||pfc: 913
+3||headroom16768||shared:913||pfc: 913
+3||headroom15720||shared:913||pfc: 913
+3||headroom14672||shared:913||pfc: 913
+3||headroom13624||shared:913||pfc: 913
+3||headroom12576||shared:913||pfc: 913
+3||headroom11528||shared:913||pfc: 913
+3||headroom10480||shared:913||pfc: 913
+3||headroom9432||shared:913||pfc: 913
+3||headroom8384||shared:913||pfc: 913
+3||headroom7336||shared:913||pfc: 913
+3||headroom6288||shared:913||pfc: 913
+3||headroom5240||shared:913||pfc: 913
+3||headroom4192||shared:913||pfc: 913
+3||headroom3144||shared:913||pfc: 913
+3||headroom2096||shared:913||pfc: 913
+3||headroom1048||shared:913||pfc: 913
+3||headroom0||shared:913||pfc: 913
+3||headroom0||shared:911||pfc: 913
+3||headroom0||shared:910||pfc: 913
+3||headroom0||shared:909||pfc: 913
+Send Resume PFC num to node id - 3|| previous port status:1
+========================= 
+Port3Status 3:1||Port Status 7:0
+[q-3]node_id:3|| get shared  buffer:909KB||PFC threshold: 913KB|| total ingress_bytes:913KB|| hdrm_bytes:0kB
+[q-7]node_id:3|| get shared  buffer:0KB||PFC threshold: 3655KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+Send PFC num:13||switch node id - 149||to node id - 20
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom0||shared:909||pfc: 910
+3||headroom0||shared:909||pfc: 910
+3||headroom0||shared:909||pfc: 910
+3||headroom4192||shared:910||pfc: 911
+3||headroom4192||shared:910||pfc: 911
+3||headroom4192||shared:910||pfc: 911
+3||headroom4192||shared:910||pfc: 910
+3||headroom4192||shared:910||pfc: 910
+3||headroom4192||shared:910||pfc: 910
+3||headroom4192||shared:910||pfc: 910
+3||headroom5240||shared:910||pfc: 911
+3||headroom5240||shared:910||pfc: 911
+3||headroom5240||shared:910||pfc: 911
+3||headroom5240||shared:910||pfc: 911
+3||headroom5240||shared:910||pfc: 911
+3||headroom5240||shared:910||pfc: 911
+3||headroom5240||shared:910||pfc: 911
+3||headroom5240||shared:910||pfc: 911
+3||headroom6288||shared:910||pfc: 911
+3||headroom5240||shared:910||pfc: 911
+Send PFC num:19||switch node id - 156||to node id - 3
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom4192||shared:910||pfc: 911
+3||headroom3144||shared:910||pfc: 911
+3||headroom2096||shared:910||pfc: 911
+3||headroom1048||shared:910||pfc: 911
+3||headroom0||shared:910||pfc: 911
+3||headroom0||shared:909||pfc: 911
+3||headroom0||shared:908||pfc: 911
+3||headroom0||shared:907||pfc: 911
+Send Resume PFC num to node id - 20|| previous port status:1
+========================= 
+Port20Status 3:1||Port Status 7:0
+[q-3]node_id:20|| get shared  buffer:907KB||PFC threshold: 911KB|| total ingress_bytes:911KB|| hdrm_bytes:0kB
+[q-7]node_id:20|| get shared  buffer:0KB||PFC threshold: 3645KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+3||headroom20960||shared:913||pfc: 913
+3||headroom22008||shared:913||pfc: 913
+3||headroom22008||shared:913||pfc: 913
+3||headroom23056||shared:913||pfc: 913
+3||headroom22008||shared:913||pfc: 913
+3||headroom20960||shared:913||pfc: 913
+3||headroom19912||shared:913||pfc: 913
+3||headroom18864||shared:913||pfc: 913
+3||headroom17816||shared:913||pfc: 913
+3||headroom16768||shared:913||pfc: 913
+3||headroom15720||shared:913||pfc: 913
+3||headroom14672||shared:913||pfc: 913
+3||headroom13624||shared:913||pfc: 913
+3||headroom12576||shared:913||pfc: 913
+3||headroom11528||shared:913||pfc: 913
+3||headroom10480||shared:913||pfc: 913
+3||headroom9432||shared:913||pfc: 913
+3||headroom8384||shared:913||pfc: 913
+3||headroom7336||shared:913||pfc: 913
+3||headroom6288||shared:913||pfc: 913
+3||headroom5240||shared:913||pfc: 913
+3||headroom4192||shared:913||pfc: 913
+3||headroom3144||shared:913||pfc: 913
+3||headroom2096||shared:913||pfc: 913
+3||headroom1048||shared:913||pfc: 913
+3||headroom0||shared:913||pfc: 913
+3||headroom0||shared:911||pfc: 913
+Send PFC num:3||switch node id - 146||to node id - 4
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom0||shared:910||pfc: 915
+Send Resume PFC num to node id - 3|| previous port status:1
+========================= 
+Port3Status 3:1||Port Status 7:0
+[q-3]node_id:3|| get shared  buffer:910KB||PFC threshold: 915KB|| total ingress_bytes:914KB|| hdrm_bytes:0kB
+[q-7]node_id:3|| get shared  buffer:0KB||PFC threshold: 3662KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+3||headroom6288||shared:871||pfc: 870
+3||headroom5240||shared:871||pfc: 871
+3||headroom4192||shared:871||pfc: 871
+3||headroom3144||shared:871||pfc: 871
+3||headroom2096||shared:871||pfc: 871
+3||headroom1048||shared:871||pfc: 871
+3||headroom0||shared:871||pfc: 871
+3||headroom0||shared:870||pfc: 871
+3||headroom0||shared:868||pfc: 871
+3||headroom0||shared:867||pfc: 871
+Send Resume PFC num to node id - 4|| previous port status:1
+========================= 
+Port4Status 3:1||Port Status 7:0
+[q-3]node_id:4|| get shared  buffer:867KB||PFC threshold: 871KB|| total ingress_bytes:871KB|| hdrm_bytes:0kB
+[q-7]node_id:4|| get shared  buffer:0KB||PFC threshold: 3486KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+Send PFC num:20||switch node id - 156||to node id - 3
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom3144||shared:915||pfc: 915
+3||headroom3144||shared:915||pfc: 915
+3||headroom4192||shared:915||pfc: 915
+3||headroom4192||shared:915||pfc: 915
+3||headroom4192||shared:915||pfc: 915
+3||headroom4192||shared:915||pfc: 915
+Send PFC num:14||switch node id - 149||to node id - 20
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom0||shared:910||pfc: 911
+3||headroom0||shared:910||pfc: 911
+3||headroom5240||shared:915||pfc: 915
+3||headroom0||shared:910||pfc: 911
+3||headroom5240||shared:915||pfc: 915
+3||headroom0||shared:910||pfc: 911
+3||headroom5240||shared:915||pfc: 915
+3||headroom0||shared:910||pfc: 911
+3||headroom5240||shared:915||pfc: 915
+3||headroom0||shared:910||pfc: 911
+3||headroom0||shared:910||pfc: 911
+3||headroom6288||shared:915||pfc: 915
+3||headroom0||shared:910||pfc: 911
+3||headroom6288||shared:915||pfc: 915
+3||headroom6288||shared:915||pfc: 915
+3||headroom0||shared:911||pfc: 911
+3||headroom6288||shared:915||pfc: 915
+3||headroom0||shared:911||pfc: 911
+3||headroom0||shared:911||pfc: 911
+3||headroom7336||shared:915||pfc: 915
+3||headroom0||shared:911||pfc: 911
+3||headroom0||shared:911||pfc: 911
+3||headroom0||shared:911||pfc: 911
+3||headroom0||shared:911||pfc: 911
+3||headroom0||shared:911||pfc: 911
+3||headroom1048||shared:911||pfc: 911
+3||headroom1048||shared:911||pfc: 911
+3||headroom1048||shared:911||pfc: 911
+3||headroom1048||shared:911||pfc: 911
+3||headroom1048||shared:911||pfc: 911
+3||headroom1048||shared:911||pfc: 911
+3||headroom1048||shared:911||pfc: 911
+3||headroom1048||shared:911||pfc: 911
+3||headroom0||shared:911||pfc: 912
+3||headroom0||shared:910||pfc: 912
+3||headroom0||shared:909||pfc: 912
+3||headroom0||shared:908||pfc: 912
+Send Resume PFC num to node id - 20|| previous port status:1
+========================= 
+Port20Status 3:1||Port Status 7:0
+[q-3]node_id:20|| get shared  buffer:908KB||PFC threshold: 912KB|| total ingress_bytes:912KB|| hdrm_bytes:0kB
+[q-7]node_id:20|| get shared  buffer:0KB||PFC threshold: 3648KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+3||headroom10480||shared:915||pfc: 914
+3||headroom9432||shared:915||pfc: 914
+3||headroom8384||shared:915||pfc: 914
+3||headroom7336||shared:915||pfc: 914
+3||headroom6288||shared:915||pfc: 914
+3||headroom5240||shared:915||pfc: 914
+3||headroom4192||shared:915||pfc: 914
+3||headroom3144||shared:915||pfc: 914
+3||headroom2096||shared:915||pfc: 914
+3||headroom1048||shared:915||pfc: 914
+3||headroom0||shared:915||pfc: 914
+3||headroom0||shared:914||pfc: 914
+3||headroom0||shared:913||pfc: 915
+3||headroom0||shared:911||pfc: 915
+Send Resume PFC num to node id - 3|| previous port status:1
+========================= 
+Port3Status 3:1||Port Status 7:0
+[q-3]node_id:3|| get shared  buffer:911KB||PFC threshold: 915KB|| total ingress_bytes:915KB|| hdrm_bytes:0kB
+[q-7]node_id:3|| get shared  buffer:0KB||PFC threshold: 3660KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+Send PFC num:21||switch node id - 156||to node id - 3
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom0||shared:915||pfc: 915
+3||headroom0||shared:915||pfc: 915
+3||headroom0||shared:915||pfc: 915
+3||headroom0||shared:915||pfc: 915
+3||headroom1048||shared:915||pfc: 915
+3||headroom1048||shared:915||pfc: 915
+3||headroom1048||shared:915||pfc: 915
+3||headroom1048||shared:915||pfc: 915
+3||headroom2096||shared:915||pfc: 915
+3||headroom2096||shared:915||pfc: 915
+3||headroom2096||shared:915||pfc: 915
+3||headroom2096||shared:915||pfc: 915
+3||headroom3144||shared:915||pfc: 915
+3||headroom3144||shared:915||pfc: 915
+3||headroom3144||shared:915||pfc: 915
+3||headroom3144||shared:915||pfc: 915
+3||headroom4192||shared:915||pfc: 915
+3||headroom4192||shared:915||pfc: 915
+3||headroom4192||shared:915||pfc: 915
+3||headroom4192||shared:915||pfc: 915
+3||headroom5240||shared:915||pfc: 915
+3||headroom4192||shared:915||pfc: 915
+3||headroom3144||shared:915||pfc: 915
+3||headroom2096||shared:915||pfc: 915
+3||headroom1048||shared:915||pfc: 915
+3||headroom0||shared:915||pfc: 915
+3||headroom0||shared:914||pfc: 915
+3||headroom0||shared:913||pfc: 916
+Send Resume PFC num to node id - 3|| previous port status:1
+========================= 
+Port3Status 3:1||Port Status 7:0
+[q-3]node_id:3|| get shared  buffer:913KB||PFC threshold: 916KB|| total ingress_bytes:917KB|| hdrm_bytes:0kB
+[q-7]node_id:3|| get shared  buffer:0KB||PFC threshold: 3664KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+Send PFC num:22||switch node id - 156||to node id - 3
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom12576||shared:916||pfc: 916
+3||headroom13624||shared:916||pfc: 916
+3||headroom13624||shared:916||pfc: 916
+3||headroom13624||shared:916||pfc: 916
+3||headroom13624||shared:916||pfc: 916
+3||headroom14672||shared:916||pfc: 916
+3||headroom14672||shared:916||pfc: 916
+3||headroom14672||shared:916||pfc: 916
+3||headroom14672||shared:916||pfc: 916
+3||headroom15720||shared:916||pfc: 916
+3||headroom14672||shared:916||pfc: 916
+3||headroom13624||shared:916||pfc: 916
+3||headroom12576||shared:916||pfc: 916
+3||headroom11528||shared:916||pfc: 916
+3||headroom10480||shared:916||pfc: 916
+3||headroom9432||shared:916||pfc: 916
+3||headroom8384||shared:916||pfc: 916
+3||headroom7336||shared:916||pfc: 916
+3||headroom6288||shared:916||pfc: 916
+3||headroom5240||shared:916||pfc: 916
+3||headroom4192||shared:916||pfc: 916
+3||headroom3144||shared:916||pfc: 916
+3||headroom2096||shared:916||pfc: 916
+3||headroom1048||shared:916||pfc: 916
+3||headroom0||shared:916||pfc: 916
+3||headroom0||shared:915||pfc: 916
+3||headroom0||shared:914||pfc: 916
+3||headroom0||shared:913||pfc: 916
+Send Resume PFC num to node id - 3|| previous port status:1
+========================= 
+Port3Status 3:1||Port Status 7:0
+[q-3]node_id:3|| get shared  buffer:913KB||PFC threshold: 916KB|| total ingress_bytes:917KB|| hdrm_bytes:0kB
+[q-7]node_id:3|| get shared  buffer:0KB||PFC threshold: 3666KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+Send PFC num:15||switch node id - 149||to node id - 20
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom0||shared:911||pfc: 912
+3||headroom0||shared:911||pfc: 912
+3||headroom0||shared:911||pfc: 912
+3||headroom0||shared:911||pfc: 912
+3||headroom0||shared:911||pfc: 912
+3||headroom0||shared:911||pfc: 912
+3||headroom0||shared:911||pfc: 912
+3||headroom0||shared:911||pfc: 912
+3||headroom0||shared:911||pfc: 912
+3||headroom0||shared:911||pfc: 912
+3||headroom0||shared:911||pfc: 912
+3||headroom0||shared:911||pfc: 912
+3||headroom0||shared:911||pfc: 912
+3||headroom0||shared:911||pfc: 912
+3||headroom0||shared:911||pfc: 912
+3||headroom0||shared:911||pfc: 912
+3||headroom1048||shared:911||pfc: 912
+3||headroom1048||shared:911||pfc: 912
+3||headroom1048||shared:911||pfc: 912
+3||headroom1048||shared:911||pfc: 912
+3||headroom1048||shared:911||pfc: 912
+3||headroom1048||shared:911||pfc: 912
+3||headroom1048||shared:911||pfc: 912
+3||headroom1048||shared:911||pfc: 912
+3||headroom1048||shared:911||pfc: 912
+3||headroom0||shared:911||pfc: 912
+3||headroom0||shared:910||pfc: 912
+3||headroom0||shared:909||pfc: 912
+3||headroom0||shared:908||pfc: 912
+Send Resume PFC num to node id - 20|| previous port status:1
+========================= 
+Port20Status 3:1||Port Status 7:0
+[q-3]node_id:20|| get shared  buffer:908KB||PFC threshold: 912KB|| total ingress_bytes:912KB|| hdrm_bytes:0kB
+[q-7]node_id:20|| get shared  buffer:0KB||PFC threshold: 3650KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+Send PFC num:23||switch node id - 156||to node id - 3
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom5240||shared:916||pfc: 915
+3||headroom5240||shared:916||pfc: 915
+3||headroom5240||shared:916||pfc: 915
+3||headroom5240||shared:916||pfc: 915
+3||headroom6288||shared:916||pfc: 915
+3||headroom6288||shared:916||pfc: 915
+3||headroom6288||shared:916||pfc: 915
+3||headroom6288||shared:916||pfc: 915
+3||headroom7336||shared:916||pfc: 915
+3||headroom7336||shared:916||pfc: 915
+3||headroom7336||shared:916||pfc: 915
+3||headroom7336||shared:916||pfc: 915
+3||headroom8384||shared:916||pfc: 915
+3||headroom8384||shared:916||pfc: 915
+3||headroom8384||shared:916||pfc: 915
+3||headroom8384||shared:916||pfc: 915
+3||headroom8384||shared:916||pfc: 915
+3||headroom7336||shared:916||pfc: 915
+3||headroom6288||shared:916||pfc: 915
+3||headroom5240||shared:916||pfc: 915
+3||headroom4192||shared:916||pfc: 915
+3||headroom3144||shared:916||pfc: 915
+3||headroom2096||shared:916||pfc: 915
+3||headroom1048||shared:916||pfc: 915
+3||headroom0||shared:916||pfc: 915
+3||headroom0||shared:915||pfc: 915
+3||headroom0||shared:914||pfc: 915
+3||headroom0||shared:913||pfc: 916
+Send Resume PFC num to node id - 3|| previous port status:1
+========================= 
+Port3Status 3:1||Port Status 7:0
+[q-3]node_id:3|| get shared  buffer:913KB||PFC threshold: 916KB|| total ingress_bytes:917KB|| hdrm_bytes:0kB
+[q-7]node_id:3|| get shared  buffer:0KB||PFC threshold: 3664KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+Send PFC num:24||switch node id - 156||to node id - 3
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom0||shared:916||pfc: 916
+3||headroom0||shared:916||pfc: 916
+3||headroom0||shared:916||pfc: 916
+3||headroom0||shared:916||pfc: 916
+3||headroom1048||shared:916||pfc: 916
+3||headroom1048||shared:916||pfc: 916
+3||headroom1048||shared:916||pfc: 916
+3||headroom1048||shared:916||pfc: 916
+3||headroom2096||shared:916||pfc: 916
+3||headroom2096||shared:916||pfc: 916
+3||headroom2096||shared:916||pfc: 916
+3||headroom2096||shared:916||pfc: 916
+3||headroom3144||shared:916||pfc: 916
+3||headroom3144||shared:916||pfc: 916
+3||headroom3144||shared:916||pfc: 916
+3||headroom3144||shared:916||pfc: 916
+3||headroom4192||shared:916||pfc: 916
+3||headroom4192||shared:916||pfc: 916
+3||headroom4192||shared:916||pfc: 916
+3||headroom4192||shared:916||pfc: 916
+3||headroom5240||shared:916||pfc: 916
+3||headroom4192||shared:916||pfc: 916
+3||headroom3144||shared:916||pfc: 916
+3||headroom2096||shared:916||pfc: 916
+3||headroom1048||shared:916||pfc: 916
+3||headroom0||shared:916||pfc: 916
+3||headroom0||shared:915||pfc: 916
+3||headroom0||shared:914||pfc: 916
+3||headroom0||shared:913||pfc: 916
+Send Resume PFC num to node id - 3|| previous port status:1
+========================= 
+Port3Status 3:1||Port Status 7:0
+[q-3]node_id:3|| get shared  buffer:913KB||PFC threshold: 916KB|| total ingress_bytes:917KB|| hdrm_bytes:0kB
+[q-7]node_id:3|| get shared  buffer:0KB||PFC threshold: 3667KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+Send PFC num:25||switch node id - 156||to node id - 3
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom0||shared:917||pfc: 917
+3||headroom0||shared:917||pfc: 917
+3||headroom1048||shared:917||pfc: 917
+3||headroom1048||shared:917||pfc: 917
+3||headroom1048||shared:917||pfc: 917
+3||headroom1048||shared:917||pfc: 917
+3||headroom2096||shared:917||pfc: 917
+3||headroom2096||shared:917||pfc: 917
+3||headroom2096||shared:917||pfc: 917
+3||headroom2096||shared:917||pfc: 917
+3||headroom3144||shared:917||pfc: 917
+3||headroom3144||shared:917||pfc: 917
+3||headroom3144||shared:917||pfc: 917
+3||headroom3144||shared:917||pfc: 917
+3||headroom4192||shared:917||pfc: 917
+3||headroom4192||shared:917||pfc: 917
+3||headroom4192||shared:917||pfc: 917
+3||headroom4192||shared:917||pfc: 917
+3||headroom5240||shared:917||pfc: 917
+3||headroom5240||shared:917||pfc: 917
+3||headroom5240||shared:917||pfc: 917
+3||headroom4192||shared:917||pfc: 917
+3||headroom3144||shared:917||pfc: 917
+3||headroom2096||shared:917||pfc: 917
+3||headroom1048||shared:917||pfc: 917
+3||headroom0||shared:917||pfc: 917
+3||headroom0||shared:916||pfc: 917
+3||headroom0||shared:915||pfc: 917
+3||headroom0||shared:914||pfc: 917
+Send Resume PFC num to node id - 3|| previous port status:1
+========================= 
+Port3Status 3:1||Port Status 7:0
+[q-3]node_id:3|| get shared  buffer:914KB||PFC threshold: 917KB|| total ingress_bytes:918KB|| hdrm_bytes:0kB
+[q-7]node_id:3|| get shared  buffer:0KB||PFC threshold: 3669KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+Send PFC num:26||switch node id - 156||to node id - 3
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom0||shared:917||pfc: 917
+3||headroom0||shared:917||pfc: 917
+3||headroom0||shared:917||pfc: 917
+3||headroom0||shared:917||pfc: 917
+3||headroom1048||shared:917||pfc: 917
+3||headroom1048||shared:917||pfc: 917
+3||headroom1048||shared:917||pfc: 917
+3||headroom1048||shared:917||pfc: 917
+3||headroom2096||shared:917||pfc: 917
+3||headroom2096||shared:917||pfc: 917
+3||headroom2096||shared:917||pfc: 917
+3||headroom2096||shared:917||pfc: 917
+3||headroom3144||shared:917||pfc: 917
+3||headroom3144||shared:917||pfc: 917
+3||headroom3144||shared:917||pfc: 917
+3||headroom3144||shared:917||pfc: 917
+3||headroom4192||shared:917||pfc: 917
+3||headroom4192||shared:917||pfc: 917
+3||headroom4192||shared:917||pfc: 917
+3||headroom4192||shared:917||pfc: 917
+3||headroom5240||shared:917||pfc: 917
+3||headroom4192||shared:917||pfc: 917
+3||headroom3144||shared:917||pfc: 918
+3||headroom2096||shared:917||pfc: 918
+3||headroom1048||shared:917||pfc: 918
+3||headroom0||shared:917||pfc: 917
+3||headroom0||shared:916||pfc: 918
+3||headroom0||shared:915||pfc: 918
+Send Resume PFC num to node id - 3|| previous port status:1
+========================= 
+Port3Status 3:1||Port Status 7:0
+[q-3]node_id:3|| get shared  buffer:915KB||PFC threshold: 918KB|| total ingress_bytes:919KB|| hdrm_bytes:0kB
+[q-7]node_id:3|| get shared  buffer:0KB||PFC threshold: 3672KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+Send PFC num:16||switch node id - 149||to node id - 20
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom0||shared:913||pfc: 913
+3||headroom0||shared:913||pfc: 913
+3||headroom0||shared:913||pfc: 913
+3||headroom0||shared:913||pfc: 913
+3||headroom0||shared:913||pfc: 913
+3||headroom0||shared:913||pfc: 913
+3||headroom0||shared:913||pfc: 913
+3||headroom0||shared:913||pfc: 913
+3||headroom0||shared:913||pfc: 913
+3||headroom0||shared:913||pfc: 913
+3||headroom0||shared:913||pfc: 913
+3||headroom0||shared:913||pfc: 913
+3||headroom0||shared:913||pfc: 913
+3||headroom0||shared:913||pfc: 913
+3||headroom0||shared:913||pfc: 913
+3||headroom1048||shared:913||pfc: 913
+3||headroom1048||shared:913||pfc: 913
+3||headroom1048||shared:913||pfc: 913
+3||headroom1048||shared:913||pfc: 913
+3||headroom1048||shared:913||pfc: 913
+3||headroom1048||shared:913||pfc: 913
+3||headroom1048||shared:913||pfc: 913
+3||headroom1048||shared:913||pfc: 913
+3||headroom1048||shared:913||pfc: 913
+3||headroom1048||shared:913||pfc: 913
+3||headroom0||shared:913||pfc: 913
+3||headroom0||shared:911||pfc: 913
+3||headroom0||shared:910||pfc: 913
+3||headroom0||shared:909||pfc: 913
+Send Resume PFC num to node id - 20|| previous port status:1
+========================= 
+Port20Status 3:1||Port Status 7:0
+[q-3]node_id:20|| get shared  buffer:909KB||PFC threshold: 913KB|| total ingress_bytes:913KB|| hdrm_bytes:0kB
+[q-7]node_id:20|| get shared  buffer:0KB||PFC threshold: 3654KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+Send PFC num:27||switch node id - 156||to node id - 3
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom10480||shared:917||pfc: 917
+3||headroom10480||shared:917||pfc: 917
+3||headroom11528||shared:917||pfc: 917
+3||headroom11528||shared:917||pfc: 917
+3||headroom11528||shared:917||pfc: 917
+3||headroom11528||shared:917||pfc: 917
+3||headroom12576||shared:917||pfc: 917
+3||headroom12576||shared:917||pfc: 917
+3||headroom12576||shared:917||pfc: 917
+3||headroom16768||shared:917||pfc: 917
+3||headroom15720||shared:917||pfc: 917
+3||headroom14672||shared:917||pfc: 917
+3||headroom13624||shared:917||pfc: 917
+3||headroom12576||shared:917||pfc: 917
+3||headroom11528||shared:917||pfc: 917
+3||headroom10480||shared:917||pfc: 917
+3||headroom9432||shared:917||pfc: 917
+3||headroom8384||shared:917||pfc: 917
+3||headroom7336||shared:917||pfc: 917
+3||headroom6288||shared:917||pfc: 917
+3||headroom5240||shared:917||pfc: 917
+3||headroom4192||shared:917||pfc: 917
+3||headroom3144||shared:917||pfc: 917
+3||headroom2096||shared:917||pfc: 917
+3||headroom1048||shared:917||pfc: 917
+3||headroom0||shared:917||pfc: 917
+3||headroom0||shared:916||pfc: 917
+3||headroom0||shared:915||pfc: 917
+3||headroom0||shared:914||pfc: 917
+Send Resume PFC num to node id - 3|| previous port status:1
+========================= 
+Port3Status 3:1||Port Status 7:0
+[q-3]node_id:3|| get shared  buffer:914KB||PFC threshold: 917KB|| total ingress_bytes:918KB|| hdrm_bytes:0kB
+[q-7]node_id:3|| get shared  buffer:0KB||PFC threshold: 3671KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+Send PFC num:28||switch node id - 156||to node id - 3
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom16768||shared:918||pfc: 918
+3||headroom16768||shared:918||pfc: 918
+3||headroom16768||shared:918||pfc: 918
+3||headroom17816||shared:918||pfc: 918
+3||headroom17816||shared:918||pfc: 918
+3||headroom17816||shared:918||pfc: 918
+3||headroom17816||shared:918||pfc: 918
+3||headroom17816||shared:918||pfc: 918
+3||headroom16768||shared:918||pfc: 918
+3||headroom15720||shared:918||pfc: 918
+3||headroom14672||shared:918||pfc: 918
+3||headroom13624||shared:918||pfc: 918
+3||headroom12576||shared:918||pfc: 918
+3||headroom11528||shared:918||pfc: 918
+3||headroom10480||shared:918||pfc: 918
+3||headroom9432||shared:918||pfc: 918
+3||headroom8384||shared:918||pfc: 918
+3||headroom7336||shared:918||pfc: 918
+3||headroom6288||shared:918||pfc: 919
+3||headroom5240||shared:918||pfc: 919
+3||headroom4192||shared:918||pfc: 918
+3||headroom3144||shared:918||pfc: 918
+3||headroom2096||shared:918||pfc: 919
+3||headroom1048||shared:918||pfc: 919
+3||headroom0||shared:918||pfc: 919
+3||headroom0||shared:917||pfc: 919
+3||headroom0||shared:916||pfc: 919
+Send Resume PFC num to node id - 3|| previous port status:1
+========================= 
+Port3Status 3:1||Port Status 7:0
+[q-3]node_id:3|| get shared  buffer:916KB||PFC threshold: 919KB|| total ingress_bytes:920KB|| hdrm_bytes:0kB
+[q-7]node_id:3|| get shared  buffer:0KB||PFC threshold: 3676KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+Send PFC num:29||switch node id - 156||to node id - 3
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom6288||shared:920||pfc: 920
+3||headroom6288||shared:920||pfc: 920
+3||headroom7336||shared:920||pfc: 920
+3||headroom7336||shared:920||pfc: 920
+3||headroom7336||shared:920||pfc: 920
+3||headroom7336||shared:920||pfc: 920
+3||headroom8384||shared:920||pfc: 920
+3||headroom8384||shared:920||pfc: 920
+3||headroom8384||shared:920||pfc: 920
+3||headroom8384||shared:920||pfc: 920
+3||headroom9432||shared:920||pfc: 920
+3||headroom9432||shared:920||pfc: 920
+3||headroom9432||shared:920||pfc: 920
+3||headroom9432||shared:920||pfc: 920
+3||headroom10480||shared:920||pfc: 920
+3||headroom9432||shared:920||pfc: 920
+3||headroom8384||shared:920||pfc: 920
+3||headroom7336||shared:920||pfc: 920
+3||headroom6288||shared:920||pfc: 920
+3||headroom5240||shared:920||pfc: 920
+3||headroom4192||shared:920||pfc: 920
+3||headroom3144||shared:920||pfc: 920
+3||headroom2096||shared:920||pfc: 920
+3||headroom1048||shared:920||pfc: 920
+3||headroom0||shared:920||pfc: 920
+3||headroom0||shared:919||pfc: 920
+3||headroom0||shared:918||pfc: 920
+3||headroom0||shared:917||pfc: 920
+Send Resume PFC num to node id - 3|| previous port status:1
+========================= 
+Port3Status 3:1||Port Status 7:0
+[q-3]node_id:3|| get shared  buffer:917KB||PFC threshold: 920KB|| total ingress_bytes:921KB|| hdrm_bytes:0kB
+[q-7]node_id:3|| get shared  buffer:0KB||PFC threshold: 3683KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+Send PFC num:30||switch node id - 156||to node id - 3
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom4192||shared:921||pfc: 922
+3||headroom4192||shared:921||pfc: 922
+3||headroom4192||shared:921||pfc: 922
+3||headroom5240||shared:921||pfc: 922
+3||headroom5240||shared:921||pfc: 922
+3||headroom5240||shared:921||pfc: 922
+3||headroom5240||shared:921||pfc: 922
+3||headroom6288||shared:921||pfc: 922
+3||headroom6288||shared:921||pfc: 922
+3||headroom6288||shared:921||pfc: 922
+3||headroom6288||shared:921||pfc: 922
+3||headroom7336||shared:921||pfc: 922
+3||headroom7336||shared:921||pfc: 922
+3||headroom7336||shared:921||pfc: 922
+3||headroom7336||shared:921||pfc: 922
+3||headroom8384||shared:921||pfc: 922
+3||headroom8384||shared:921||pfc: 922
+3||headroom8384||shared:921||pfc: 922
+3||headroom7336||shared:921||pfc: 922
+3||headroom6288||shared:921||pfc: 922
+3||headroom5240||shared:921||pfc: 922
+3||headroom4192||shared:921||pfc: 922
+3||headroom3144||shared:921||pfc: 922
+3||headroom2096||shared:921||pfc: 922
+3||headroom1048||shared:921||pfc: 922
+3||headroom0||shared:921||pfc: 922
+Send PFC num:17||switch node id - 149||to node id - 20
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom0||shared:913||pfc: 914
+3||headroom0||shared:913||pfc: 914
+3||headroom0||shared:920||pfc: 922
+3||headroom0||shared:913||pfc: 914
+3||headroom0||shared:919||pfc: 922
+Send Resume PFC num to node id - 3|| previous port status:1
+========================= 
+Port3Status 3:1||Port Status 7:0
+[q-3]node_id:3|| get shared  buffer:919KB||PFC threshold: 922KB|| total ingress_bytes:923KB|| hdrm_bytes:0kB
+[q-7]node_id:3|| get shared  buffer:0KB||PFC threshold: 3689KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+3||headroom0||shared:913||pfc: 914
+3||headroom0||shared:914||pfc: 914
+3||headroom0||shared:914||pfc: 914
+3||headroom0||shared:914||pfc: 914
+3||headroom0||shared:914||pfc: 914
+3||headroom0||shared:914||pfc: 914
+3||headroom0||shared:914||pfc: 914
+3||headroom0||shared:914||pfc: 914
+3||headroom0||shared:914||pfc: 914
+3||headroom0||shared:914||pfc: 914
+3||headroom0||shared:914||pfc: 914
+3||headroom0||shared:914||pfc: 914
+3||headroom0||shared:914||pfc: 914
+3||headroom0||shared:914||pfc: 914
+3||headroom0||shared:914||pfc: 914
+3||headroom0||shared:914||pfc: 914
+3||headroom0||shared:914||pfc: 914
+3||headroom0||shared:914||pfc: 914
+3||headroom0||shared:914||pfc: 914
+3||headroom0||shared:914||pfc: 914
+3||headroom0||shared:914||pfc: 914
+3||headroom0||shared:914||pfc: 914
+3||headroom0||shared:913||pfc: 914
+3||headroom0||shared:911||pfc: 914
+3||headroom0||shared:910||pfc: 914
+Send Resume PFC num to node id - 20|| previous port status:1
+========================= 
+Port20Status 3:1||Port Status 7:0
+[q-3]node_id:20|| get shared  buffer:910KB||PFC threshold: 914KB|| total ingress_bytes:914KB|| hdrm_bytes:0kB
+[q-7]node_id:20|| get shared  buffer:0KB||PFC threshold: 3656KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+Send PFC num:31||switch node id - 156||to node id - 3
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom3144||shared:921||pfc: 922
+3||headroom3144||shared:921||pfc: 922
+3||headroom3144||shared:921||pfc: 922
+3||headroom4192||shared:921||pfc: 922
+3||headroom4192||shared:921||pfc: 922
+3||headroom4192||shared:921||pfc: 922
+3||headroom4192||shared:921||pfc: 922
+3||headroom5240||shared:921||pfc: 922
+3||headroom5240||shared:921||pfc: 922
+3||headroom5240||shared:921||pfc: 922
+3||headroom5240||shared:921||pfc: 922
+3||headroom6288||shared:921||pfc: 922
+3||headroom6288||shared:921||pfc: 922
+3||headroom6288||shared:921||pfc: 922
+3||headroom6288||shared:921||pfc: 922
+3||headroom7336||shared:921||pfc: 922
+3||headroom7336||shared:921||pfc: 922
+3||headroom7336||shared:921||pfc: 922
+3||headroom7336||shared:921||pfc: 922
+3||headroom6288||shared:921||pfc: 922
+3||headroom5240||shared:921||pfc: 923
+3||headroom4192||shared:921||pfc: 923
+3||headroom3144||shared:921||pfc: 923
+3||headroom2096||shared:921||pfc: 923
+3||headroom1048||shared:921||pfc: 923
+3||headroom0||shared:921||pfc: 923
+3||headroom0||shared:920||pfc: 923
+Send Resume PFC num to node id - 3|| previous port status:1
+========================= 
+Port3Status 3:1||Port Status 7:0
+[q-3]node_id:3|| get shared  buffer:920KB||PFC threshold: 923KB|| total ingress_bytes:924KB|| hdrm_bytes:0kB
+[q-7]node_id:3|| get shared  buffer:0KB||PFC threshold: 3694KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+Send PFC num:32||switch node id - 156||to node id - 3
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom15720||shared:924||pfc: 924
+3||headroom15720||shared:924||pfc: 924
+3||headroom15720||shared:924||pfc: 924
+3||headroom15720||shared:924||pfc: 924
+3||headroom16768||shared:924||pfc: 924
+3||headroom16768||shared:924||pfc: 924
+3||headroom16768||shared:924||pfc: 924
+3||headroom16768||shared:924||pfc: 924
+3||headroom16768||shared:924||pfc: 924
+3||headroom15720||shared:924||pfc: 924
+3||headroom14672||shared:924||pfc: 924
+3||headroom13624||shared:924||pfc: 924
+3||headroom12576||shared:924||pfc: 925
+3||headroom11528||shared:924||pfc: 924
+3||headroom10480||shared:924||pfc: 924
+3||headroom9432||shared:924||pfc: 924
+3||headroom8384||shared:924||pfc: 925
+3||headroom7336||shared:924||pfc: 925
+3||headroom6288||shared:924||pfc: 925
+3||headroom5240||shared:924||pfc: 925
+3||headroom4192||shared:924||pfc: 925
+3||headroom3144||shared:924||pfc: 925
+3||headroom2096||shared:924||pfc: 925
+3||headroom1048||shared:924||pfc: 925
+3||headroom0||shared:924||pfc: 925
+3||headroom0||shared:923||pfc: 925
+3||headroom0||shared:922||pfc: 925
+3||headroom0||shared:921||pfc: 925
+Send Resume PFC num to node id - 3|| previous port status:1
+========================= 
+Port3Status 3:1||Port Status 7:0
+[q-3]node_id:3|| get shared  buffer:921KB||PFC threshold: 925KB|| total ingress_bytes:925KB|| hdrm_bytes:0kB
+[q-7]node_id:3|| get shared  buffer:0KB||PFC threshold: 3701KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+Send PFC num:33||switch node id - 156||to node id - 3
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom0||shared:925||pfc: 926
+3||headroom0||shared:925||pfc: 926
+3||headroom0||shared:925||pfc: 926
+3||headroom0||shared:925||pfc: 926
+3||headroom1048||shared:925||pfc: 926
+3||headroom1048||shared:925||pfc: 926
+3||headroom1048||shared:925||pfc: 926
+3||headroom1048||shared:925||pfc: 926
+3||headroom2096||shared:925||pfc: 926
+3||headroom2096||shared:925||pfc: 926
+3||headroom2096||shared:925||pfc: 926
+3||headroom2096||shared:925||pfc: 926
+3||headroom3144||shared:925||pfc: 926
+3||headroom3144||shared:925||pfc: 926
+3||headroom3144||shared:925||pfc: 926
+3||headroom3144||shared:925||pfc: 926
+3||headroom4192||shared:925||pfc: 926
+3||headroom4192||shared:925||pfc: 926
+3||headroom4192||shared:925||pfc: 926
+3||headroom4192||shared:925||pfc: 926
+3||headroom5240||shared:925||pfc: 926
+3||headroom4192||shared:925||pfc: 926
+3||headroom3144||shared:925||pfc: 926
+3||headroom2096||shared:925||pfc: 926
+3||headroom1048||shared:925||pfc: 926
+3||headroom0||shared:925||pfc: 926
+3||headroom0||shared:924||pfc: 926
+3||headroom0||shared:923||pfc: 926
+Send Resume PFC num to node id - 3|| previous port status:1
+========================= 
+Port3Status 3:1||Port Status 7:0
+[q-3]node_id:3|| get shared  buffer:923KB||PFC threshold: 926KB|| total ingress_bytes:927KB|| hdrm_bytes:0kB
+[q-7]node_id:3|| get shared  buffer:0KB||PFC threshold: 3705KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+Send PFC num:34||switch node id - 156||to node id - 3
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom4192||shared:927||pfc: 927
+3||headroom4192||shared:927||pfc: 927
+3||headroom5240||shared:927||pfc: 927
+3||headroom5240||shared:927||pfc: 927
+3||headroom5240||shared:927||pfc: 927
+3||headroom5240||shared:927||pfc: 927
+3||headroom6288||shared:927||pfc: 927
+3||headroom6288||shared:927||pfc: 927
+3||headroom6288||shared:927||pfc: 927
+3||headroom6288||shared:927||pfc: 927
+3||headroom7336||shared:927||pfc: 927
+3||headroom7336||shared:927||pfc: 927
+3||headroom7336||shared:927||pfc: 927
+3||headroom7336||shared:927||pfc: 927
+3||headroom8384||shared:927||pfc: 927
+3||headroom8384||shared:927||pfc: 927
+3||headroom8384||shared:927||pfc: 927
+3||headroom7336||shared:927||pfc: 927
+3||headroom6288||shared:927||pfc: 927
+3||headroom5240||shared:927||pfc: 927
+3||headroom4192||shared:927||pfc: 927
+3||headroom3144||shared:927||pfc: 927
+3||headroom2096||shared:927||pfc: 927
+3||headroom1048||shared:927||pfc: 927
+3||headroom0||shared:927||pfc: 927
+3||headroom0||shared:926||pfc: 927
+3||headroom0||shared:925||pfc: 927
+3||headroom0||shared:924||pfc: 927
+Send Resume PFC num to node id - 3|| previous port status:1
+========================= 
+Port3Status 3:1||Port Status 7:0
+[q-3]node_id:3|| get shared  buffer:924KB||PFC threshold: 927KB|| total ingress_bytes:928KB|| hdrm_bytes:0kB
+[q-7]node_id:3|| get shared  buffer:0KB||PFC threshold: 3710KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+Send PFC num:35||switch node id - 156||to node id - 3
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom7336||shared:928||pfc: 928
+3||headroom8384||shared:928||pfc: 928
+3||headroom8384||shared:928||pfc: 928
+3||headroom8384||shared:928||pfc: 928
+3||headroom8384||shared:928||pfc: 928
+3||headroom9432||shared:928||pfc: 928
+3||headroom9432||shared:928||pfc: 928
+3||headroom9432||shared:928||pfc: 928
+3||headroom9432||shared:928||pfc: 928
+3||headroom10480||shared:928||pfc: 928
+3||headroom10480||shared:928||pfc: 928
+3||headroom10480||shared:928||pfc: 928
+3||headroom10480||shared:928||pfc: 928
+3||headroom11528||shared:928||pfc: 928
+3||headroom11528||shared:928||pfc: 928
+3||headroom10480||shared:928||pfc: 928
+3||headroom9432||shared:928||pfc: 928
+3||headroom8384||shared:928||pfc: 928
+3||headroom7336||shared:928||pfc: 928
+3||headroom6288||shared:928||pfc: 928
+3||headroom5240||shared:928||pfc: 928
+3||headroom4192||shared:928||pfc: 928
+3||headroom3144||shared:928||pfc: 928
+3||headroom2096||shared:928||pfc: 928
+3||headroom1048||shared:928||pfc: 928
+3||headroom0||shared:928||pfc: 929
+3||headroom0||shared:927||pfc: 929
+3||headroom0||shared:926||pfc: 929
+3||headroom0||shared:925||pfc: 929
+Send Resume PFC num to node id - 3|| previous port status:1
+========================= 
+Port3Status 3:1||Port Status 7:0
+[q-3]node_id:3|| get shared  buffer:925KB||PFC threshold: 929KB|| total ingress_bytes:929KB|| hdrm_bytes:0kB
+[q-7]node_id:3|| get shared  buffer:0KB||PFC threshold: 3716KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+Send PFC num:18||switch node id - 149||to node id - 20
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom0||shared:914||pfc: 914
+3||headroom0||shared:914||pfc: 914
+3||headroom0||shared:914||pfc: 914
+3||headroom0||shared:914||pfc: 914
+3||headroom0||shared:914||pfc: 914
+3||headroom0||shared:914||pfc: 914
+3||headroom0||shared:914||pfc: 914
+3||headroom0||shared:914||pfc: 914
+3||headroom0||shared:914||pfc: 914
+3||headroom0||shared:914||pfc: 914
+3||headroom0||shared:914||pfc: 914
+3||headroom0||shared:914||pfc: 914
+3||headroom0||shared:914||pfc: 914
+3||headroom0||shared:914||pfc: 914
+3||headroom0||shared:914||pfc: 914
+3||headroom0||shared:914||pfc: 914
+3||headroom0||shared:914||pfc: 914
+3||headroom0||shared:914||pfc: 914
+3||headroom0||shared:914||pfc: 914
+3||headroom0||shared:914||pfc: 914
+3||headroom0||shared:914||pfc: 914
+3||headroom0||shared:914||pfc: 914
+3||headroom0||shared:914||pfc: 914
+3||headroom0||shared:914||pfc: 914
+3||headroom0||shared:914||pfc: 914
+3||headroom0||shared:914||pfc: 914
+3||headroom0||shared:913||pfc: 914
+3||headroom0||shared:911||pfc: 915
+Send Resume PFC num to node id - 20|| previous port status:1
+========================= 
+Port20Status 3:1||Port Status 7:0
+[q-3]node_id:20|| get shared  buffer:911KB||PFC threshold: 915KB|| total ingress_bytes:915KB|| hdrm_bytes:0kB
+[q-7]node_id:20|| get shared  buffer:0KB||PFC threshold: 3660KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+Send PFC num:36||switch node id - 156||to node id - 3
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom6288||shared:928||pfc: 928
+3||headroom6288||shared:928||pfc: 928
+3||headroom6288||shared:928||pfc: 928
+3||headroom6288||shared:928||pfc: 928
+3||headroom7336||shared:928||pfc: 928
+3||headroom7336||shared:928||pfc: 928
+3||headroom7336||shared:928||pfc: 928
+3||headroom7336||shared:928||pfc: 928
+3||headroom8384||shared:928||pfc: 928
+3||headroom8384||shared:928||pfc: 928
+3||headroom8384||shared:928||pfc: 928
+3||headroom8384||shared:928||pfc: 928
+3||headroom9432||shared:928||pfc: 928
+3||headroom9432||shared:928||pfc: 928
+3||headroom9432||shared:928||pfc: 928
+3||headroom9432||shared:928||pfc: 928
+3||headroom9432||shared:928||pfc: 929
+3||headroom8384||shared:928||pfc: 929
+3||headroom7336||shared:928||pfc: 929
+3||headroom6288||shared:928||pfc: 928
+3||headroom5240||shared:928||pfc: 929
+3||headroom4192||shared:928||pfc: 929
+3||headroom3144||shared:928||pfc: 929
+3||headroom2096||shared:928||pfc: 929
+3||headroom1048||shared:928||pfc: 929
+3||headroom0||shared:928||pfc: 929
+3||headroom0||shared:927||pfc: 929
+3||headroom0||shared:926||pfc: 929
+Send Resume PFC num to node id - 3|| previous port status:1
+========================= 
+Port3Status 3:1||Port Status 7:0
+[q-3]node_id:3|| get shared  buffer:926KB||PFC threshold: 929KB|| total ingress_bytes:930KB|| hdrm_bytes:0kB
+[q-7]node_id:3|| get shared  buffer:0KB||PFC threshold: 3718KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+Send PFC num:37||switch node id - 156||to node id - 3
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom3144||shared:930||pfc: 930
+3||headroom3144||shared:930||pfc: 930
+3||headroom3144||shared:930||pfc: 930
+3||headroom4192||shared:930||pfc: 930
+3||headroom4192||shared:930||pfc: 930
+3||headroom4192||shared:930||pfc: 930
+3||headroom4192||shared:930||pfc: 930
+3||headroom5240||shared:930||pfc: 930
+3||headroom5240||shared:930||pfc: 930
+3||headroom5240||shared:930||pfc: 930
+3||headroom5240||shared:930||pfc: 930
+3||headroom6288||shared:930||pfc: 930
+3||headroom6288||shared:930||pfc: 930
+3||headroom6288||shared:930||pfc: 930
+3||headroom6288||shared:930||pfc: 930
+3||headroom7336||shared:930||pfc: 930
+3||headroom7336||shared:930||pfc: 930
+3||headroom7336||shared:930||pfc: 930
+3||headroom6288||shared:930||pfc: 930
+3||headroom5240||shared:930||pfc: 930
+3||headroom4192||shared:930||pfc: 930
+3||headroom3144||shared:930||pfc: 930
+3||headroom2096||shared:930||pfc: 930
+3||headroom1048||shared:930||pfc: 930
+3||headroom0||shared:930||pfc: 930
+3||headroom0||shared:929||pfc: 930
+3||headroom0||shared:928||pfc: 930
+3||headroom0||shared:927||pfc: 930
+Send Resume PFC num to node id - 3|| previous port status:1
+========================= 
+Port3Status 3:1||Port Status 7:0
+[q-3]node_id:3|| get shared  buffer:927KB||PFC threshold: 930KB|| total ingress_bytes:931KB|| hdrm_bytes:0kB
+[q-7]node_id:3|| get shared  buffer:0KB||PFC threshold: 3723KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+Send PFC num:38||switch node id - 156||to node id - 3
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom0||shared:931||pfc: 931
+3||headroom0||shared:931||pfc: 931
+3||headroom0||shared:931||pfc: 931
+3||headroom0||shared:931||pfc: 931
+3||headroom1048||shared:931||pfc: 931
+3||headroom1048||shared:931||pfc: 931
+3||headroom1048||shared:931||pfc: 931
+3||headroom1048||shared:931||pfc: 931
+3||headroom2096||shared:931||pfc: 931
+3||headroom2096||shared:931||pfc: 931
+3||headroom2096||shared:931||pfc: 931
+3||headroom2096||shared:931||pfc: 931
+3||headroom3144||shared:931||pfc: 931
+3||headroom3144||shared:931||pfc: 931
+3||headroom3144||shared:931||pfc: 931
+3||headroom3144||shared:931||pfc: 931
+3||headroom4192||shared:931||pfc: 931
+3||headroom4192||shared:931||pfc: 931
+3||headroom4192||shared:931||pfc: 931
+3||headroom4192||shared:931||pfc: 931
+3||headroom5240||shared:931||pfc: 931
+3||headroom4192||shared:931||pfc: 931
+3||headroom3144||shared:931||pfc: 931
+3||headroom2096||shared:931||pfc: 931
+3||headroom1048||shared:931||pfc: 931
+3||headroom0||shared:931||pfc: 931
+3||headroom0||shared:930||pfc: 931
+3||headroom0||shared:929||pfc: 932
+3||headroom0||shared:928||pfc: 932
+Send Resume PFC num to node id - 3|| previous port status:1
+========================= 
+Port3Status 3:1||Port Status 7:0
+[q-3]node_id:3|| get shared  buffer:928KB||PFC threshold: 932KB|| total ingress_bytes:932KB|| hdrm_bytes:0kB
+[q-7]node_id:3|| get shared  buffer:0KB||PFC threshold: 3728KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+Send PFC num:39||switch node id - 156||to node id - 3
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom0||shared:932||pfc: 932
+3||headroom0||shared:932||pfc: 932
+3||headroom0||shared:932||pfc: 932
+3||headroom0||shared:932||pfc: 932
+3||headroom0||shared:932||pfc: 932
+3||headroom0||shared:932||pfc: 932
+3||headroom0||shared:932||pfc: 932
+3||headroom0||shared:932||pfc: 932
+3||headroom1048||shared:932||pfc: 932
+3||headroom1048||shared:932||pfc: 932
+3||headroom1048||shared:932||pfc: 932
+3||headroom1048||shared:932||pfc: 932
+3||headroom1048||shared:932||pfc: 932
+3||headroom1048||shared:932||pfc: 932
+3||headroom1048||shared:932||pfc: 932
+3||headroom2096||shared:932||pfc: 932
+3||headroom2096||shared:932||pfc: 932
+3||headroom2096||shared:932||pfc: 932
+3||headroom2096||shared:932||pfc: 932
+3||headroom2096||shared:932||pfc: 932
+3||headroom2096||shared:932||pfc: 932
+3||headroom2096||shared:932||pfc: 932
+3||headroom2096||shared:932||pfc: 932
+3||headroom2096||shared:932||pfc: 932
+3||headroom1048||shared:932||pfc: 932
+3||headroom0||shared:932||pfc: 932
+3||headroom0||shared:931||pfc: 932
+3||headroom0||shared:930||pfc: 932
+3||headroom0||shared:929||pfc: 932
+Send Resume PFC num to node id - 3|| previous port status:1
+========================= 
+Port3Status 3:1||Port Status 7:0
+[q-3]node_id:3|| get shared  buffer:929KB||PFC threshold: 932KB|| total ingress_bytes:933KB|| hdrm_bytes:0kB
+[q-7]node_id:3|| get shared  buffer:0KB||PFC threshold: 3731KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+Send PFC num:40||switch node id - 156||to node id - 3
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom0||shared:932||pfc: 933
+3||headroom0||shared:932||pfc: 933
+3||headroom0||shared:932||pfc: 933
+3||headroom0||shared:932||pfc: 933
+3||headroom0||shared:932||pfc: 933
+3||headroom0||shared:932||pfc: 933
+3||headroom0||shared:932||pfc: 933
+3||headroom0||shared:932||pfc: 933
+3||headroom1048||shared:932||pfc: 933
+3||headroom1048||shared:932||pfc: 933
+3||headroom1048||shared:932||pfc: 933
+3||headroom1048||shared:932||pfc: 933
+3||headroom1048||shared:932||pfc: 933
+3||headroom1048||shared:932||pfc: 933
+3||headroom1048||shared:932||pfc: 933
+3||headroom1048||shared:932||pfc: 933
+3||headroom2096||shared:932||pfc: 933
+3||headroom2096||shared:932||pfc: 933
+3||headroom2096||shared:932||pfc: 933
+3||headroom2096||shared:932||pfc: 933
+3||headroom2096||shared:932||pfc: 933
+3||headroom2096||shared:932||pfc: 933
+3||headroom2096||shared:932||pfc: 933
+3||headroom2096||shared:932||pfc: 933
+3||headroom1048||shared:932||pfc: 933
+3||headroom0||shared:932||pfc: 933
+3||headroom0||shared:931||pfc: 933
+3||headroom0||shared:930||pfc: 933
+3||headroom0||shared:929||pfc: 933
+Send Resume PFC num to node id - 3|| previous port status:1
+========================= 
+Port3Status 3:1||Port Status 7:0
+[q-3]node_id:3|| get shared  buffer:929KB||PFC threshold: 933KB|| total ingress_bytes:933KB|| hdrm_bytes:0kB
+[q-7]node_id:3|| get shared  buffer:0KB||PFC threshold: 3733KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+Send PFC num:41||switch node id - 156||to node id - 3
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom3144||shared:933||pfc: 933
+3||headroom3144||shared:933||pfc: 933
+3||headroom3144||shared:933||pfc: 933
+3||headroom3144||shared:933||pfc: 933
+3||headroom3144||shared:933||pfc: 933
+3||headroom3144||shared:933||pfc: 933
+3||headroom4192||shared:933||pfc: 933
+3||headroom4192||shared:933||pfc: 933
+3||headroom4192||shared:933||pfc: 933
+3||headroom4192||shared:933||pfc: 933
+3||headroom4192||shared:933||pfc: 933
+3||headroom4192||shared:933||pfc: 933
+3||headroom4192||shared:933||pfc: 933
+3||headroom4192||shared:933||pfc: 933
+3||headroom5240||shared:933||pfc: 933
+3||headroom5240||shared:933||pfc: 933
+3||headroom5240||shared:933||pfc: 933
+3||headroom5240||shared:933||pfc: 933
+3||headroom5240||shared:933||pfc: 933
+3||headroom5240||shared:933||pfc: 933
+3||headroom4192||shared:933||pfc: 933
+3||headroom3144||shared:933||pfc: 933
+3||headroom2096||shared:933||pfc: 933
+3||headroom1048||shared:933||pfc: 933
+3||headroom0||shared:933||pfc: 933
+3||headroom0||shared:932||pfc: 933
+3||headroom0||shared:931||pfc: 933
+3||headroom0||shared:930||pfc: 933
+Send Resume PFC num to node id - 3|| previous port status:1
+========================= 
+Port3Status 3:1||Port Status 7:0
+[q-3]node_id:3|| get shared  buffer:930KB||PFC threshold: 933KB|| total ingress_bytes:934KB|| hdrm_bytes:0kB
+[q-7]node_id:3|| get shared  buffer:0KB||PFC threshold: 3734KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+Send PFC num:42||switch node id - 156||to node id - 3
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom0||shared:933||pfc: 933
+3||headroom0||shared:933||pfc: 933
+3||headroom0||shared:933||pfc: 933
+3||headroom0||shared:933||pfc: 933
+Send PFC num:19||switch node id - 149||to node id - 20
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom0||shared:915||pfc: 915
+3||headroom0||shared:933||pfc: 933
+3||headroom0||shared:915||pfc: 915
+3||headroom0||shared:933||pfc: 933
+3||headroom0||shared:915||pfc: 915
+3||headroom0||shared:933||pfc: 933
+3||headroom0||shared:915||pfc: 915
+3||headroom0||shared:933||pfc: 933
+3||headroom0||shared:915||pfc: 915
+3||headroom0||shared:915||pfc: 915
+3||headroom0||shared:915||pfc: 915
+3||headroom0||shared:915||pfc: 915
+3||headroom0||shared:915||pfc: 915
+3||headroom0||shared:915||pfc: 915
+3||headroom0||shared:915||pfc: 915
+3||headroom6288||shared:933||pfc: 933
+3||headroom0||shared:915||pfc: 915
+3||headroom6288||shared:933||pfc: 933
+3||headroom0||shared:915||pfc: 915
+3||headroom0||shared:915||pfc: 915
+3||headroom0||shared:915||pfc: 915
+3||headroom0||shared:915||pfc: 915
+3||headroom0||shared:915||pfc: 915
+3||headroom0||shared:915||pfc: 915
+3||headroom0||shared:915||pfc: 915
+3||headroom0||shared:915||pfc: 915
+3||headroom0||shared:915||pfc: 915
+3||headroom0||shared:915||pfc: 915
+3||headroom0||shared:915||pfc: 915
+3||headroom0||shared:915||pfc: 915
+3||headroom0||shared:915||pfc: 915
+3||headroom0||shared:915||pfc: 915
+3||headroom0||shared:914||pfc: 915
+3||headroom0||shared:913||pfc: 915
+3||headroom0||shared:911||pfc: 915
+Send Resume PFC num to node id - 20|| previous port status:1
+========================= 
+Port20Status 3:1||Port Status 7:0
+[q-3]node_id:20|| get shared  buffer:911KB||PFC threshold: 915KB|| total ingress_bytes:915KB|| hdrm_bytes:0kB
+[q-7]node_id:20|| get shared  buffer:0KB||PFC threshold: 3661KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+3||headroom15720||shared:933||pfc: 933
+3||headroom14672||shared:933||pfc: 933
+3||headroom13624||shared:933||pfc: 933
+3||headroom12576||shared:933||pfc: 933
+3||headroom11528||shared:933||pfc: 933
+3||headroom10480||shared:933||pfc: 933
+3||headroom9432||shared:933||pfc: 933
+3||headroom8384||shared:933||pfc: 933
+3||headroom7336||shared:933||pfc: 933
+3||headroom6288||shared:933||pfc: 933
+3||headroom5240||shared:933||pfc: 933
+3||headroom4192||shared:933||pfc: 933
+3||headroom3144||shared:933||pfc: 933
+3||headroom2096||shared:933||pfc: 933
+3||headroom1048||shared:933||pfc: 933
+3||headroom0||shared:933||pfc: 933
+3||headroom0||shared:932||pfc: 933
+3||headroom0||shared:931||pfc: 933
+3||headroom0||shared:930||pfc: 933
+Send Resume PFC num to node id - 3|| previous port status:1
+========================= 
+Port3Status 3:1||Port Status 7:0
+[q-3]node_id:3|| get shared  buffer:930KB||PFC threshold: 933KB|| total ingress_bytes:934KB|| hdrm_bytes:0kB
+[q-7]node_id:3|| get shared  buffer:0KB||PFC threshold: 3735KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+Send PFC num:43||switch node id - 156||to node id - 3
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom1048||shared:933||pfc: 934
+3||headroom1048||shared:933||pfc: 934
+3||headroom1048||shared:933||pfc: 934
+3||headroom1048||shared:933||pfc: 934
+3||headroom1048||shared:933||pfc: 934
+3||headroom1048||shared:933||pfc: 934
+3||headroom1048||shared:933||pfc: 934
+3||headroom1048||shared:933||pfc: 934
+3||headroom2096||shared:933||pfc: 934
+3||headroom2096||shared:933||pfc: 934
+3||headroom2096||shared:933||pfc: 934
+3||headroom2096||shared:933||pfc: 934
+3||headroom2096||shared:933||pfc: 934
+3||headroom2096||shared:933||pfc: 934
+3||headroom2096||shared:933||pfc: 934
+3||headroom2096||shared:933||pfc: 934
+3||headroom3144||shared:933||pfc: 934
+3||headroom3144||shared:933||pfc: 934
+3||headroom3144||shared:933||pfc: 934
+3||headroom3144||shared:933||pfc: 934
+3||headroom3144||shared:933||pfc: 934
+3||headroom3144||shared:933||pfc: 934
+3||headroom3144||shared:933||pfc: 934
+3||headroom2096||shared:933||pfc: 934
+3||headroom1048||shared:933||pfc: 934
+3||headroom0||shared:933||pfc: 934
+3||headroom0||shared:932||pfc: 934
+3||headroom0||shared:931||pfc: 934
+3||headroom0||shared:930||pfc: 934
+Send Resume PFC num to node id - 3|| previous port status:1
+========================= 
+Port3Status 3:1||Port Status 7:0
+[q-3]node_id:3|| get shared  buffer:930KB||PFC threshold: 934KB|| total ingress_bytes:934KB|| hdrm_bytes:0kB
+[q-7]node_id:3|| get shared  buffer:0KB||PFC threshold: 3736KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+Send PFC num:44||switch node id - 156||to node id - 3
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom0||shared:934||pfc: 934
+3||headroom0||shared:934||pfc: 934
+3||headroom0||shared:934||pfc: 934
+3||headroom0||shared:934||pfc: 934
+3||headroom0||shared:934||pfc: 934
+3||headroom0||shared:934||pfc: 934
+3||headroom0||shared:934||pfc: 934
+3||headroom0||shared:934||pfc: 934
+3||headroom1048||shared:934||pfc: 934
+3||headroom1048||shared:934||pfc: 934
+3||headroom1048||shared:934||pfc: 934
+3||headroom1048||shared:934||pfc: 934
+3||headroom5240||shared:934||pfc: 935
+3||headroom5240||shared:934||pfc: 935
+3||headroom5240||shared:934||pfc: 935
+3||headroom5240||shared:934||pfc: 935
+3||headroom6288||shared:934||pfc: 935
+3||headroom6288||shared:934||pfc: 935
+3||headroom6288||shared:934||pfc: 935
+3||headroom6288||shared:934||pfc: 935
+3||headroom5240||shared:934||pfc: 935
+3||headroom4192||shared:934||pfc: 935
+3||headroom3144||shared:934||pfc: 935
+3||headroom2096||shared:934||pfc: 935
+3||headroom1048||shared:934||pfc: 935
+3||headroom0||shared:934||pfc: 935
+3||headroom0||shared:933||pfc: 935
+3||headroom0||shared:932||pfc: 935
+3||headroom0||shared:931||pfc: 935
+Send Resume PFC num to node id - 3|| previous port status:1
+========================= 
+Port3Status 3:1||Port Status 7:0
+[q-3]node_id:3|| get shared  buffer:931KB||PFC threshold: 935KB|| total ingress_bytes:935KB|| hdrm_bytes:0kB
+[q-7]node_id:3|| get shared  buffer:0KB||PFC threshold: 3741KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+Send PFC num:45||switch node id - 156||to node id - 3
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom0||shared:935||pfc: 936
+3||headroom0||shared:935||pfc: 936
+3||headroom0||shared:935||pfc: 936
+3||headroom0||shared:935||pfc: 936
+3||headroom0||shared:935||pfc: 936
+3||headroom0||shared:935||pfc: 936
+3||headroom0||shared:935||pfc: 936
+3||headroom0||shared:935||pfc: 936
+3||headroom1048||shared:935||pfc: 936
+3||headroom1048||shared:935||pfc: 936
+3||headroom1048||shared:935||pfc: 936
+3||headroom1048||shared:935||pfc: 936
+3||headroom1048||shared:935||pfc: 936
+3||headroom1048||shared:935||pfc: 936
+3||headroom1048||shared:935||pfc: 936
+3||headroom1048||shared:935||pfc: 936
+3||headroom2096||shared:935||pfc: 936
+3||headroom2096||shared:935||pfc: 936
+3||headroom2096||shared:935||pfc: 936
+3||headroom2096||shared:935||pfc: 936
+3||headroom2096||shared:935||pfc: 936
+3||headroom2096||shared:935||pfc: 936
+3||headroom2096||shared:935||pfc: 936
+3||headroom2096||shared:935||pfc: 936
+3||headroom1048||shared:935||pfc: 936
+3||headroom0||shared:935||pfc: 936
+3||headroom0||shared:934||pfc: 936
+3||headroom0||shared:933||pfc: 936
+3||headroom0||shared:932||pfc: 936
+Send Resume PFC num to node id - 3|| previous port status:1
+========================= 
+Port3Status 3:1||Port Status 7:0
+[q-3]node_id:3|| get shared  buffer:932KB||PFC threshold: 936KB|| total ingress_bytes:936KB|| hdrm_bytes:0kB
+[q-7]node_id:3|| get shared  buffer:0KB||PFC threshold: 3745KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+Send PFC num:46||switch node id - 156||to node id - 3
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom0||shared:936||pfc: 937
+3||headroom0||shared:936||pfc: 937
+3||headroom0||shared:936||pfc: 937
+3||headroom0||shared:936||pfc: 937
+3||headroom0||shared:936||pfc: 937
+3||headroom0||shared:936||pfc: 937
+3||headroom0||shared:936||pfc: 937
+3||headroom0||shared:936||pfc: 937
+3||headroom1048||shared:936||pfc: 937
+3||headroom1048||shared:936||pfc: 937
+3||headroom1048||shared:936||pfc: 937
+3||headroom1048||shared:936||pfc: 937
+3||headroom1048||shared:936||pfc: 937
+3||headroom1048||shared:936||pfc: 937
+3||headroom1048||shared:936||pfc: 937
+3||headroom1048||shared:936||pfc: 937
+3||headroom2096||shared:936||pfc: 937
+3||headroom2096||shared:936||pfc: 937
+3||headroom2096||shared:936||pfc: 937
+3||headroom2096||shared:936||pfc: 937
+3||headroom2096||shared:936||pfc: 937
+3||headroom2096||shared:936||pfc: 937
+3||headroom2096||shared:936||pfc: 937
+3||headroom2096||shared:936||pfc: 937
+3||headroom1048||shared:936||pfc: 937
+3||headroom0||shared:936||pfc: 937
+3||headroom0||shared:935||pfc: 937
+3||headroom0||shared:934||pfc: 937
+3||headroom0||shared:933||pfc: 937
+Send Resume PFC num to node id - 3|| previous port status:1
+========================= 
+Port3Status 3:1||Port Status 7:0
+[q-3]node_id:3|| get shared  buffer:933KB||PFC threshold: 937KB|| total ingress_bytes:937KB|| hdrm_bytes:0kB
+[q-7]node_id:3|| get shared  buffer:0KB||PFC threshold: 3749KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+Send PFC num:47||switch node id - 156||to node id - 3
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom0||shared:937||pfc: 938
+3||headroom0||shared:937||pfc: 938
+3||headroom0||shared:937||pfc: 938
+3||headroom0||shared:937||pfc: 938
+3||headroom0||shared:937||pfc: 938
+3||headroom0||shared:937||pfc: 938
+3||headroom0||shared:937||pfc: 938
+3||headroom0||shared:937||pfc: 938
+3||headroom1048||shared:937||pfc: 938
+3||headroom1048||shared:937||pfc: 938
+3||headroom1048||shared:937||pfc: 938
+3||headroom1048||shared:937||pfc: 938
+3||headroom1048||shared:937||pfc: 938
+3||headroom1048||shared:937||pfc: 938
+3||headroom1048||shared:937||pfc: 938
+3||headroom1048||shared:937||pfc: 938
+3||headroom2096||shared:937||pfc: 938
+3||headroom2096||shared:937||pfc: 938
+3||headroom2096||shared:937||pfc: 938
+3||headroom2096||shared:937||pfc: 938
+3||headroom2096||shared:937||pfc: 938
+3||headroom2096||shared:937||pfc: 938
+3||headroom2096||shared:937||pfc: 938
+3||headroom2096||shared:937||pfc: 938
+3||headroom1048||shared:937||pfc: 938
+3||headroom0||shared:937||pfc: 938
+3||headroom0||shared:936||pfc: 938
+3||headroom0||shared:935||pfc: 938
+3||headroom0||shared:934||pfc: 938
+Send Resume PFC num to node id - 3|| previous port status:1
+========================= 
+Port3Status 3:1||Port Status 7:0
+[q-3]node_id:3|| get shared  buffer:934KB||PFC threshold: 938KB|| total ingress_bytes:938KB|| hdrm_bytes:0kB
+[q-7]node_id:3|| get shared  buffer:0KB||PFC threshold: 3753KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+Send PFC num:48||switch node id - 156||to node id - 3
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom0||shared:937||pfc: 938
+3||headroom0||shared:937||pfc: 938
+3||headroom0||shared:937||pfc: 938
+3||headroom0||shared:937||pfc: 938
+3||headroom0||shared:937||pfc: 938
+3||headroom0||shared:937||pfc: 938
+3||headroom0||shared:937||pfc: 938
+3||headroom0||shared:937||pfc: 938
+3||headroom0||shared:937||pfc: 938
+3||headroom0||shared:937||pfc: 938
+3||headroom0||shared:937||pfc: 938
+3||headroom0||shared:937||pfc: 938
+3||headroom0||shared:937||pfc: 938
+3||headroom0||shared:938||pfc: 938
+3||headroom0||shared:938||pfc: 938
+3||headroom0||shared:938||pfc: 938
+3||headroom0||shared:938||pfc: 938
+3||headroom0||shared:938||pfc: 938
+3||headroom0||shared:938||pfc: 938
+3||headroom0||shared:938||pfc: 938
+3||headroom0||shared:938||pfc: 938
+3||headroom0||shared:938||pfc: 938
+3||headroom0||shared:938||pfc: 938
+3||headroom0||shared:938||pfc: 938
+3||headroom0||shared:938||pfc: 938
+3||headroom0||shared:937||pfc: 938
+3||headroom0||shared:936||pfc: 938
+3||headroom0||shared:935||pfc: 938
+Send Resume PFC num to node id - 3|| previous port status:1
+========================= 
+Port3Status 3:1||Port Status 7:0
+[q-3]node_id:3|| get shared  buffer:935KB||PFC threshold: 938KB|| total ingress_bytes:939KB|| hdrm_bytes:0kB
+[q-7]node_id:3|| get shared  buffer:0KB||PFC threshold: 3755KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+Send PFC num:20||switch node id - 149||to node id - 20
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom0||shared:915||pfc: 915
+3||headroom0||shared:915||pfc: 915
+3||headroom0||shared:915||pfc: 915
+3||headroom0||shared:915||pfc: 915
+3||headroom0||shared:915||pfc: 915
+3||headroom0||shared:915||pfc: 915
+3||headroom0||shared:915||pfc: 915
+3||headroom0||shared:915||pfc: 915
+3||headroom0||shared:915||pfc: 915
+3||headroom0||shared:915||pfc: 915
+3||headroom0||shared:915||pfc: 915
+3||headroom0||shared:915||pfc: 915
+3||headroom0||shared:915||pfc: 915
+3||headroom0||shared:915||pfc: 915
+3||headroom0||shared:915||pfc: 915
+3||headroom0||shared:915||pfc: 915
+3||headroom0||shared:915||pfc: 915
+3||headroom0||shared:915||pfc: 915
+3||headroom0||shared:915||pfc: 915
+3||headroom0||shared:915||pfc: 915
+3||headroom0||shared:915||pfc: 915
+3||headroom0||shared:915||pfc: 915
+3||headroom0||shared:915||pfc: 915
+3||headroom0||shared:915||pfc: 915
+Send PFC num:49||switch node id - 156||to node id - 3
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom0||shared:915||pfc: 915
+3||headroom0||shared:915||pfc: 915
+3||headroom0||shared:914||pfc: 915
+3||headroom0||shared:913||pfc: 916
+Send Resume PFC num to node id - 20|| previous port status:1
+========================= 
+Port20Status 3:1||Port Status 7:0
+[q-3]node_id:20|| get shared  buffer:913KB||PFC threshold: 916KB|| total ingress_bytes:917KB|| hdrm_bytes:0kB
+[q-7]node_id:20|| get shared  buffer:0KB||PFC threshold: 3664KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+3||headroom14672||shared:938||pfc: 938
+3||headroom14672||shared:938||pfc: 938
+3||headroom14672||shared:938||pfc: 938
+3||headroom14672||shared:938||pfc: 938
+3||headroom14672||shared:938||pfc: 938
+3||headroom14672||shared:938||pfc: 938
+3||headroom14672||shared:938||pfc: 938
+3||headroom14672||shared:938||pfc: 938
+3||headroom14672||shared:938||pfc: 938
+3||headroom15720||shared:938||pfc: 938
+3||headroom14672||shared:938||pfc: 938
+3||headroom13624||shared:938||pfc: 938
+3||headroom12576||shared:938||pfc: 938
+3||headroom11528||shared:938||pfc: 938
+3||headroom10480||shared:938||pfc: 938
+3||headroom9432||shared:938||pfc: 938
+3||headroom8384||shared:938||pfc: 938
+3||headroom7336||shared:938||pfc: 938
+3||headroom6288||shared:938||pfc: 938
+3||headroom5240||shared:938||pfc: 938
+3||headroom4192||shared:938||pfc: 938
+3||headroom3144||shared:938||pfc: 938
+3||headroom2096||shared:938||pfc: 938
+3||headroom1048||shared:938||pfc: 938
+3||headroom0||shared:938||pfc: 938
+3||headroom0||shared:937||pfc: 938
+3||headroom0||shared:936||pfc: 938
+3||headroom0||shared:935||pfc: 938
+Send Resume PFC num to node id - 3|| previous port status:1
+========================= 
+Port3Status 3:1||Port Status 7:0
+[q-3]node_id:3|| get shared  buffer:935KB||PFC threshold: 938KB|| total ingress_bytes:939KB|| hdrm_bytes:0kB
+[q-7]node_id:3|| get shared  buffer:0KB||PFC threshold: 3755KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+Nodeid:35||finish send:26500||base rtt:8320||time:+2008568664.0ns
+node:35 || the num of generate pkg:26500
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:12||finish send:26500||base rtt:8320||time:+2008775334.0ns
+node:12 || the num of generate pkg:26500
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:38||finish send:26500||base rtt:8320||time:+2008884021.0ns
+node:38 || the num of generate pkg:26500
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:29||finish send:26500||base rtt:8320||time:+2008906672.0ns
+node:29 || the num of generate pkg:26500
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+[third] Simulation ended at: +1000000000000000000.0ns
+GENERIC_SIMULATION:main(): [INFO ] Done.
+9.46651
+avg: 8798.85675 μs avg: 3.9455341288204906 μs tail:3.9976234036447122 μs

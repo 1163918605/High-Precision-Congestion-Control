@@ -44,29 +44,29 @@ except ValueError:
 
 
 # 绘制折线（精确匹配参考图样式）
-ax.plot(dsh_x, dsh_y, 'o-', color="#CC2512", markersize=10,
-        linewidth=3, label='xxx',
-        markerfacecolor='white', markeredgewidth=1.5)
+ax.plot(dsh_x, dsh_y, 'o-', color="#CC2512", markersize=15,
+        linewidth=3, label='DCQCN',
+        markerfacecolor='white', markeredgewidth=4)
 
 # ax.plot(sih_x, sih_y, 'X-', color="#1B5031", markersize=10,
 #         linewidth=3, label='Non-PFC',
 #         markerfacecolor='white', markeredgewidth=1.5)
 
 # 坐标轴设置
-ax.set_xlabel('Incast Degree', fontsize=24, fontweight='bold')
-ax.set_ylabel('PFC Num', fontsize=24, fontweight='bold')
+ax.set_xlabel('Incast Degree', fontsize=28, fontweight='bold')
+ax.set_ylabel('PFC Num', fontsize=28, fontweight='bold')
 ax.set_xlim(7, 25)
 ax.set_ylim(0,600)
 
 # 刻度设置
 ax.set_xticks([8,12,16,20,24])
 ax.set_yticks([0, 100, 200, 300, 400, 500, 600])
-ax.tick_params(axis='both', which='major', labelsize=22)
+ax.tick_params(axis='both', which='major', labelsize=28)
 
 for spine in ax.spines.values():
     spine.set_visible(True)
     spine.set_color('#000000')  # 纯黑色边框
-    spine.set_linewidth(2.5)    # 加粗边框（默认1.0）
+    spine.set_linewidth(3)    # 加粗边框（默认1.0）
     
 # 网格线
 ax.grid(True, linestyle='--', linewidth=1.5, alpha=0.8, color="#918E8E")
@@ -75,7 +75,7 @@ ax.grid(True, linestyle='--', linewidth=1.5, alpha=0.8, color="#918E8E")
 legend = ax.legend(
     loc='upper left',
     frameon=False,  # 取消边框
-    fontsize=22,    # 保持大字体
+    fontsize=28,    # 保持大字体
     handlelength=1.5,  # 缩短标记线
     handleheight=1,    # 降低标记高度
     borderpad=0.5,     # 最小内边距
@@ -83,7 +83,7 @@ legend = ax.legend(
     handletextpad=0.5, # 最小标记与文本间距
     borderaxespad=0.5  # 最小图例与坐标轴间距
 )
-legend.remove() 
+# legend.remove() 
 # 设置图例框线宽
 legend.get_frame().set_linewidth(1.5)
 

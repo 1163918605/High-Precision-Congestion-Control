@@ -1,0 +1,963 @@
+Waf: Entering directory `/home/bo/High-Precision-Congestion-Control/simulation/build'
+Waf: Leaving directory `/home/bo/High-Precision-Congestion-Control/simulation/build'
+'build' finished successfully (0.302s)
+ENABLE_PFC			Yes
+ENABLE_LRFC			No
+ENABLE_BFC			No
+ENABLE_QCN			Yes
+USE_DYNAMIC_PFC_THRESHOLD	Yes
+PACKET_PAYLOAD_SIZE		1000
+TOPOLOGY_FILE			/home/bo/High-Precision-Congestion-Control/simulation/mix/demo/3node_1switch.txt
+FLOW_FILE			/home/bo/High-Precision-Congestion-Control/simulation/mix/demo/demo_flow.txt
+TRACE_FILE			/home/bo/High-Precision-Congestion-Control/simulation/mix/demo/trace.txt
+TRACE_OUTPUT_FILE		/home/bo/High-Precision-Congestion-Control/simulation/mix/demo/mix.tr
+FCT_OUTPUT_FILE		/home/bo/High-Precision-Congestion-Control/simulation/mix/demo/fct.txt
+PFC_OUTPUT_FILE				/home/bo/High-Precision-Congestion-Control/simulation/mix/demo/pfc.txt
+SIMULATOR_STOP_TIME		1e+09
+CC_MODE		10
+ALPHA_RESUME_INTERVAL		1
+RATE_DECREASE_INTERVAL		4
+CLAMP_TARGET_RATE		No
+RP_TIMER			900
+EWMA_GAIN			0.00390625
+FAST_RECOVERY_TIMES		1
+RATE_AI				50Mb/s
+RATE_HAI			100Mb/s
+MIN_RATE		100Mb/s
+DCTCP_RATE_AI				1000Mb/s
+ERROR_RATE_PER_LINK		0
+L2_CHUNK_SIZE			4000
+L2_ACK_INTERVAL			1
+L2_BACK_TO_ZERO			No
+HAS_WIN		0
+GLOBAL_T		1
+VAR_WIN		1
+FAST_REACT		1
+U_TARGET		0.95
+MI_THRESH		0
+INT_MULTI				1
+MULTI_RATE				0
+SAMPLE_FEEDBACK				0
+PINT_LOG_BASE				1.05
+PINT_PROB				1
+RATE_BOUND		1
+ACK_HIGH_PRIO		1
+LINK_DOWN				0 0 0
+ENABLE_TRACE				0
+KMAX_MAP				 400000000000 6400 200000000000 3200 100000000000 1600
+KMIN_MAP				 400000000000 1600 200000000000 800 100000000000 400
+PMAX_MAP				 400000000000 0.2 200000000000 0.2 100000000000 0.2
+BUFFER_SIZE				16
+QLEN_MON_FILE				/home/bo/High-Precision-Congestion-Control/simulation/mix/demo/qlen.txt
+QLEN_MON_START				2000000000
+QLEN_MON_END				2000900000
+PINT bits: 8 bytes: 1
+node_num: 157, switch_num: 13, link_num: 180
+flow_num: 144
+trace_num: 376
+GENERIC_SIMULATION:main(): [INFO ] Create nodes.
+GENERIC_SIMULATION:main(): [INFO ] Create channels.
+======buffer config=======
+total_buffer:16777216KB
+total_hdrm:732KB
+total_rsrv:80KB
+shared_buffer:15571KB
+n_port:20
+======buffer config=======
+total_buffer:16777216KB
+total_hdrm:732KB
+total_rsrv:80KB
+shared_buffer:15571KB
+n_port:20
+======buffer config=======
+total_buffer:16777216KB
+total_hdrm:732KB
+total_rsrv:80KB
+shared_buffer:15571KB
+n_port:20
+======buffer config=======
+total_buffer:16777216KB
+total_hdrm:732KB
+total_rsrv:80KB
+shared_buffer:15571KB
+n_port:20
+======buffer config=======
+total_buffer:16777216KB
+total_hdrm:732KB
+total_rsrv:80KB
+shared_buffer:15571KB
+n_port:20
+======buffer config=======
+total_buffer:16777216KB
+total_hdrm:732KB
+total_rsrv:80KB
+shared_buffer:15571KB
+n_port:20
+======buffer config=======
+total_buffer:16777216KB
+total_hdrm:732KB
+total_rsrv:80KB
+shared_buffer:15571KB
+n_port:20
+======buffer config=======
+total_buffer:16777216KB
+total_hdrm:732KB
+total_rsrv:80KB
+shared_buffer:15571KB
+n_port:20
+======buffer config=======
+total_buffer:16777216KB
+total_hdrm:732KB
+total_rsrv:80KB
+shared_buffer:15571KB
+n_port:20
+======buffer config=======
+total_buffer:16777216KB
+total_hdrm:329KB
+total_rsrv:36KB
+shared_buffer:16018KB
+n_port:9
+======buffer config=======
+total_buffer:16777216KB
+total_hdrm:329KB
+total_rsrv:36KB
+shared_buffer:16018KB
+n_port:9
+======buffer config=======
+total_buffer:16777216KB
+total_hdrm:329KB
+total_rsrv:36KB
+shared_buffer:16018KB
+n_port:9
+======buffer config=======
+total_buffer:16777216KB
+total_hdrm:329KB
+total_rsrv:36KB
+shared_buffer:16018KB
+n_port:9
+maxRtt=8320 maxBdp=104000
+GENERIC_SIMULATION:main(): [INFO ] Create Applications.
+Running Simulation.
+GENERIC_SIMULATION:main(): [INFO ] Run Simulation.
+Send PFC num:1||switch node id - 144||to node id - 18
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom2100||shared:834||pfc: 835
+3||headroom2100||shared:835||pfc: 835
+3||headroom3150||shared:835||pfc: 836
+3||headroom3150||shared:835||pfc: 835
+3||headroom3150||shared:835||pfc: 836
+3||headroom2100||shared:835||pfc: 836
+3||headroom4200||shared:835||pfc: 836
+3||headroom6300||shared:835||pfc: 836
+3||headroom5250||shared:835||pfc: 836
+3||headroom6240||shared:835||pfc: 836
+3||headroom6240||shared:835||pfc: 836
+3||headroom5190||shared:835||pfc: 836
+3||headroom8340||shared:835||pfc: 836
+3||headroom7290||shared:836||pfc: 836
+3||headroom10440||shared:836||pfc: 837
+3||headroom9390||shared:836||pfc: 837
+3||headroom8340||shared:836||pfc: 837
+3||headroom7290||shared:836||pfc: 837
+3||headroom6240||shared:836||pfc: 838
+3||headroom5190||shared:836||pfc: 838
+3||headroom4140||shared:836||pfc: 838
+3||headroom3090||shared:836||pfc: 838
+3||headroom2040||shared:836||pfc: 838
+3||headroom990||shared:836||pfc: 838
+3||headroom0||shared:836||pfc: 838
+3||headroom0||shared:835||pfc: 838
+3||headroom0||shared:834||pfc: 838
+Send Resume PFC num to node id - 18|| previous port status:1
+========================= 
+Port18Status 3:1||Port Status 7:0
+[q-3]node_id:18|| get shared  buffer:834KB||PFC threshold: 838KB|| total ingress_bytes:838KB|| hdrm_bytes:0kB
+[q-7]node_id:18|| get shared  buffer:0KB||PFC threshold: 3355KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+Send PFC num:2||switch node id - 144||to node id - 18
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom1050||shared:842||pfc: 843
+3||headroom3150||shared:842||pfc: 843
+3||headroom3150||shared:842||pfc: 843
+3||headroom3150||shared:843||pfc: 844
+3||headroom2100||shared:843||pfc: 844
+3||headroom3150||shared:843||pfc: 844
+3||headroom2100||shared:843||pfc: 844
+3||headroom4200||shared:843||pfc: 844
+3||headroom4200||shared:843||pfc: 844
+3||headroom4200||shared:843||pfc: 844
+3||headroom4200||shared:843||pfc: 844
+3||headroom6300||shared:843||pfc: 844
+3||headroom9450||shared:845||pfc: 845
+3||headroom9450||shared:845||pfc: 845
+3||headroom9450||shared:845||pfc: 845
+3||headroom8400||shared:845||pfc: 845
+3||headroom7350||shared:845||pfc: 845
+3||headroom6300||shared:845||pfc: 845
+3||headroom5250||shared:845||pfc: 846
+3||headroom4200||shared:845||pfc: 846
+3||headroom3150||shared:845||pfc: 846
+3||headroom2100||shared:845||pfc: 846
+3||headroom1050||shared:845||pfc: 846
+3||headroom0||shared:845||pfc: 846
+3||headroom0||shared:843||pfc: 846
+3||headroom0||shared:842||pfc: 846
+Send Resume PFC num to node id - 18|| previous port status:1
+========================= 
+Port18Status 3:1||Port Status 7:0
+[q-3]node_id:18|| get shared  buffer:842KB||PFC threshold: 846KB|| total ingress_bytes:846KB|| hdrm_bytes:0kB
+[q-7]node_id:18|| get shared  buffer:0KB||PFC threshold: 3386KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+Send PFC num:3||switch node id - 144||to node id - 18
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom0||shared:850||pfc: 851
+3||headroom0||shared:850||pfc: 851
+3||headroom0||shared:851||pfc: 851
+3||headroom0||shared:851||pfc: 851
+3||headroom1050||shared:851||pfc: 851
+3||headroom4200||shared:851||pfc: 851
+3||headroom4200||shared:851||pfc: 851
+3||headroom7350||shared:851||pfc: 852
+3||headroom7350||shared:852||pfc: 852
+3||headroom6300||shared:852||pfc: 852
+3||headroom7350||shared:852||pfc: 852
+3||headroom6300||shared:852||pfc: 852
+3||headroom8400||shared:852||pfc: 852
+3||headroom9450||shared:852||pfc: 852
+3||headroom9450||shared:852||pfc: 852
+3||headroom8400||shared:852||pfc: 852
+3||headroom7350||shared:852||pfc: 852
+3||headroom6300||shared:852||pfc: 853
+3||headroom5250||shared:852||pfc: 853
+3||headroom4200||shared:852||pfc: 853
+3||headroom3150||shared:852||pfc: 853
+3||headroom2100||shared:852||pfc: 853
+3||headroom1050||shared:852||pfc: 853
+3||headroom0||shared:852||pfc: 853
+3||headroom0||shared:851||pfc: 854
+Send Resume PFC num to node id - 18|| previous port status:1
+========================= 
+Port18Status 3:1||Port Status 7:0
+[q-3]node_id:18|| get shared  buffer:851KB||PFC threshold: 854KB|| total ingress_bytes:855KB|| hdrm_bytes:0kB
+[q-7]node_id:18|| get shared  buffer:0KB||PFC threshold: 3416KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+Send PFC num:4||switch node id - 144||to node id - 18
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom1050||shared:858||pfc: 858
+3||headroom0||shared:858||pfc: 858
+3||headroom0||shared:858||pfc: 858
+3||headroom2100||shared:858||pfc: 859
+3||headroom2100||shared:859||pfc: 859
+3||headroom2100||shared:859||pfc: 859
+3||headroom2100||shared:859||pfc: 859
+3||headroom3150||shared:859||pfc: 859
+3||headroom3150||shared:859||pfc: 859
+3||headroom2100||shared:859||pfc: 859
+3||headroom2100||shared:859||pfc: 859
+3||headroom2100||shared:859||pfc: 859
+3||headroom4200||shared:859||pfc: 859
+3||headroom4200||shared:859||pfc: 860
+3||headroom4200||shared:859||pfc: 860
+3||headroom6300||shared:859||pfc: 860
+3||headroom6300||shared:859||pfc: 860
+3||headroom6300||shared:859||pfc: 860
+3||headroom7350||shared:859||pfc: 860
+3||headroom6300||shared:859||pfc: 860
+3||headroom5250||shared:859||pfc: 860
+3||headroom4200||shared:859||pfc: 860
+3||headroom3150||shared:859||pfc: 860
+3||headroom2100||shared:859||pfc: 860
+3||headroom1050||shared:859||pfc: 861
+3||headroom0||shared:859||pfc: 861
+3||headroom0||shared:858||pfc: 861
+3||headroom0||shared:857||pfc: 861
+Send Resume PFC num to node id - 18|| previous port status:1
+========================= 
+Port18Status 3:1||Port Status 7:0
+[q-3]node_id:18|| get shared  buffer:857KB||PFC threshold: 861KB|| total ingress_bytes:861KB|| hdrm_bytes:0kB
+[q-7]node_id:18|| get shared  buffer:0KB||PFC threshold: 3446KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+Send PFC num:5||switch node id - 144||to node id - 18
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom0||shared:866||pfc: 866
+3||headroom1050||shared:866||pfc: 867
+3||headroom0||shared:866||pfc: 867
+3||headroom1050||shared:866||pfc: 867
+3||headroom3150||shared:866||pfc: 867
+3||headroom2100||shared:866||pfc: 867
+3||headroom3150||shared:866||pfc: 867
+3||headroom2100||shared:866||pfc: 867
+3||headroom3150||shared:867||pfc: 867
+3||headroom3150||shared:867||pfc: 867
+3||headroom6300||shared:867||pfc: 868
+3||headroom6300||shared:867||pfc: 868
+3||headroom6300||shared:867||pfc: 868
+3||headroom7350||shared:867||pfc: 868
+3||headroom7350||shared:867||pfc: 868
+3||headroom7350||shared:867||pfc: 868
+3||headroom7350||shared:867||pfc: 868
+3||headroom7350||shared:867||pfc: 868
+3||headroom6300||shared:867||pfc: 868
+3||headroom5250||shared:867||pfc: 869
+3||headroom4200||shared:867||pfc: 869
+3||headroom3150||shared:867||pfc: 869
+3||headroom2100||shared:867||pfc: 869
+3||headroom1050||shared:867||pfc: 869
+3||headroom0||shared:867||pfc: 870
+3||headroom0||shared:866||pfc: 870
+Send Resume PFC num to node id - 18|| previous port status:1
+========================= 
+Port18Status 3:1||Port Status 7:0
+[q-3]node_id:18|| get shared  buffer:866KB||PFC threshold: 870KB|| total ingress_bytes:870KB|| hdrm_bytes:0kB
+[q-7]node_id:18|| get shared  buffer:0KB||PFC threshold: 3480KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+Send PFC num:6||switch node id - 144||to node id - 18
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom1050||shared:874||pfc: 875
+3||headroom0||shared:875||pfc: 875
+3||headroom2100||shared:875||pfc: 876
+3||headroom3090||shared:875||pfc: 876
+3||headroom2040||shared:875||pfc: 876
+3||headroom3090||shared:875||pfc: 876
+3||headroom3090||shared:875||pfc: 876
+3||headroom4140||shared:875||pfc: 876
+3||headroom4140||shared:875||pfc: 876
+3||headroom6240||shared:875||pfc: 876
+3||headroom5190||shared:875||pfc: 876
+3||headroom6240||shared:876||pfc: 876
+3||headroom6240||shared:876||pfc: 877
+3||headroom6240||shared:876||pfc: 877
+3||headroom7290||shared:876||pfc: 877
+3||headroom7290||shared:876||pfc: 877
+3||headroom7290||shared:876||pfc: 877
+3||headroom7290||shared:876||pfc: 877
+3||headroom6240||shared:876||pfc: 877
+3||headroom5190||shared:876||pfc: 877
+3||headroom4140||shared:876||pfc: 878
+3||headroom3090||shared:876||pfc: 878
+3||headroom2040||shared:876||pfc: 878
+3||headroom990||shared:876||pfc: 878
+3||headroom0||shared:876||pfc: 878
+3||headroom0||shared:875||pfc: 878
+3||headroom0||shared:874||pfc: 879
+Send Resume PFC num to node id - 18|| previous port status:1
+========================= 
+Port18Status 3:1||Port Status 7:0
+[q-3]node_id:18|| get shared  buffer:874KB||PFC threshold: 879KB|| total ingress_bytes:878KB|| hdrm_bytes:0kB
+[q-7]node_id:18|| get shared  buffer:0KB||PFC threshold: 3516KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+Send PFC num:7||switch node id - 144||to node id - 18
+alpha:0||qindex = 7 : 2||qindex = 3 : 0.5
+3||headroom0||shared:887||pfc: 887
+3||headroom0||shared:886||pfc: 887
+3||headroom0||shared:886||pfc: 887
+3||headroom0||shared:885||pfc: 887
+3||headroom0||shared:885||pfc: 887
+3||headroom0||shared:886||pfc: 887
+3||headroom0||shared:887||pfc: 887
+3||headroom1050||shared:887||pfc: 887
+3||headroom1050||shared:887||pfc: 887
+3||headroom2100||shared:887||pfc: 887
+3||headroom2100||shared:887||pfc: 887
+3||headroom2100||shared:888||pfc: 888
+3||headroom2100||shared:888||pfc: 888
+3||headroom3150||shared:888||pfc: 888
+3||headroom3150||shared:888||pfc: 888
+3||headroom4200||shared:888||pfc: 888
+3||headroom3150||shared:888||pfc: 888
+3||headroom4200||shared:888||pfc: 888
+3||headroom4200||shared:888||pfc: 888
+3||headroom5250||shared:888||pfc: 888
+3||headroom4200||shared:888||pfc: 889
+3||headroom3150||shared:888||pfc: 889
+3||headroom2100||shared:888||pfc: 889
+3||headroom1050||shared:888||pfc: 889
+3||headroom0||shared:888||pfc: 889
+3||headroom0||shared:887||pfc: 889
+3||headroom0||shared:886||pfc: 889
+Send Resume PFC num to node id - 18|| previous port status:1
+========================= 
+Port18Status 3:1||Port Status 7:0
+[q-3]node_id:18|| get shared  buffer:886KB||PFC threshold: 889KB|| total ingress_bytes:890KB|| hdrm_bytes:0kB
+[q-7]node_id:18|| get shared  buffer:0KB||PFC threshold: 3559KB|| total ingress_bytes:0KB|| hdrm_bytes:0kB
+========================= 
+Nodeid:70||finish send:4417||base rtt:8320||time:+2003008780.0ns
+node:70 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:129||finish send:4417||base rtt:8320||time:+2004961398.0ns
+node:129 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:93||finish send:4417||base rtt:8320||time:+2005559166.0ns
+node:93 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:141||finish send:4417||base rtt:8320||time:+2006275847.0ns
+node:141 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:97||finish send:4417||base rtt:8320||time:+2006969534.0ns
+node:97 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:5||finish send:4417||base rtt:8320||time:+2007155720.0ns
+node:5 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:7||finish send:4417||base rtt:8320||time:+2007208752.0ns
+node:7 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:93||finish send:4417||base rtt:8320||time:+2007238655.0ns
+node:93 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:85||finish send:4417||base rtt:8320||time:+2007308534.0ns
+node:85 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:111||finish send:4417||base rtt:8320||time:+2007364826.0ns
+node:111 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:31||finish send:4417||base rtt:8320||time:+2007507656.0ns
+Nodeid:5||finish send:4417||base rtt:8320||time:+2007509848.0ns
+Nodeid:129||finish send:4417||base rtt:8320||time:+2007511102.0ns
+node:31 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+node:5 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+node:129 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:23||finish send:4417||base rtt:8320||time:+2007548126.0ns
+node:23 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:5||finish send:4417||base rtt:8320||time:+2007636422.0ns
+node:5 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:70||finish send:4417||base rtt:8320||time:+2007768217.0ns
+node:70 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:71||finish send:4417||base rtt:8320||time:+2007823742.0ns
+node:71 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:85||finish send:4417||base rtt:8320||time:+2007840660.0ns
+node:85 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:7||finish send:4417||base rtt:8320||time:+2007944278.0ns
+node:7 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:129||finish send:4417||base rtt:8320||time:+2008241505.0ns
+node:129 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:129||finish send:4417||base rtt:8320||time:+2008260002.0ns
+node:129 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:68||finish send:4417||base rtt:8320||time:+2008275385.0ns
+node:68 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:16||finish send:4417||base rtt:8320||time:+2008293642.0ns
+node:16 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:22||finish send:4417||base rtt:8320||time:+2008462699.0ns
+node:22 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:68||finish send:4417||base rtt:8320||time:+2008526631.0ns
+Nodeid:52||finish send:4417||base rtt:8320||time:+2008534720.0ns
+node:68 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:68||finish send:4417||base rtt:8320||time:+2008538270.0ns
+node:52 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+node:68 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:7||finish send:4417||base rtt:8320||time:+2008580690.0ns
+node:7 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:63||finish send:4417||base rtt:8320||time:+2008613582.0ns
+node:63 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:139||finish send:4417||base rtt:8320||time:+2008631246.0ns
+node:139 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:23||finish send:4417||base rtt:8320||time:+2008670272.0ns
+Nodeid:93||finish send:4417||base rtt:8320||time:+2008672020.0ns
+node:23 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+node:93 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:119||finish send:4417||base rtt:8320||time:+2008682080.0ns
+node:119 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:65||finish send:4417||base rtt:8320||time:+2008708446.0ns
+Nodeid:31||finish send:4417||base rtt:8320||time:+2008711731.0ns
+node:65 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+node:31 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:35||finish send:4417||base rtt:8320||time:+2008740758.0ns
+Nodeid:23||finish send:4417||base rtt:8320||time:+2008741796.0ns
+node:35 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+node:23 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:70||finish send:4417||base rtt:8320||time:+2008758563.0ns
+node:70 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:52||finish send:4417||base rtt:8320||time:+2008769941.0ns
+Nodeid:119||finish send:4417||base rtt:8320||time:+2008771930.0ns
+node:52 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+node:119 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:31||finish send:4417||base rtt:8320||time:+2008797783.0ns
+node:31 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:63||finish send:4417||base rtt:8320||time:+2008806377.0ns
+node:63 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:52||finish send:4417||base rtt:8320||time:+2008818364.0ns
+Nodeid:52||finish send:4417||base rtt:8320||time:+2008818505.0ns
+Nodeid:22||finish send:4417||base rtt:8320||time:+2008822694.0ns
+node:52 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+node:52 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:70||finish send:4417||base rtt:8320||time:+2008828866.0ns
+node:22 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+node:70 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:16||finish send:4417||base rtt:8320||time:+2008839979.0ns
+node:16 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:23||finish send:4417||base rtt:8320||time:+2008874008.0ns
+node:23 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:22||finish send:4417||base rtt:8320||time:+2008901609.0ns
+node:22 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:30||finish send:4417||base rtt:8320||time:+2008987442.0ns
+Nodeid:141||finish send:4417||base rtt:8320||time:+2008988625.0ns
+node:30 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+node:141 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:35||finish send:4417||base rtt:8320||time:+2009002748.0ns
+Nodeid:85||finish send:4417||base rtt:8320||time:+2009010039.0ns
+node:35 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+node:85 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:52||finish send:4417||base rtt:8320||time:+2009023435.0ns
+node:52 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:139||finish send:4417||base rtt:8320||time:+2009036435.0ns
+node:139 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:93||finish send:4417||base rtt:8320||time:+2009046867.0ns
+node:93 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:119||finish send:4417||base rtt:8320||time:+2009056482.0ns
+Nodeid:140||finish send:4417||base rtt:8320||time:+2009063335.0ns
+node:119 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+node:140 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:119||finish send:4417||base rtt:8320||time:+2009079510.0ns
+node:119 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:30||finish send:4417||base rtt:8320||time:+2009088296.0ns
+Nodeid:140||finish send:4417||base rtt:8320||time:+2009091790.0ns
+node:30 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:93||finish send:4417||base rtt:8320||time:+2009097363.0ns
+node:140 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+node:93 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:129||finish send:4417||base rtt:8320||time:+2009116171.0ns
+Nodeid:70||finish send:4417||base rtt:8320||time:+2009120254.0ns
+node:129 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:141||finish send:4417||base rtt:8320||time:+2009126641.0ns
+Nodeid:71||finish send:4417||base rtt:8320||time:+2009126790.0ns
+node:70 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:30||finish send:4417||base rtt:8320||time:+2009130450.0ns
+Nodeid:16||finish send:4417||base rtt:8320||time:+2009130832.0ns
+node:141 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+node:16 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+node:71 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+node:30 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:35||finish send:4417||base rtt:8320||time:+2009144188.0ns
+Nodeid:141||finish send:4417||base rtt:8320||time:+2009146036.0ns
+node:35 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+node:141 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:65||finish send:4417||base rtt:8320||time:+2009158850.0ns
+node:65 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:85||finish send:4417||base rtt:8320||time:+2009169795.0ns
+Nodeid:139||finish send:4417||base rtt:8320||time:+2009175732.0ns
+node:85 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+node:139 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:16||finish send:4417||base rtt:8320||time:+2009186830.0ns
+node:16 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:22||finish send:4417||base rtt:8320||time:+2009198808.0ns
+node:22 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:129||finish send:4417||base rtt:8320||time:+2009220298.0ns
+Nodeid:97||finish send:4417||base rtt:8320||time:+2009228370.0ns
+node:129 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:72||finish send:4417||base rtt:8320||time:+2009230864.0ns
+node:72 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+node:97 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:23||finish send:4417||base rtt:8320||time:+2009237921.0ns
+Nodeid:30||finish send:4417||base rtt:8320||time:+2009238006.0ns
+Nodeid:63||finish send:4417||base rtt:8320||time:+2009239153.0ns
+node:23 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:72||finish send:4417||base rtt:8320||time:+2009242341.0ns
+Nodeid:97||finish send:4417||base rtt:8320||time:+2009244162.0ns
+node:30 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+node:63 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:5||finish send:4417||base rtt:8320||time:+2009250380.0ns
+node:72 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:31||finish send:4417||base rtt:8320||time:+2009252271.0ns
+node:97 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+node:5 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+node:31 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:31||finish send:4417||base rtt:8320||time:+2009260683.0ns
+node:31 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:119||finish send:4417||base rtt:8320||time:+2009271352.0ns
+Nodeid:5||finish send:4417||base rtt:8320||time:+2009272761.0ns
+Nodeid:72||finish send:4417||base rtt:8320||time:+2009273808.0ns
+node:5 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+node:119 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+node:72 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:68||finish send:4417||base rtt:8320||time:+2009283412.0ns
+Nodeid:97||finish send:4417||base rtt:8320||time:+2009286074.0ns
+Nodeid:30||finish send:4417||base rtt:8320||time:+2009291557.0ns
+node:68 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:68||finish send:4417||base rtt:8320||time:+2009293195.0ns
+Nodeid:111||finish send:4417||base rtt:8320||time:+2009294374.0ns
+node:97 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+node:68 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:30||finish send:4417||base rtt:8320||time:+2009299407.0ns
+node:30 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:22||finish send:4417||base rtt:8320||time:+2009301337.0ns
+node:111 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+node:30 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:65||finish send:4417||base rtt:8320||time:+2009303745.0ns
+node:65 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+node:22 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:63||finish send:4417||base rtt:8320||time:+2009316298.0ns
+Nodeid:72||finish send:4417||base rtt:8320||time:+2009320269.0ns
+Nodeid:65||finish send:4417||base rtt:8320||time:+2009321864.0ns
+node:63 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:139||finish send:4417||base rtt:8320||time:+2009326078.0ns
+Nodeid:23||finish send:4417||base rtt:8320||time:+2009326092.0ns
+node:72 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+node:65 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:7||finish send:4417||base rtt:8320||time:+2009331969.0ns
+Nodeid:140||finish send:4417||base rtt:8320||time:+2009332002.0ns
+node:23 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+node:139 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:7||finish send:4417||base rtt:8320||time:+2009335676.0ns
+node:7 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:97||finish send:4417||base rtt:8320||time:+2009336402.0ns
+Nodeid:140||finish send:4417||base rtt:8320||time:+2009339388.0ns
+Nodeid:31||finish send:4417||base rtt:8320||time:+2009339616.0ns
+node:7 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+node:140 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:35||finish send:4417||base rtt:8320||time:+2009342474.0ns
+Nodeid:71||finish send:4417||base rtt:8320||time:+2009343885.0ns
+node:97 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+node:140 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+node:31 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+node:71 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:140||finish send:4417||base rtt:8320||time:+2009348360.0ns
+Nodeid:35||finish send:4417||base rtt:8320||time:+2009348641.0ns
+Nodeid:70||finish send:4417||base rtt:8320||time:+2009350016.0ns
+node:35 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:72||finish send:4417||base rtt:8320||time:+2009350792.0ns
+node:140 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+node:35 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:141||finish send:4417||base rtt:8320||time:+2009356908.0ns
+node:70 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+node:72 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:111||finish send:4417||base rtt:8320||time:+2009361154.0ns
+Nodeid:72||finish send:4417||base rtt:8320||time:+2009365065.0ns
+node:141 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:140||finish send:4417||base rtt:8320||time:+2009366137.0ns
+node:111 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:85||finish send:4417||base rtt:8320||time:+2009372539.0ns
+node:72 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+node:140 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+node:85 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:93||finish send:4417||base rtt:8320||time:+2009377751.0ns
+Nodeid:97||finish send:4417||base rtt:8320||time:+2009378406.0ns
+Nodeid:111||finish send:4417||base rtt:8320||time:+2009378500.0ns
+Nodeid:71||finish send:4417||base rtt:8320||time:+2009380625.0ns
+node:93 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:7||finish send:4417||base rtt:8320||time:+2009384798.0ns
+Nodeid:35||finish send:4417||base rtt:8320||time:+2009386052.0ns
+node:97 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+node:111 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:71||finish send:4417||base rtt:8320||time:+2009389462.0ns
+node:71 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+node:35 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+node:7 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+node:71 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:139||finish send:4417||base rtt:8320||time:+2009399151.0ns
+node:139 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:16||finish send:4417||base rtt:8320||time:+2009412536.0ns
+Nodeid:52||finish send:4417||base rtt:8320||time:+2009415653.0ns
+Nodeid:119||finish send:4417||base rtt:8320||time:+2009419489.0ns
+node:16 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:63||finish send:4417||base rtt:8320||time:+2009421879.0ns
+Nodeid:139||finish send:4417||base rtt:8320||time:+2009424212.0ns
+Nodeid:63||finish send:4417||base rtt:8320||time:+2009425209.0ns
+Nodeid:141||finish send:4417||base rtt:8320||time:+2009425461.0ns
+node:52 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:65||finish send:4417||base rtt:8320||time:+2009428425.0ns
+node:119 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:5||finish send:4417||base rtt:8320||time:+2009430044.0ns
+node:63 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:85||finish send:4417||base rtt:8320||time:+2009432293.0ns
+node:139 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:16||finish send:4417||base rtt:8320||time:+2009433007.0ns
+node:141 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+node:63 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+node:65 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+node:5 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+node:85 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+node:16 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:22||finish send:4417||base rtt:8320||time:+2009443576.0ns
+Nodeid:111||finish send:4417||base rtt:8320||time:+2009443585.0ns
+Nodeid:65||finish send:4417||base rtt:8320||time:+2009447539.0ns
+node:22 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+node:111 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:111||finish send:4417||base rtt:8320||time:+2009451924.0ns
+Nodeid:68||finish send:4417||base rtt:8320||time:+2009454066.0ns
+node:111 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+node:65 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+node:68 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:71||finish send:4417||base rtt:8320||time:+2009482097.0ns
+node:71 || the num of generate pkg:4417
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+[third] Simulation ended at: +1000000000000000000.0ns
+GENERIC_SIMULATION:main(): [INFO ] Done.
+47.2217
+avg: 8849.330368055556 μs avg: 23.403812136547465 μs tail:25.066212554210885 μs

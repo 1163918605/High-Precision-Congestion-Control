@@ -121,7 +121,7 @@ void SwitchNode::CheckAndSendPfc(uint32_t inDev, uint32_t qIndex){
 	Ptr<QbbNetDevice> device = DynamicCast<QbbNetDevice>(m_devices[inDev]);
 	if (m_mmu->CheckShouldPause(inDev, qIndex)){
 		device->SendPfc(3, 0);
-		std::cout <<"Send PFC num:"<< Pfc_num <<"||switch node id - " << node_id <<  "||to node id - " << inDev -1 <<"\n";
+		std::cout <<"Send PFC num:"<< Pfc_num <<"||switch node id - " << node_id <<  "||to node id - " << inDev <<"\n";
 		// m_mmu->PrintPortBuffer(inDev);
 		Pfc_num ++;
 		m_mmu->SetPause(inDev, 3);
@@ -131,7 +131,7 @@ void SwitchNode::CheckAndSendResume(uint32_t inDev, uint32_t qIndex){
 	if(m_lrfcEnabled && qIndex < 4){
 		return;
 	}
-	
+
 	Ptr<QbbNetDevice> device = DynamicCast<QbbNetDevice>(m_devices[inDev]);
 	if (m_mmu->CheckShouldResume(inDev, qIndex)){
 		std::cout <<"Send Resume PFC num to node id - " << inDev << "|| previous port status:" << m_mmu->paused[inDev][3] << "\n";
@@ -214,6 +214,12 @@ void SwitchNode::SendToDev(Ptr<Packet>p, CustomHeader &ch){
 
 		// determine the qIndex
 		uint32_t qIndex;
+
+		// admission control
+		FlowIdTag t;
+		p->PeekPacketTag(t);
+		uint32_t inDev = t.GetFlowId();// the index of packet src interface
+
 		if (ch.l3Prot == 0xFF || ch.l3Prot == 0xFE || (m_ackHighPrio && (ch.l3Prot == 0xFD || ch.l3Prot == 0xFC))){  //QCN or PFC or NACK, go highest priority
 			qIndex = 0;
 		}else{
@@ -231,6 +237,7 @@ void SwitchNode::SendToDev(Ptr<Packet>p, CustomHeader &ch){
 					flow.loss_ratio = 0.0;
 					flow.loss_threshold = 0.09; // default
 					flow.last_update = Simulator::Now().GetTimeStep();
+					flow.inDev = inDev;
 					m_flowTable[flowHash] = flow;
 
 					std::cout << "node id :" << node_id << "============flow table size:" << m_flowTable.size() << "\n";
@@ -250,6 +257,7 @@ void SwitchNode::SendToDev(Ptr<Packet>p, CustomHeader &ch){
 				flow.loss_ratio = flow.loss_count / (double)flow.total_size;
 				bool use_lossless = flow.loss_ratio >= flow.loss_threshold;
 				qIndex = use_lossless ? LOSSLESSS_QUEUE +  ch.udp.pg : LOSSY_QUEUE +  ch.udp.pg;
+				UpdateQueueBuffers();
 				// std::cout << "flo:" << flowHash << "||seq:" << ch.udp.seq << "\n";
 				if(flowHash == 2633235723)
 					std::cout << "[switch-node] flowHash:" << flowHash <<"||seq:" << ch.udp.seq <<"|| qindex : " << qIndex << "||loss count:" << flow.loss_count << " ||loss ratio:" << flow.loss_ratio << "|| loss threshold:" << flow.loss_threshold << "\n";
@@ -257,10 +265,6 @@ void SwitchNode::SendToDev(Ptr<Packet>p, CustomHeader &ch){
 				qIndex = (ch.l3Prot == 0x06 ? 1 : ch.udp.pg); // if TCP, put to queue 1
 			}
 		}
-		// admission control
-		FlowIdTag t;
-		p->PeekPacketTag(t);
-		uint32_t inDev = t.GetFlowId();// the index of packet src interface
 
 		// if(inDev == 7){
 		// 	m_mmu->PrintPortBuffer(inDev);

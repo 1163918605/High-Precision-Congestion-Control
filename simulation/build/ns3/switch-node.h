@@ -39,6 +39,7 @@ class SwitchNode : public Node{
 		double loss_ratio;
 		double loss_threshold;
 		uint64_t last_update;
+		uint32_t inDev;
 	};
 	std::unordered_map<uint32_t, FlowEntry> m_flowTable;
 	enum QueueType{

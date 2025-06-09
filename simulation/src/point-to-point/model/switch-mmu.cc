@@ -42,9 +42,7 @@ namespace ns3 {
 
 	void SwitchMmu::UpdateBuffers(double exceed_ratio){
 		// std::cout << "exceed ratio:" << exceed_ratio << "\n";
-		losslessBuffer_size = exceed_ratio * buffer_size;
-		lossyBuffer_bytes = buffer_size - losslessBuffer_size;
-		// std::cout << "TIME:" << Simulator::Now() << " || losslessBuffer_size:" << losslessBuffer_size << "|| lossyBuffer_size : " << lossyBuffer_bytes << "\n";
+		alpha = 1 - exceed_ratio;
 	}
 
 	bool SwitchMmu::CheckIngressAdmission(uint32_t port, uint32_t qIndex, uint32_t psize){
@@ -120,6 +118,7 @@ namespace ns3 {
 	}
 
 	void SwitchMmu::SetPause(uint32_t port, uint32_t qIndex){
+		std::cout << "alpha:" << alpha << "||qindex = 7 : " << std::min(1.0/alpha , 2.0) << "||qindex = 3 : " << std::max(alpha , 0.5) << "\n";
 		paused[port][qIndex] = true;
 	}
 	void SwitchMmu::SetResume(uint32_t port, uint32_t qIndex){
@@ -127,11 +126,11 @@ namespace ns3 {
 	}
 
 	uint32_t SwitchMmu::GetPfcThreshold(uint32_t port, uint32_t qIndex){
-		// std::cout << "buffrt" << ((buffer_size - total_hdrm - total_rsrv - shared_used_bytes) >> pfc_a_shift[port]) << "share" << shared_used_bytes << "shif" << pfc_a_shift[port] << "\n";
+		// std::cout << "alpha" << alpha << "||qindex = 7" << std::min(1.0/alpha , 2.0) << "||qindex = 3" << std::max(alpha , 0.5) << "\n";
 		if (qIndex == 7){
-			return (buffer_size - total_hdrm - total_rsrv - shared_used_bytes) >> 3;
+			return ((buffer_size - total_hdrm - total_rsrv - shared_used_bytes) >> 3 )* std::min(1.0/alpha , 2.0);
 		}else{
-			return (buffer_size - total_hdrm - total_rsrv - shared_used_bytes) >> 3;
+			return ((buffer_size - total_hdrm - total_rsrv - shared_used_bytes) >> 3) * std::max(alpha , 0.5);
 		}
 	}
 	uint32_t SwitchMmu::GetSharedUsed(uint32_t port, uint32_t qIndex){

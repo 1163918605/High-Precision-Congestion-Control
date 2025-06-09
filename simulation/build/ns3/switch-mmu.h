@@ -46,6 +46,7 @@ public:
 	void PrintPortBuffer(uint32_t port);
 
 	// config
+	double alpha;
 	uint32_t node_id;
 	uint32_t buffer_size;
 	uint32_t pfc_a_shift[pCnt];

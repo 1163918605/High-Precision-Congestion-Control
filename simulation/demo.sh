@@ -3,8 +3,8 @@
 # ========== 配置区 ==========
 BASE_DIR="/home/bo/High-Precision-Congestion-Control"
 SIM_DIR="$BASE_DIR/simulation/mix/demo"
-RESULT_DIR="$BASE_DIR/result/Basic"
-ALL_DEGREES=(8 12 16 20 24)
+RESULT_DIR="$BASE_DIR/result/Basic/Resnet"
+ALL_DEGREES=(4 8 12 16 20 24)
 
 # ========== 参数解析 ==========
 usage() {
@@ -120,18 +120,20 @@ for DEGREE in "${degrees[@]}"; do
         nohup stdbuf -oL ./waf --run "scratch/third $SIM_DIR/DCQCN.txt" > "$RESULT_DIR/dcqcn.log" 2>&1 &
         wait $! || { echo "DCQCN测试失败"; exit 1; }
         python3 "$SIM_DIR/fct.py" "$SIM_DIR/fct.txt" -i $DEGREE -o "$RESULT_DIR/DCQCN_fct.txt" -s "$RESULT_DIR/dcqcn.log"
-    else
+        python3 "$SIM_DIR/pfc.py" "$RESULT_DIR/dcqcn.log"
+
         echo "【2/5】跳过DCQCN测试..."
     fi
 
     # LTFC测试
     if $RUN_LTFC; then
         echo "【3/5】运行LTFC测试..."
-        > "$RESULT_DIR/ratio.txt"
+        > "$BASE_DIR/result/Basic/ratio.txt"
         nohup stdbuf -oL ./waf --run "scratch/third $SIM_DIR/LTFC/DCQCN.txt" > "$RESULT_DIR/ltfc.log" 2>&1 &
         wait $! || { echo "LTFC测试失败"; exit 1; }
         python3 "$SIM_DIR/fct.py" "$SIM_DIR/fct.txt" -i $DEGREE -o "$RESULT_DIR/LTFC_fct.txt" -s "$RESULT_DIR/ltfc.log"
         python3 "$SIM_DIR/ratio.py" 
+        python3 "$SIM_DIR/pfc.py" "$RESULT_DIR/ltfc.log"
     else
         echo "【3/5】跳过LTFC测试..."
     fi

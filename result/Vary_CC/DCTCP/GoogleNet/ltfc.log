@@ -1,0 +1,206 @@
+Waf: Entering directory `/home/bo/High-Precision-Congestion-Control/simulation/build'
+Waf: Leaving directory `/home/bo/High-Precision-Congestion-Control/simulation/build'
+'build' finished successfully (0.244s)
+ENABLE_PFC			Yes
+ENABLE_LRFC			Yes
+ENABLE_BFC			No
+ENABLE_QCN			Yes
+USE_DYNAMIC_PFC_THRESHOLD	Yes
+PACKET_PAYLOAD_SIZE		1000
+TOPOLOGY_FILE			/home/bo/High-Precision-Congestion-Control/simulation/mix/demo/3node_1switch.txt
+FLOW_FILE			/home/bo/High-Precision-Congestion-Control/simulation/mix/demo/demo_flow.txt
+TRACE_FILE			/home/bo/High-Precision-Congestion-Control/simulation/mix/demo/trace.txt
+TRACE_OUTPUT_FILE		/home/bo/High-Precision-Congestion-Control/simulation/mix/demo/mix.tr
+FCT_OUTPUT_FILE		/home/bo/High-Precision-Congestion-Control/simulation/mix/demo/fct.txt
+PFC_OUTPUT_FILE				/home/bo/High-Precision-Congestion-Control/simulation/mix/demo/pfc.txt
+SIMULATOR_STOP_TIME		1e+09
+CC_MODE		8
+ALPHA_RESUME_INTERVAL		1
+RATE_DECREASE_INTERVAL		4
+CLAMP_TARGET_RATE		No
+RP_TIMER			900
+EWMA_GAIN			0.00390625
+FAST_RECOVERY_TIMES		1
+RATE_AI				50Mb/s
+RATE_HAI			100Mb/s
+MIN_RATE		100Mb/s
+DCTCP_RATE_AI				1000Mb/s
+ERROR_RATE_PER_LINK		0
+L2_CHUNK_SIZE			4000
+L2_ACK_INTERVAL			1
+L2_BACK_TO_ZERO			No
+HAS_WIN		0
+GLOBAL_T		1
+VAR_WIN		1
+FAST_REACT		1
+U_TARGET		0.95
+MI_THRESH		0
+INT_MULTI				1
+MULTI_RATE				0
+SAMPLE_FEEDBACK				0
+PINT_LOG_BASE				1.05
+PINT_PROB				1
+RATE_BOUND		1
+ACK_HIGH_PRIO		1
+LINK_DOWN				0 0 0
+ENABLE_TRACE				0
+KMAX_MAP				 400000000000 6400 200000000000 3200 100000000000 1600
+KMIN_MAP				 400000000000 1600 200000000000 800 100000000000 400
+PMAX_MAP				 400000000000 0.2 200000000000 0.2 100000000000 0.2
+BUFFER_SIZE				16
+QLEN_MON_FILE				/home/bo/High-Precision-Congestion-Control/simulation/mix/demo/qlen.txt
+QLEN_MON_START				2000000000
+QLEN_MON_END				2000900000
+node_num: 157, switch_num: 13, link_num: 180
+flow_num: 4
+trace_num: 2
+GENERIC_SIMULATION:main(): [INFO ] Create nodes.
+GENERIC_SIMULATION:main(): [INFO ] Create channels.
+======buffer config=======
+total_buffer:16777216KB
+total_hdrm:732KB
+total_rsrv:80KB
+shared_buffer:15571KB
+n_port:20
+======buffer config=======
+total_buffer:16777216KB
+total_hdrm:732KB
+total_rsrv:80KB
+shared_buffer:15571KB
+n_port:20
+======buffer config=======
+total_buffer:16777216KB
+total_hdrm:732KB
+total_rsrv:80KB
+shared_buffer:15571KB
+n_port:20
+======buffer config=======
+total_buffer:16777216KB
+total_hdrm:732KB
+total_rsrv:80KB
+shared_buffer:15571KB
+n_port:20
+======buffer config=======
+total_buffer:16777216KB
+total_hdrm:732KB
+total_rsrv:80KB
+shared_buffer:15571KB
+n_port:20
+======buffer config=======
+total_buffer:16777216KB
+total_hdrm:732KB
+total_rsrv:80KB
+shared_buffer:15571KB
+n_port:20
+======buffer config=======
+total_buffer:16777216KB
+total_hdrm:732KB
+total_rsrv:80KB
+shared_buffer:15571KB
+n_port:20
+======buffer config=======
+total_buffer:16777216KB
+total_hdrm:732KB
+total_rsrv:80KB
+shared_buffer:15571KB
+n_port:20
+======buffer config=======
+total_buffer:16777216KB
+total_hdrm:732KB
+total_rsrv:80KB
+shared_buffer:15571KB
+n_port:20
+======buffer config=======
+total_buffer:16777216KB
+total_hdrm:329KB
+total_rsrv:36KB
+shared_buffer:16018KB
+n_port:9
+======buffer config=======
+total_buffer:16777216KB
+total_hdrm:329KB
+total_rsrv:36KB
+shared_buffer:16018KB
+n_port:9
+======buffer config=======
+total_buffer:16777216KB
+total_hdrm:329KB
+total_rsrv:36KB
+shared_buffer:16018KB
+n_port:9
+======buffer config=======
+total_buffer:16777216KB
+total_hdrm:329KB
+total_rsrv:36KB
+shared_buffer:16018KB
+n_port:9
+maxRtt=8320 maxBdp=104000
+GENERIC_SIMULATION:main(): [INFO ] Create Applications.
+Running Simulation.
+GENERIC_SIMULATION:main(): [INFO ] Run Simulation.
+node id :144============flow table size:1
+FlowHash: 0x51a2b393|| LossCount: 0||  TotalSize: 26500||  LossRatio: 0||  Threshold: 0.09||  LastUpdate: 2000001083ns
+=============over==============
+node id :146============flow table size:1
+FlowHash: 0xde73e306|| LossCount: 0||  TotalSize: 26500||  LossRatio: 0||  Threshold: 0.09||  LastUpdate: 2000001083ns
+=============over==============
+node id :145============flow table size:1
+FlowHash: 0x867379b8|| LossCount: 0||  TotalSize: 26500||  LossRatio: 0||  Threshold: 0.09||  LastUpdate: 2000001083ns
+=============over==============
+node id :146============flow table size:2
+FlowHash: 0x20fb4ba7|| LossCount: 0||  TotalSize: 26500||  LossRatio: 0||  Threshold: 0.09||  LastUpdate: 2000001083ns
+FlowHash: 0xde73e306|| LossCount: 0||  TotalSize: 26500||  LossRatio: 0||  Threshold: 0.09||  LastUpdate: 2000001083ns
+=============over==============
+node id :155============flow table size:1
+FlowHash: 0x168cc739|| LossCount: 0||  TotalSize: 26500||  LossRatio: 0||  Threshold: 0.09||  LastUpdate: 2000002166ns
+=============over==============
+node id :156============flow table size:1
+FlowHash: 0x7e22bfbf|| LossCount: 0||  TotalSize: 26500||  LossRatio: 0||  Threshold: 0.09||  LastUpdate: 2000002166ns
+=============over==============
+node id :156============flow table size:2
+FlowHash: 0xe849320e|| LossCount: 0||  TotalSize: 26500||  LossRatio: 0||  Threshold: 0.09||  LastUpdate: 2000002166ns
+FlowHash: 0x7e22bfbf|| LossCount: 0||  TotalSize: 26500||  LossRatio: 0||  Threshold: 0.09||  LastUpdate: 2000002166ns
+=============over==============
+node id :156============flow table size:3
+FlowHash: 0x732ed9fc|| LossCount: 0||  TotalSize: 26500||  LossRatio: 0||  Threshold: 0.09||  LastUpdate: 2000002249ns
+FlowHash: 0xe849320e|| LossCount: 0||  TotalSize: 26500||  LossRatio: 0||  Threshold: 0.09||  LastUpdate: 2000002166ns
+FlowHash: 0x7e22bfbf|| LossCount: 0||  TotalSize: 26500||  LossRatio: 0||  Threshold: 0.09||  LastUpdate: 2000002166ns
+=============over==============
+node id :149============flow table size:1
+FlowHash: 0x9bbed6c9|| LossCount: 0||  TotalSize: 26500||  LossRatio: 0||  Threshold: 0.09||  LastUpdate: 2000003249ns
+=============over==============
+node id :149============flow table size:2
+FlowHash: 0x3f66e98a|| LossCount: 0||  TotalSize: 26500||  LossRatio: 0||  Threshold: 0.09||  LastUpdate: 2000003249ns
+FlowHash: 0x9bbed6c9|| LossCount: 0||  TotalSize: 26500||  LossRatio: 0||  Threshold: 0.09||  LastUpdate: 2000003249ns
+=============over==============
+node id :149============flow table size:3
+FlowHash: 0xe4b3f6f9|| LossCount: 0||  TotalSize: 26500||  LossRatio: 0||  Threshold: 0.09||  LastUpdate: 2000003332ns
+FlowHash: 0x3f66e98a|| LossCount: 0||  TotalSize: 26500||  LossRatio: 0||  Threshold: 0.09||  LastUpdate: 2000003249ns
+FlowHash: 0x9bbed6c9|| LossCount: 0||  TotalSize: 26500||  LossRatio: 0||  Threshold: 0.09||  LastUpdate: 2000003249ns
+=============over==============
+node id :149============flow table size:4
+FlowHash: 0x45ffd549|| LossCount: 0||  TotalSize: 26500||  LossRatio: 0||  Threshold: 0.09||  LastUpdate: 2000003415ns
+FlowHash: 0xe4b3f6f9|| LossCount: 0||  TotalSize: 26500||  LossRatio: 0||  Threshold: 0.09||  LastUpdate: 2000003332ns
+FlowHash: 0x3f66e98a|| LossCount: 0||  TotalSize: 26500||  LossRatio: 0||  Threshold: 0.09||  LastUpdate: 2000003249ns
+FlowHash: 0x9bbed6c9|| LossCount: 0||  TotalSize: 26500||  LossRatio: 0||  Threshold: 0.09||  LastUpdate: 2000003249ns
+=============over==============
+Nodeid:38||finish send:26500||base rtt:8320||time:+2008439825.0ns
+Node_id-38|| the num of loss packages: 107 ||the ratio of dropping package:0.403774% || the num of generate pkg:26500
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:29||finish send:26500||base rtt:8320||time:+2008621717.0ns
+Node_id-29|| the num of loss packages: 0 ||the ratio of dropping package:0% || the num of generate pkg:26500
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:35||finish send:26500||base rtt:8320||time:+2008836442.0ns
+Node_id-35|| the num of loss packages: 114 ||the ratio of dropping package:0.430189% || the num of generate pkg:26500
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+Nodeid:12||finish send:26500||base rtt:8320||time:+2008939720.0ns
+Node_id-12|| the num of loss packages: 0 ||the ratio of dropping package:0% || the num of generate pkg:26500
+RDMADRIVE::QPCOMPLETE
+ qp finish =========
+[third] Simulation ended at: +1000000000000000000.0ns
+GENERIC_SIMULATION:main(): [INFO ] Done.
+9.4376
+avg: 8733.0495 μs avg: 3.916025209857942 μs tail:4.0124426029559475 μs

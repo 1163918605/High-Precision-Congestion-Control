@@ -12,7 +12,7 @@ def calculate_average(filename):
             columns = line.split()  # 按空格分隔列
             if len(columns) >= 7:  # 确保有第七列
                 if(float(columns[6]) > max_fct):
-                    max_fct = float(columns[6])
+                    max_fct = float(columns[6]) / float(columns[7])
                 total += float(columns[6])  # 累加第七列的值
                 slowdown += float(columns[6])/float(columns[7])
                 count += 1  # 计数
@@ -20,7 +20,8 @@ def calculate_average(filename):
     if count == 0:
         return None  # 如果没有有效数据，返回None
     average = total / count / 1000  # 计算平均值
-    return average, slowdown, max_fct/1000
+    avg_slowdown = slowdown / count
+    return average, avg_slowdown, max_fct
 
 
 if __name__ == "__main__":
@@ -40,7 +41,7 @@ if __name__ == "__main__":
     average_value, average_slowdown, last_fct = calculate_average(filename)
     
     with open(args.outfile, 'a') as out_file:
-        out_file.write(f"{args.i} {average_value}\n")
+        out_file.write(f"{args.i} {average_value} {average_slowdown} {last_fct}\n")
     
     if average_value is not None:
         print(f"avg: {average_value} μs", end=" ")
