@@ -800,6 +800,7 @@ int main(int argc, char *argv[])
 	rem->SetAttribute("ErrorRate", DoubleValue(error_rate_per_link));
 	rem->SetAttribute("ErrorUnit", StringValue("ERROR_UNIT_PACKET"));
 
+	NS_LOG_INFO("111.");
 	FILE *pfc_file = fopen(pfc_output_file.c_str(), "w");
 
 	QbbHelper qbb;
@@ -815,6 +816,7 @@ int main(int argc, char *argv[])
 
 		qbb.SetDeviceAttribute("DataRate", StringValue(data_rate));
 		qbb.SetChannelAttribute("Delay", StringValue(link_delay));
+
 
 		if (error_rate > 0)
 		{
@@ -848,7 +850,6 @@ int main(int argc, char *argv[])
 			ipv4->AddInterface(d.Get(1));
 			ipv4->AddAddress(1, Ipv4InterfaceAddress(serverAddress[dst], Ipv4Mask(0xff000000)));
 		}
-
 		// used to create a graph of the topology
 		nbr2if[snode][dnode].idx = DynamicCast<QbbNetDevice>(d.Get(0))->GetIfIndex();
 		nbr2if[snode][dnode].up = true;
@@ -871,7 +872,6 @@ int main(int argc, char *argv[])
 	}
 
 	nic_rate = get_nic_rate(n);
-
 	// config switch
 	for (uint32_t i = 0; i < node_num; i++){
 		if (n.Get(i)->GetNodeType() == 1){ // is switch

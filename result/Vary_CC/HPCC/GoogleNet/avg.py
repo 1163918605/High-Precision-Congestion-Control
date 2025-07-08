@@ -77,14 +77,14 @@ ax.bar(x_positions + bar_width, irn_y, width=bar_width,
 ax.set_xlabel('# of Workers', fontsize=24, fontweight='bold')
 ax.set_ylabel('avg. FCT slowdown', fontsize=24, fontweight='bold')
 ax.set_xlim(-1, len(dsh_x)*2.2 - 1.2)
-ax.set_ylim(5, 40)  # 精确匹配图片的纵轴范围
+ax.set_ylim(5, 100)  # 精确匹配图片的纵轴范围
 
 # 设置x轴刻度位置和标签
 ax.set_xticks(x_positions)
 ax.set_xticklabels(dsh_x.astype(int), fontsize=22)
 
 # Y轴刻度设置 - 匹配图片刻度
-ax.set_yticks([5, 10, 20, 30, 40])
+ax.set_yticks([20, 40, 60, 80, 100])
 ax.tick_params(axis='y', labelsize=22)
 
 # 边框设置 - 显示上边框

@@ -46,21 +46,21 @@ except ValueError:
 
 
 # 绘制折线（精确匹配参考图样式）
-ax.plot(dsh_x, dsh_y, 'o-', color="#CC2512", markersize=10,
+ax.plot(dsh_x, dsh_y, 'o-', color="#CC2512", markersize=15,
         linewidth=3, label='PFC',
-        markerfacecolor='white', markeredgewidth=1.5)
+        markerfacecolor='white', markeredgewidth=4)
 
-ax.plot(irn_x, irn_y, '*-', color="#1B0569", markersize=10,
+ax.plot(irn_x, irn_y, '*-', color="#1B0569", markersize=15,
         linewidth=3, label='IRN',
-        markerfacecolor='white', markeredgewidth=1.5)
+        markerfacecolor='white', markeredgewidth=4)
 
-ax.plot(sih_x, sih_y, 'X-', color="#1B5031", markersize=10,
+ax.plot(sih_x, sih_y, 'X-', color="#1B5031", markersize=15,
         linewidth=3, label='LTFC',
-        markerfacecolor='white', markeredgewidth=1.5)
+        markerfacecolor='white', markeredgewidth=4)
 
 # 坐标轴设置
 ax.set_xlabel('# of Workers', fontsize=24, fontweight='bold')
-ax.set_ylabel('avg. FCT slowdown', fontsize=24, fontweight='bold')
+ax.set_ylabel('tail FCT slowdown', fontsize=24, fontweight='bold')
 ax.set_xlim(7, 25)
 ax.set_ylim(5,50)
 
@@ -81,7 +81,7 @@ ax.grid(True, linestyle='--', linewidth=1.5, alpha=0.8, color="#918E8E")
 legend = ax.legend(
     loc='upper left',
     frameon=False,  # 取消边框
-    fontsize=22,    # 保持大字体
+    fontsize=26,    # 保持大字体
     handlelength=1.5,  # 缩短标记线
     handleheight=1,    # 降低标记高度
     borderpad=0.5,     # 最小内边距

@@ -128,9 +128,11 @@ namespace ns3 {
 	uint32_t SwitchMmu::GetPfcThreshold(uint32_t port, uint32_t qIndex){
 		// std::cout << "alpha" << alpha << "||qindex = 7" << std::min(1.0/alpha , 2.0) << "||qindex = 3" << std::max(alpha , 0.5) << "\n";
 		if (qIndex == 7){
-			return ((buffer_size - total_hdrm - total_rsrv - shared_used_bytes) >> 3 )* std::min(1.0/alpha , 2.0);
+			// return ((buffer_size - total_hdrm - total_rsrv - shared_used_bytes) >> 3 )* std::min(1.0/alpha , 2.0);
+			return ((buffer_size - total_hdrm - total_rsrv - shared_used_bytes) >> 3 );
 		}else{
-			return ((buffer_size - total_hdrm - total_rsrv - shared_used_bytes) >> 3) * std::max(alpha , 0.5);
+			// return ((buffer_size - total_hdrm - total_rsrv - shared_used_bytes) >> 3) * std::max(alpha , 0.5);
+			return ((buffer_size - total_hdrm - total_rsrv - shared_used_bytes) >> 3 );
 		}
 	}
 	uint32_t SwitchMmu::GetSharedUsed(uint32_t port, uint32_t qIndex){

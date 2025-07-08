@@ -3,8 +3,8 @@
 # ========== 配置区 ==========
 BASE_DIR="/home/bo/High-Precision-Congestion-Control"
 SIM_DIR="$BASE_DIR/simulation/mix/demo"
-RESULT_DIR="$BASE_DIR/result/Basic/Resnet"
-ALL_DEGREES=(4 8 12 16 20 24)
+RESULT_DIR="$BASE_DIR/result/Vary_CC/HPCC"
+ALL_DEGREES=(8 12 16 20 24)
 
 # ========== 参数解析 ==========
 usage() {
