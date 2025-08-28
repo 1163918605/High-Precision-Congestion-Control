@@ -33,8 +33,8 @@ def read_data_file(filename):
 
 # 读取数据（假设drop.txt是DSH数据，DCQCN.txt是SIH数据）
 try:
-    dsh_x, dsh_y = read_data_file('PFC-incast.txt')
-    sih_x, sih_y = read_data_file('PFC-LTFC.txt')
+    dsh_x, dsh_y = read_data_file('table.txt')
+    # sih_x, sih_y = read_data_file('PFC-LTFC.txt')
 except FileNotFoundError as e:
     print(f"错误：未找到文件 {e.filename}")
     exit()
@@ -42,26 +42,33 @@ except ValueError:
     print("错误：数据格式不正确，请确保每行有2个数值")
     exit()
 
+bar_width = 1
+ax.bar(dsh_x, dsh_y, color="#1864AC", width=bar_width,
+       edgecolor='black', linewidth=2,
+       label='LTFC', zorder=3)
 # 绘制折线（精确匹配参考图样式）
-ax.plot(dsh_x, dsh_y, 'o-', color="#CC2512", markersize=15,
-        linewidth=3, label='DCQCN',
-        markerfacecolor='white', markeredgewidth=4,
-        zorder=3)  # 增加zorder使折线在顶层
+# ax.plot(dsh_x, dsh_y, 'o-', color="#CC2512", markersize=15,
+#         linewidth=3, label='LTFC',
+#         markerfacecolor='white', markeredgewidth=4,
+#         zorder=3)  # 增加zorder使折线在顶层
 
-ax.plot(sih_x, sih_y, 'X-', color="#1B5031", markersize=15,
-        linewidth=3, label='LTFC',
-        markerfacecolor='white', markeredgewidth=4,
-        zorder=3)  # 增加zorder使折线在顶层
+# ax.plot(sih_x, sih_y, 'X-', color="#1B5031", markersize=15,
+#         linewidth=3, label='LTFC',
+#         markerfacecolor='white', markeredgewidth=4,
+#         zorder=3)  # 增加zorder使折线在顶层
 
 # 坐标轴设置
-ax.set_xlabel('# of Workers', fontsize=28, fontweight='bold')
-ax.set_ylabel('PFC Count', fontsize=28, fontweight='bold')
-ax.set_xlim(7, 25)
-ax.set_ylim(0,3000)
+ax.set_xlabel('# of Concurrent flows', fontsize=28, fontweight='bold')
+ax.set_ylabel('Switch Table entries', fontsize=28, fontweight='bold')
+ax.set_xlim(1, 11)
+ax.set_ylim(0,2500)
 
 # 刻度设置
-ax.set_xticks([8,12,16,20,24])
-ax.set_yticks([0, 500, 1000, 1500, 2000, 2500, 3000])
+ax.set_xticks([2,4,6,8,10])
+ax.set_xticklabels(['2k', '4k', '6k', '8k', '10k'])
+
+ax.set_yticks([0, 500, 1000, 1500, 2000, 2500])
+
 ax.tick_params(axis='both', which='major', labelsize=28)
 
 # 网格线（确保在最底层）
@@ -86,8 +93,10 @@ legend = ax.legend(
     handletextpad=0.5,
     borderaxespad=0.5
 )
-
+for spine in ax.spines.values():
+    spine.set_visible(True)
+    spine.set_color('#999999')
 plt.tight_layout()
-plt.savefig('basic_pfc.png')
-plt.savefig("basic_pfc.svg", dpi=600, format="svg")
+plt.savefig('table.png')
+plt.savefig("table.svg", dpi=600, format="svg")
 plt.show()

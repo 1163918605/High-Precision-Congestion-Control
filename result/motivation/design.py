@@ -55,7 +55,7 @@ ax.plot(dsh_x, dsh_y, 'o-', color="#CC2512", markersize=15,
         markerfacecolor='white', markeredgewidth=4)
 
 ax.plot(sih_x, sih_y, 'X-', color="#1B5031", markersize=15,
-        linewidth=3, label='LTFC with LABW',
+        linewidth=3, label='LTFC with LaBW',
         markerfacecolor='white', markeredgewidth=4)
 
 # 坐标轴设置

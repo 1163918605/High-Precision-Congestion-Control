@@ -87,6 +87,10 @@ legend = ax.legend(
     borderaxespad=0.5
 )
 
+for spine in ax.spines.values():
+    spine.set_visible(True)
+    spine.set_color('#999999')
+    
 plt.tight_layout()
 plt.savefig('basic_pfc.png')
 plt.savefig("basic_pfc.svg", dpi=600, format="svg")

@@ -117,6 +117,6 @@ plt.subplots_adjust(top=0.7)  # 为图例留出足够空间
 # 添加标题空间以确保不遮挡
 fig.tight_layout(rect=[0, 0, 1, 0.98])  # 图表区域占整体高度的92%
 
-plt.savefig('basic_googlenet.png', dpi=300)
-plt.savefig("basic_googlenet.svg", dpi=600, format="svg")
+plt.savefig('vary_comm.png', dpi=300)
+plt.savefig("vary_comm.svg", dpi=600, format="svg")
 plt.show()

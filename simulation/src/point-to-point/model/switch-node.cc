@@ -241,15 +241,15 @@ void SwitchNode::SendToDev(Ptr<Packet>p, CustomHeader &ch){
 					m_flowTable[flowHash] = flow;
 
 					std::cout << "node id :" << node_id << "============flow table size:" << m_flowTable.size() << "\n";
-					for (const auto& entry : m_flowTable) {
-						std::cout << "FlowHash: 0x" << std::hex << entry.first 
-									<< "|| LossCount: " << std::dec << entry.second.loss_count
-									<< "||  TotalSize: " << entry.second.total_size
-									<< "||  LossRatio: " << entry.second.loss_ratio
-									<< "||  Threshold: " << entry.second.loss_threshold
-									<< "||  LastUpdate: " << entry.second.last_update << "ns\n";
-;
-					}
+// 					for (const auto& entry : m_flowTable) {
+// 						std::cout << "FlowHash: 0x" << std::hex << entry.first 
+// 									<< "|| LossCount: " << std::dec << entry.second.loss_count
+// 									<< "||  TotalSize: " << entry.second.total_size
+// 									<< "||  LossRatio: " << entry.second.loss_ratio
+// 									<< "||  Threshold: " << entry.second.loss_threshold
+// 									<< "||  LastUpdate: " << entry.second.last_update << "ns\n";
+// ;
+// 					}
 					std::cout << "=============over==============\n";
 
 				}

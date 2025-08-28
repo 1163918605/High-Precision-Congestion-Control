@@ -108,11 +108,11 @@ for DEGREE in "${degrees[@]}"; do
     echo "========================================"
     echo "正在处理 degree=${DEGREE} ..."
     
-    echo "【1/5】生成流量模式..."
-    if ! python3 "$SIM_DIR/gen_flow.py" -i $DEGREE; then
-        echo "错误：流量模式生成失败" >&2
-        exit 1
-    fi
+    # echo "【1/5】生成流量模式..."
+    # if ! python3 "$SIM_DIR/gen_flow.py" -i $DEGREE; then
+    #     echo "错误：流量模式生成失败" >&2
+    #     exit 1
+    # fi
 
     # DCQCN测试
     if $RUN_DCQCN; then

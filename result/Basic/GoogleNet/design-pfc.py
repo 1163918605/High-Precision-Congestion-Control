@@ -56,7 +56,7 @@ ax.plot(dsh_x, dsh_y, 'o-', color="#CC2512", markersize=15,
         zorder=3)  # 增加zorder使折线在顶层
 
 ax.plot(sih_x, sih_y, 'X-', color="#1B5031", markersize=15,
-        linewidth=3, label='LTFC with LABM',
+        linewidth=3, label='LTFC with LaBM',
         markerfacecolor='white', markeredgewidth=4,
         zorder=3)  # 增加zorder使折线在顶层
 
@@ -79,7 +79,7 @@ for spine in ax.spines.values():
     spine.set_visible(True)
     spine.set_color('#000000')
     spine.set_linewidth(3)
-    spine.set_zorder(1)  # 将坐标轴放到中间层
+    # spine.set_zorder(1)  # 将坐标轴放到中间层
 
 # 图例设置
 legend = ax.legend(
@@ -94,6 +94,10 @@ legend = ax.legend(
     borderaxespad=0.5
 )
 
+for spine in ax.spines.values():
+    spine.set_visible(True)
+    spine.set_color('#999999')
+    
 plt.tight_layout()
 plt.savefig('design-pfc.png')
 plt.savefig("design-pfc.svg", dpi=600, format="svg")
